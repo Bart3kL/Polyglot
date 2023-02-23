@@ -3,42 +3,55 @@
 .wrapper {
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
-
   height: 100vh;
+  background-color: $white-2;
 
-  background-color: $backgroundColor-1;
+  &Box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
-  &Title {
-    font-weight: 700;
-    font-size: 18px;
-  }
+    width: 100%;
+    max-width: 500px;
+    margin: 20px;
+    padding: 20px 0;
+    border-radius: 15px;
+    box-shadow: $boxShadow-1;
 
-  &Buttons {
-    width: 80%;
+    background-color: $backgroundColor-1;
 
-    button:nth-child(1) {
-      background-color: $black;
-      color: $white;
-    }
-    button:nth-child(1):hover {
-      background-color: #081f1f;
-    }
-
-    button:nth-child(2) {
-      background-color: $white;
-    }
-    button:nth-child(2):hover {
-      background-color: #f0f8ff;
+    &Title {
+      font-weight: 700;
+      font-size: 18px;
     }
 
-    button:nth-child(3) {
-      background-color: $tealishBlue;
-      color: $white;
-    }
-    button:nth-child(3):hover {
-      background-color: #4161a6;
+    &Buttons {
+      width: 90%;
+
+      button:nth-child(1) {
+        background-color: $black;
+        color: $white;
+      }
+      button:nth-child(1):hover {
+        background-color: $black-2;
+      }
+
+      button:nth-child(2) {
+        background-color: $white;
+      }
+      button:nth-child(2):hover {
+        background-color: $cyanBlue;
+      }
+
+      button:nth-child(3) {
+        background-color: $tealishBlue;
+        color: $white;
+      }
+      button:nth-child(3):hover {
+        background-color: $tealishBlue-2;
+      }
     }
   }
 }
