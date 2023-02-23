@@ -1,0 +1,32 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  max-width: 500px;
+
+  height: 60px;
+  margin: 20px auto 0 auto;
+  border-radius: 15px;
+  border: 0;
+
+  transition: background-color 0.3s;
+  cursor: pointer;
+
+  svg {
+    max-width: 50px;
+    margin-right: 20px;
+
+    font-size: 1.7rem;
+  }
+
+  &Name {
+    width: 165px;
+
+    font-size: 15px;
+    font-weight: 600;
+  }
+}

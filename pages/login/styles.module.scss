@@ -1,0 +1,44 @@
+@import "../../src/styles/variables";
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100vh;
+
+  background-color: $backgroundColor-1;
+
+  &Title {
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  &Buttons {
+    width: 80%;
+
+    button:nth-child(1) {
+      background-color: $black;
+      color: $white;
+    }
+    button:nth-child(1):hover {
+      background-color: #081f1f;
+    }
+
+    button:nth-child(2) {
+      background-color: $white;
+    }
+    button:nth-child(2):hover {
+      background-color: #f0f8ff;
+    }
+
+    button:nth-child(3) {
+      background-color: $tealishBlue;
+      color: $white;
+    }
+    button:nth-child(3):hover {
+      background-color: #4161a6;
+    }
+  }
+}
