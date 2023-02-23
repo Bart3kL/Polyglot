@@ -1,0 +1,70 @@
+@import "../../../../styles/variables";
+
+.wrapper {
+  &Nav {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 70px;
+    padding: 0 20px;
+
+    background-color: $backgroundColorNav;
+
+    &Logo {
+      a {
+        font-weight: 700;
+        font-size: 1.4rem;
+        color: $white;
+        letter-spacing: 1.5px;
+      }
+    }
+
+    &Icon {
+      display: flex;
+      align-items: center;
+
+      margin-top: 5px;
+
+      svg {
+        font-size: 1.3rem;
+        color: $white;
+      }
+
+      &Active {
+        padding: 3px;
+
+        border: 1px solid $white;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  &List {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100%;
+    padding-bottom: 30px;
+    border-radius: 0 0 10px 10px;
+
+    background-color: $backgroundColorNav;
+
+    animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+}
+@keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-400px);
+    transform: translateY(-400px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}

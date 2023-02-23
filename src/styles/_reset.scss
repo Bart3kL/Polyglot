@@ -68,17 +68,13 @@ th {
   padding: 0;
 }
 
-input,
-button,
-body {
-  font-family: "Overpass", sans-serif;
-}
-
 button,
 a,
 input,
 label,
 div {
+  text-decoration: none;
+  color: initial;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;

@@ -9,15 +9,19 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
+import Layout from "@/src/components/layout";
+
 export default function App({
   Component,
   pageProps: { pageProps, session },
 }: AppProps) {
   return (
     <SessionProvider session={session}>
-      <main className={montserrat.className}>
-        <Component {...pageProps} />
-      </main>
+      <div className={montserrat.className}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </div>
     </SessionProvider>
   );
 }
