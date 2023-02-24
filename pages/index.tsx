@@ -1,20 +1,16 @@
-import { useSession, signIn, signOut } from "next-auth/react";
+import HomePage from "@/src/components/organisms/HomePage";
+import { client } from "@/contentful/client";
 
-export default function Home() {
-  const { data: session } = useSession();
-  // if (session) {
-  //   return (
-  //     <>
-  //       Signed in as {session.user?.name} <br />
-  //       <button onClick={() => signOut()}>Sign out</button>
-  //     </>
-  //   );
-  // }
-  // return (
-  //   <>
-  //     Not signed in <br />
-  //     <button onClick={() => signIn()}>Sign in</button>
-  //   </>
-  // );
-  return <section>content</section>;
+export default function Home({ posts }: any) {
+  console.log(posts);
+  return <HomePage />;
 }
+export const getStaticProps = async () => {
+  const response = await client.getEntries({ content_type: "quotes" });
+
+  return {
+    props: {
+      posts: response.items,
+    },
+  };
+};

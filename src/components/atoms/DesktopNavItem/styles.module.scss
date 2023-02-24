@@ -1,0 +1,64 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  &Item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 40px;
+    padding: 0 0.9rem;
+    margin: 2px 20px;
+
+    font-size: 1.6rem;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &Link {
+      color: $white;
+
+      transition: color 0.3s;
+    }
+    &Link:hover {
+      color: $greenCyan;
+    }
+  }
+
+  &Item:nth-child(3) {
+    position: relative;
+  }
+
+  &Item:nth-child(3):hover &Box {
+    display: flex;
+
+    animation: fade-in 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
+
+  &Box {
+    position: absolute;
+    right: -50px;
+    top: 35px;
+    display: none;
+
+    width: 350px;
+
+    &Submenu {
+      width: 100%;
+      margin-top: 25px;
+      padding: 20px 10px;
+      border-radius: 0.375rem;
+
+      background-color: $backgroundColorNav;
+    }
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

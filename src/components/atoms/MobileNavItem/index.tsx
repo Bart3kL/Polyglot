@@ -15,7 +15,7 @@ const MobileNavItem = ({ href, name, subMenu }: MobileNavItemProps) => {
       <li
         className={wrapperItem}
         style={{
-          backgroundColor: currentRoute === href ? "#111827" : "",
+          backgroundColor: currentRoute === href ? "#111827" : "initial",
         }}
       >
         <Link href={href}>{name}</Link>

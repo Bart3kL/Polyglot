@@ -3,7 +3,7 @@
 .wrapper {
   &Nav {
     position: relative;
-    z-index: 4;
+    z-index: 7;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -14,7 +14,10 @@
     background-color: $backgroundColorNav;
 
     &Logo {
+      cursor: pointer;
+
       a {
+        font-family: var(--dmSerifDisplay-font);
         font-weight: 700;
         font-size: 1.4rem;
         color: $white;
@@ -27,6 +30,8 @@
       align-items: center;
 
       margin-top: 5px;
+
+      cursor: pointer;
 
       svg {
         font-size: 1.3rem;
@@ -46,6 +51,8 @@
     position: absolute;
     top: 70px;
     left: 0;
+    z-index: 5;
+    display: flex;
     align-items: center;
     flex-direction: column;
 
@@ -55,16 +62,32 @@
 
     background-color: $backgroundColorNav;
 
+    animation: slide-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  &Active {
+    display: flex;
+
     animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
 }
+
 @keyframes slide-in-top {
   0% {
     -webkit-transform: translateY(-400px);
-    transform: translateY(-400px);
+    transform: translateY(-450px);
   }
   100% {
     -webkit-transform: translateY(0);
     transform: translateY(0);
+  }
+}
+@keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-400px);
+    transform: translateY(-450px);
   }
 }

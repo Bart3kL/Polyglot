@@ -1,0 +1,53 @@
+@import "../../../styles/variables";
+
+@keyframes scaleUp {
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.wrapper {
+  margin-top: 30px;
+  width: 70%;
+  height: 200px;
+  cursor: pointer;
+
+  &Slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+    color: $white;
+    text-align: center;
+
+    &Quote {
+      line-height: 25px;
+    }
+
+    &Author {
+      margin-top: 20px;
+      font-style: italic;
+    }
+  }
+  &Progress {
+    margin-top: 20px;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+
+      background-color: $white;
+
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    &Active::after {
+      animation: scaleUp 2s linear both;
+    }
+  }
+}

@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-import { DM_Serif_Display } from "@next/font/google";
 import { cx } from "@/src/components/lib/utils";
 import { Icons } from "@/src/components/shared";
 import MobileNavItem from "@/src/components/atoms/MobileNavItem";
 
 import { navigationList } from "./utils";
-
-const dmSerifDisplay = DM_Serif_Display({
-  weight: ["400"],
-  subsets: ["latin-ext"],
-});
 
 import styles from "./rwd.module.scss";
 const {
@@ -21,6 +15,7 @@ const {
   wrapperNavIcon,
   wrapperNavIconActive,
   wrapperList,
+  wrapperActive,
 } = styles;
 
 const NavigationMobile = () => {
@@ -33,9 +28,7 @@ const NavigationMobile = () => {
     <nav className={wrapper}>
       <div className={wrapperNav}>
         <div className={wrapperNavLogo}>
-          <Link href="/" className={dmSerifDisplay.className}>
-            Polyglot
-          </Link>
+          <Link href="/">Polyglot</Link>
         </div>
         <div className={cx(wrapperNavIcon, show && wrapperNavIconActive)}>
           {show ? (
@@ -45,10 +38,7 @@ const NavigationMobile = () => {
           )}
         </div>
       </div>
-      <ul
-        className={cx(wrapperList)}
-        style={{ display: show ? "flex" : "none" }}
-      >
+      <ul className={cx(wrapperList, show && wrapperActive)}>
         {navigationList.map((navItem) => (
           <MobileNavItem {...navItem} key={navItem.href} />
         ))}

@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 
 import NavigationMobile from "./NavigationMobile";
+import Navigation from "./Navigation";
 
 const NavBar = () => {
   const router = useRouter();
@@ -9,6 +10,7 @@ const NavBar = () => {
     <>
       {router.pathname === "/" ? (
         <>
+          <Navigation />
           <NavigationMobile />
         </>
       ) : (

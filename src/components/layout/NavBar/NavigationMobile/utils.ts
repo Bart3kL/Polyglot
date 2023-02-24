@@ -1,8 +1,9 @@
 export const navigationList = [
-  { name: "Nauka", href: "/science" },
+  { name: "Słownik", href: "/dictionary" },
+  { name: "Ranking", href: "/ranking" },
   {
-    name: "Słownik",
-    href: "/dictionary",
+    name: "Nauka",
+    href: "/science",
     subMenu: [
       { name: "Lekcje", href: "/lessons" },
       { name: "Powtórki", href: "/repetitions" },
@@ -12,5 +13,4 @@ export const navigationList = [
       { name: "Wisielec", href: "/hangman" },
     ],
   },
-  { name: "Ranking", href: "/ranking" },
 ];
