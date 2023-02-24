@@ -4,7 +4,7 @@ import type { GetServerSidePropsContext } from "next";
 import { Icons } from "@/src/components/shared";
 import LoginButton from "@/src/components/atoms/LoginButton";
 import { authOptions } from "../api/auth/[...nextauth]";
-import { providers } from "./untils";
+import { providers } from "../../src/components/lib/untils";
 
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperBox, wrapperBoxTitle, wrapperBoxButtons } = styles;
