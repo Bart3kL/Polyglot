@@ -1,15 +1,20 @@
 import { getServerSession } from "next-auth/next";
-import type { GetServerSidePropsContext } from "next";
+import type {
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+} from "next";
+import { getProviders } from "next-auth/react";
 
 import { Icons } from "@/src/components/shared";
 import LoginButton from "@/src/components/atoms/LoginButton";
 import { authOptions } from "../api/auth/[...nextauth]";
-import { providers } from "../../src/components/lib/untils";
 
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperBox, wrapperBoxTitle, wrapperBoxButtons } = styles;
 
-export default function SignInPage() {
+export default function SignInPage({
+  providers,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className={wrapper}>
       <div className={wrapperBox}>
@@ -30,5 +35,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (session) {
     return { redirect: { destination: "/" } };
   }
-  return { props: {} };
+
+  const providers = await getProviders();
+
+  return { props: { providers: providers ?? [] } };
 }

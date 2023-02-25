@@ -1,4 +1,4 @@
-export interface DesktoNavSubItemProps {
+export interface NavSubItemDesktopProps {
   href: string;
   name: string;
   description?: string;

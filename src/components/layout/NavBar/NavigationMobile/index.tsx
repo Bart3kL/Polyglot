@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { cx } from "@/src/components/lib/utils";
 import { Icons } from "@/src/components/shared";
-import MobileNavItem from "@/src/components/atoms/MobileNavItem";
+import MobileNavItem from "@/src/components/atoms/NavItemMobile";
 
 import { navigationList } from "./utils";
 

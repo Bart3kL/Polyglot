@@ -1,6 +1,6 @@
 import { Submenu } from "./utilityTypes";
 
-export interface MobileNavItemProps {
+export interface NavItemMobileProps {
   href: string;
   name: string;
   subMenu?: Submenu[];

@@ -2,12 +2,12 @@ import React from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 
-import { MobileNavSubItemProps } from "@/src/types/Layout/MobileNavSubItem";
+import { NavSubItemMobileProps } from "../../../types/Layout/NavSubItemMobile";
 
 import styles from "./rwd.module.scss";
 const { wrapperItem } = styles;
 
-const MobileNavSubItem = ({ href, name }: MobileNavSubItemProps) => {
+const NavSubItemMobile = ({ href, name }: NavSubItemMobileProps) => {
   const { data: session } = useSession();
 
   return (
@@ -21,4 +21,4 @@ const MobileNavSubItem = ({ href, name }: MobileNavSubItemProps) => {
   );
 };
 
-export default MobileNavSubItem;
+export default NavSubItemMobile;

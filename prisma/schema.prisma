@@ -1,0 +1,192 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Lessons {
+  id         String                @id @default(uuid())
+  image      String
+  level      String
+  title      String
+  vocabulary VocabularyForLesson[]
+  grammar    GrammarForLesson[]
+  exercise   ExerciseForLesson[]
+}
+
+model VocabularyForLesson {
+  id         String       @id @default(uuid())
+  lessonsId  String?
+  vocabulary Vocabulary[]
+  Lessons    Lessons?     @relation(fields: [lessonsId], references: [id])
+}
+
+model Vocabulary {
+  id                    String               @id @default(uuid())
+  name                  String
+  translation           String
+  audio                 String?
+  image                 String?
+  VocabularyForLesson   VocabularyForLesson? @relation(fields: [vocabularyForLessonId], references: [id])
+  vocabularyForLessonId String?
+}
+
+model GrammarForLesson {
+  id        String    @id @default(uuid())
+  lessonsId String?
+  grammar   Grammar[]
+  Lessons   Lessons?  @relation(fields: [lessonsId], references: [id])
+}
+
+model Grammar {
+  id                 String            @id @default(uuid())
+  title              String
+  image              String
+  grammarForLesson   GrammarForLesson? @relation(fields: [grammarForLessonId], references: [id])
+  grammarForLessonId String?
+}
+
+model ExerciseForLesson {
+  id        String     @id @default(uuid())
+  lessonsId String?
+  exercise  Exercise[]
+  Lessons   Lessons?   @relation(fields: [lessonsId], references: [id])
+}
+
+model Exercise {
+  id                  String             @id @default(uuid())
+  question            String
+  option1             String
+  option2             String
+  option3             String
+  correctAnswer       String
+  exerciseForLesson   ExerciseForLesson? @relation(fields: [exerciseForLessonId], references: [id])
+  exerciseForLessonId String?
+}
+
+model Users {
+  id          String        @id @default(uuid())
+  userId      String
+  lesson      String
+  lessonStep  String
+  repetitions Repetitions[]
+  Notebook    Notebook[]
+  flashcards  Flashcards[]
+}
+
+model Repetitions {
+  id          String  @id @default(uuid())
+  userId      String
+  name        String
+  translation String
+  audio       String?
+  image       String?
+  power       String?
+  Users       Users?  @relation(fields: [userId], references: [id])
+}
+
+model Flashcards {
+  id          String  @id @default(uuid())
+  userId      String
+  name        String
+  translation String
+  step        String
+  audio       String?
+  image       String?
+  example1    String?
+  example2    String?
+  Users       Users?  @relation(fields: [userId], references: [id])
+}
+
+model Notebook {
+  id      String @id @default(uuid())
+  userId  String
+  subject String
+  notes   String
+  Users   Users? @relation(fields: [userId], references: [id])
+}
+
+model DictonaryLevel {
+  id         String                         @id @default(uuid())
+  image      String
+  level      String
+  categories CategoriesForDictionaryLevel[]
+}
+
+model CategoriesForDictionaryLevel {
+  id             String          @id @default(uuid())
+  levelId        String?
+  name           String
+  image          String
+  subcategory    Subcategory[]
+  DictonaryLevel DictonaryLevel? @relation(fields: [levelId], references: [id])
+}
+
+model Subcategory {
+  id                           String                        @id @default(uuid())
+  categoryId                   String?
+  title                        String
+  image                        String?
+  vocabluary                   Words[]
+  CategoriesForDictionaryLevel CategoriesForDictionaryLevel? @relation(fields: [categoryId], references: [id])
+}
+
+model Words {
+  id                         String       @id @default(uuid())
+  name                       String
+  translation                String
+  audio                      String?
+  image                      String?
+  example1                   String?
+  example2                   String?
+  vocabularyForSubcategoryId String?
+  Subcategory                Subcategory? @relation(fields: [vocabularyForSubcategoryId], references: [id])
+}

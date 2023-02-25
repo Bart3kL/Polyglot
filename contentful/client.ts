@@ -10,7 +10,6 @@ export async function getPage(content: string) {
     content_type: content,
   };
   const { items } = await client.getEntries(query);
-
   const { fields } = items[0];
   return fields;
 }

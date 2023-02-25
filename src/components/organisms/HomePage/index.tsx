@@ -2,11 +2,11 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import React from "react";
 
 import HomeSlider from "../../molecules/HomeSlider";
-import { HomePageProps } from "@/src/types/Home/HomePage";
+import { HomePageProps } from "../../../types/Home/HomePage";
 import HomeLoginBox from "../../atoms/HomeLoginBox";
 
 import styles from "./rwd.module.scss";
-const { wrapper, wrapperWelcomeMessage, wrapperLoginBtn } = styles;
+const { wrapper } = styles;
 
 export default function HomePage({
   quotes,

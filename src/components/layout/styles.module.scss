@@ -1,13 +1,22 @@
 @import "../../styles/variables";
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
+  &Home {
+    display: flex;
+    flex-direction: column;
 
-  min-height: 100vh;
+    min-height: 100vh;
 
-  background-color: $backgroundColorLayout;
-  background-image: url("../../../public/backgroundDraken.webp");
-  background-position: center;
-  background-size: cover;
+    background-color: $backgroundColorLayout;
+    background-image: url("../../../public/backgroundDraken.webp");
+    background-position: center;
+    background-size: cover;
+  }
+
+  &Other {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+  }
 }

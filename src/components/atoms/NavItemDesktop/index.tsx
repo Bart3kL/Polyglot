@@ -2,14 +2,14 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import DesktoNavSubItem from "../DesktoNavSubItem";
+import DesktoNavSubItem from "../NavSubItemDesktop";
 
-import { DesktopNavItemProps } from "@/src/types/Layout/DesktopNavItem";
+import { NavItemDesktopProps } from "../../../types/Layout/NavItemDesktop";
 
 import styles from "./rwd.module.scss";
 const { wrapperItem, wrapperItemLink, wrapperBox, wrapperBoxSubmenu } = styles;
 
-const DesktopNavItem = ({ href, name, subMenu }: DesktopNavItemProps) => {
+const NavItemDesktop = ({ href, name, subMenu }: NavItemDesktopProps) => {
   const { data: session } = useSession();
   const currentRoute = useRouter().pathname;
   const isUserLogged = subMenu && session;
@@ -19,7 +19,7 @@ const DesktopNavItem = ({ href, name, subMenu }: DesktopNavItemProps) => {
       <li
         className={wrapperItem}
         style={{
-          backgroundColor: currentRoute === href ? "#111827" : "initial",
+          backgroundColor: currentRoute === href ? "#374151" : "initial",
         }}
       >
         {isUserLogged ? (
@@ -43,4 +43,4 @@ const DesktopNavItem = ({ href, name, subMenu }: DesktopNavItemProps) => {
   );
 };
 
-export default DesktopNavItem;
+export default NavItemDesktop;

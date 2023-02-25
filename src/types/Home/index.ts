@@ -1,4 +1,3 @@
-import { Quote } from "./utilityTypes";
 import { HomePageProps } from "./HomePage";
 import { HomeSliderProps } from "./HomeSlider/index";
 

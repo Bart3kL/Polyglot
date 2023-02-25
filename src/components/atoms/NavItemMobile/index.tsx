@@ -2,13 +2,13 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import MobileNavSubItem from "../MobileNavSubItem";
-import { MobileNavItemProps } from "@/src/types/Layout/MobileNavItem";
+import MobileNavSubItem from "../NavSubItemMobile";
+import { NavItemMobileProps } from "../../../types/Layout/NavItemMobile";
 
 import styles from "./rwd.module.scss";
 const { wrapperItem, wrapperOverlay, wrapperSubmenu } = styles;
 
-const MobileNavItem = ({ href, name, subMenu }: MobileNavItemProps) => {
+const NavItemMobile = ({ href, name, subMenu }: NavItemMobileProps) => {
   const currentRoute = useRouter().pathname;
   return (
     <>
@@ -36,4 +36,4 @@ const MobileNavItem = ({ href, name, subMenu }: MobileNavItemProps) => {
   );
 };
 
-export default MobileNavItem;
+export default NavItemMobile;

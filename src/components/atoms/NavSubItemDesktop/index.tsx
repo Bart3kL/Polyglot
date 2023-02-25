@@ -1,16 +1,16 @@
 import React from "react";
 import Link from "next/link";
 
-import { DesktoNavSubItemProps } from "@/src/types/Layout/DesktoNavSubItem";
+import { NavSubItemDesktopProps } from "../../../types/Layout/NavSubItemDesktop";
 
 import styles from "./rwd.module.scss";
 const { wrapperItem, wrapperItemLink } = styles;
 
-const DesktoNavSubItem = ({
+const NavSubItemDesktop = ({
   href,
   name,
   description,
-}: DesktoNavSubItemProps) => {
+}: NavSubItemDesktopProps) => {
   return (
     <li className={wrapperItem} key={name}>
       <Link href={href} className={wrapperItemLink}>
@@ -21,4 +21,4 @@ const DesktoNavSubItem = ({
   );
 };
 
-export default DesktoNavSubItem;
+export default NavSubItemDesktop;

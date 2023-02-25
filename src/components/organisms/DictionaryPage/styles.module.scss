@@ -1,0 +1,22 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 75vh;
+
+  &List {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    width: 90%;
+    max-width: 950px;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+}
