@@ -2,8 +2,8 @@ import HomePage from "@/src/components/organisms/HomePage";
 import { getPage } from "@/contentful/client";
 import { HomeProps } from "@/src/types/Home";
 
-export default function Home({ page }: HomeProps) {
-  return <HomePage {...page} />;
+export default function Dictionary({ page }: HomeProps) {
+  return <p>s</p>;
 }
 
 export const getStaticProps = async () => {

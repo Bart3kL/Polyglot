@@ -4,17 +4,16 @@ import { DM_Serif_Display } from "@next/font/google";
 
 import "../src/styles/_reset.scss";
 import "../src/styles/_variables.scss";
+import Layout from "@/src/components/layout";
 
 const dmSerifDisplay = DM_Serif_Display({
   weight: ["400"],
   subsets: ["latin-ext"],
 });
 
-import Layout from "@/src/components/layout";
-
 export default function App({
   Component,
-  pageProps: { pageProps, session },
+  pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
     <SessionProvider session={session}>
