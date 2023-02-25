@@ -2,7 +2,7 @@ import React from "react";
 
 import { useCarousel } from "./hooks";
 import styles from "./rwd.module.scss";
-// import getQuotes from "@/contentful/quotes";
+
 const {
   wrapper,
   wrapperSlide,
@@ -14,6 +14,11 @@ const {
 
 export default function HomeSlider() {
   const { sliderRef, slideIdx } = useCarousel();
+
+  // const data = async () => {
+  //   console.log(await getQuotes());
+  // };
+  // data();
   return (
     <div className={wrapper}>
       {/* <div ref={sliderRef} className={"keen-slider"}>

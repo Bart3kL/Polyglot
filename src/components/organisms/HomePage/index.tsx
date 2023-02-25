@@ -5,7 +5,7 @@ import styles from "./rwd.module.scss";
 const { wrapper, wrapperWelcomeMessage, wrapperLoginBtn } = styles;
 import HomeSlider from "../../molecules/HomeSlider";
 
-export default function HomePage() {
+export default function HomePage({ page }: any) {
   const { data: session } = useSession();
   return (
     <section className={wrapper}>
@@ -20,6 +20,7 @@ export default function HomePage() {
         </>
       ) : (
         <>
+          <p>{page[0].fields.author}</p>
           <h2 className={wrapperWelcomeMessage}>
             <p>Ucz się angielskiego za darmo</p> Zaloguj się i korzystaj ze
             wszystkich funkcjonalności

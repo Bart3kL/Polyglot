@@ -1,16 +1,14 @@
 import HomePage from "@/src/components/organisms/HomePage";
-import { client } from "@/contentful/client";
+import { getPage } from "@/contentful/client";
 
-export default function Home({ posts }: any) {
-  console.log(posts);
-  return <HomePage />;
+export default function Home({ page }: any) {
+  return <HomePage page={page} />;
 }
-export const getStaticProps = async () => {
-  const response = await client.getEntries({ content_type: "quotes" });
 
+export const getServerSideProps = async () => {
+  const page = await getPage("quotes");
+  console.log(page);
   return {
-    props: {
-      posts: response.items,
-    },
+    props: { page },
   };
 };
