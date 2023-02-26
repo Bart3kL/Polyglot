@@ -11,10 +11,9 @@ const DictionaryLevelCard = ({
   id,
   image,
   level,
-  slug,
 }: DictionaryLevelCardProps) => {
   return (
-    <Link href={`/dictionary/${slug}`}>
+    <Link href={`/slownik/${id}`}>
       <li className={wrapper}>
         <Image
           src={image}

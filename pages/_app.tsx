@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 import { DM_Serif_Display, Overpass } from "@next/font/google";
+import NextNProgress from "nextjs-progressbar";
 
 import "../src/styles/_reset.scss";
 import "../src/styles/_variables.scss";
@@ -26,6 +27,13 @@ export default function App({
           --dmSerifDisplay-font: ${dmSerifDisplay.style.fontFamily};
         }
       `}</style>
+      <NextNProgress
+        color="#29D"
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={3}
+        showOnShallow={true}
+      />
       <Layout>
         <Component {...pageProps} />
       </Layout>

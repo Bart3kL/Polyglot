@@ -175,6 +175,7 @@ model Subcategory {
   categoryId                   String?
   title                        String
   image                        String?
+  slug                         String?                       @unique
   vocabluary                   Words[]
   CategoriesForDictionaryLevel CategoriesForDictionaryLevel? @relation(fields: [categoryId], references: [id])
 }
@@ -188,5 +189,6 @@ model Words {
   example1                   String?
   example2                   String?
   vocabularyForSubcategoryId String?
-  Subcategory                Subcategory? @relation(fields: [vocabularyForSubcategoryId], references: [id])
+  subcategoryId              String?
+  Subcategory                Subcategory? @relation(fields: [subcategoryId], references: [slug])
 }

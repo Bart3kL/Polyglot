@@ -2,5 +2,6 @@ export type Level = {
   id: string;
   image: string;
   level: string;
-  slug: string;
 };
+
+export type Header = { headerTitle: string; headerDescription: string };

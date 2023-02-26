@@ -1,5 +1,5 @@
 export const navigationList = [
-  { name: "Słownik", href: "/dictionary" },
+  { name: "Słownik", href: "/slownik" },
   { name: "Ranking", href: "/ranking" },
   {
     name: "Nauka",

@@ -1,7 +1,5 @@
-import { Level } from "../utilityTypes";
+import { Level, Header } from "../utilityTypes";
 
-export interface DictionaryPageProps {
-  headerTitle: string;
-  headerDescription: string;
+export type DictionaryPageProps = {
   levels: Level[];
-}
+} & Header;

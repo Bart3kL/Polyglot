@@ -1,5 +1,5 @@
-import { DictionaryPageProps } from "./DictionaryPage";
-
+import { Level, Header } from "./utilityTypes";
 export interface DictionaryProps {
-  page: DictionaryPageProps;
+  page: Header;
+  levels: Level[];
 }

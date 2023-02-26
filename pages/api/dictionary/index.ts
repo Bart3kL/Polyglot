@@ -8,8 +8,8 @@ export default async function getAllLessons(
   const prisma = new PrismaClient();
   if (req.method === "GET") {
     try {
-      const diconaryLevel = await prisma.dictonaryLevel.findMany();
-      return res.send(diconaryLevel);
+      const dictionaryLevels = await prisma.dictonaryLevel.findMany();
+      return res.send(dictionaryLevels);
     } catch (e) {
       console.error(e);
       return res.status(500).send({ success: false });
