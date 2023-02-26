@@ -4,14 +4,15 @@ import useGet from "@/src/axios/useGet";
 import DictionaryPage from "../../src/components/organisms/DictionaryPage";
 import { DictionaryProps } from "../../src/types/Dictionary";
 
-export default function Dictionary({ page, levels }: DictionaryProps) {
+function Dictionary({ page, levels }: DictionaryProps) {
   return <DictionaryPage {...page} levels={levels} />;
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const page = await getPage("dictionary");
   const levels = await useGet();
   return {
     props: { page, levels },
   };
 };
+export default Dictionary;
