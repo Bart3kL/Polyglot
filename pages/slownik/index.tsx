@@ -3,6 +3,8 @@ import useGet from "@/src/axios/useGet";
 import DictionaryPage from "../../src/components/organisms/DictionaryPage";
 import { DictionaryProps } from "../../src/types/Dictionary";
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
+import BarLoader from "react-spinners/BarLoader";
+import { override } from "@/src/components/lib/spinner";
 
 function Dictionary() {
   const { data: levels, isLoading } = useQuery({
@@ -14,22 +16,31 @@ function Dictionary() {
     queryFn: () => getPage("dictionary"),
   });
 
-  if (isLoading) {
-    return <p>loading...</p>;
-  } else {
-    // console.log(isLoading, levels, page);
-    return <DictionaryPage page={page} levels={levels} />;
-  }
-  // return <p>s</p>;
+  return (
+    <>
+      {isLoading ? (
+        <BarLoader
+          color={"#1f2233"}
+          loading={isLoading}
+          cssOverride={override}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      ) : (
+        <DictionaryPage page={page} levels={levels} />
+      )}
+    </>
+  );
 }
 
 export const getServerSideProps = async () => {
-  // const page = await getPage("dictionary");
-
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(["levels"], await useGet());
-  await queryClient.prefetchQuery(["homePage"], () => getPage("dictionary"));
+  await queryClient.prefetchQuery(
+    ["homePage"],
+    async () => await getPage("dictionary")
+  );
   return {
     props: { dehydratedState: dehydrate(queryClient) },
   };

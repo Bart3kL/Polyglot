@@ -8,7 +8,9 @@ const useGet = async (secondValue?: string, thirdValue?: string) => {
     return data;
   }
 
-  const { data } = await axios.get(`http://localhost:3000/api/dictionary`);
+  const { data } = await axios.get(
+    `${process.env.NEXTAUTH_URL}/api/dictionary`
+  );
   return data;
 };
 
