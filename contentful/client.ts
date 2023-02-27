@@ -1,8 +1,9 @@
 import { createClient } from "contentful";
+// import "../.env";
 
 export const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
+  space: "l6zxrr4liuya",
+  accessToken: "9V8krsEnpX0rGeCSkSECXyP38Af_78HVJ_8jutBL5VM",
 });
 
 export async function getPage(content: string) {
