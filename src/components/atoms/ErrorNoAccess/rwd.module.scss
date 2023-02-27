@@ -1,6 +1,6 @@
 @use "sass:map";
 @import "./styles.module.scss";
-@import "../../styles/variables";
+@import "../../../styles/variables";
 
 @media only screen and (min-width: map.get($breakpoints, "super-smaller")) {
 }
@@ -10,23 +10,11 @@
 
 @media only screen and (min-width: map.get($breakpoints, "small")) {
   .wrapper {
-    &Other {
-      &Science {
-        flex-direction: row;
-        min-height: calc(100vh - 9.4vh);
+    min-height: calc(100vh - 100px);
+    margin-top: 100px;
 
-        &NavDesktop {
-          display: flex;
-        }
-        &NavMobile {
-          &Icon {
-            display: none;
-          }
-        }
-        &Content {
-          width: 100%;
-        }
-      }
+    h2 {
+      font-size: 5rem;
     }
   }
 }

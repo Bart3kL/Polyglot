@@ -1,6 +1,6 @@
 @use "sass:map";
 @import "./styles.module.scss";
-@import "../../styles/variables";
+@import "../../../styles/variables";
 
 @media only screen and (min-width: map.get($breakpoints, "super-smaller")) {
 }

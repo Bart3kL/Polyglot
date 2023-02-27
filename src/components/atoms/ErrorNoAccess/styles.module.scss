@@ -1,0 +1,36 @@
+.wrapper {
+  position: absolute;
+  display: flex;
+
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  margin-top: 70px;
+
+  &Content {
+    padding-top: 50px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    margin-left: -270px;
+
+    background-color: black;
+
+    color: white;
+
+    opacity: 0.8;
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    p {
+      width: 60%;
+
+      font-size: 2rem;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  &Other {
+    display: flex;
+    flex-direction: column;
+
+    &Science {
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 70px);
+
+      &NavDesktop {
+        display: none;
+
+        nav {
+          width: 300px;
+        }
+      }
+
+      &NavMobile {
+        display: flex;
+        flex-direction: column;
+        &Icon {
+          padding: 15px;
+
+          svg {
+            font-size: 3rem;
+            color: #4f537b;
+
+            cursor: pointer;
+          }
+        }
+      }
+      &Content {
+        display: flex;
+        flex-direction: column;
+
+        min-height: calc(100vh - 154.65px);
+        padding: 2% 5%;
+      }
+    }
+  }
+}
