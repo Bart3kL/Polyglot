@@ -3,12 +3,12 @@ import axios from "axios";
 const useGetLessons = async (secondValue?: string, thirdValue?: string) => {
   if (secondValue && thirdValue) {
     const { data } = await axios.get(
-      `http://localhost:3000/api/dictionary/${secondValue}/${thirdValue}`
+      `https://11-beige.vercel.app/dictionary/${secondValue}/${thirdValue}`
     );
     return data;
   }
 
-  const { data } = await axios.get(`http://localhost:3000/api/lessons`);
+  const { data } = await axios.get(`https://11-beige.vercel.app/api/lessons`);
   return data;
 };
 

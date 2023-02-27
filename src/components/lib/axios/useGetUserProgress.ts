@@ -3,7 +3,7 @@ import axios from "axios";
 const useGetUserProgress = async (id: string) => {
   if (id) {
     const data = await axios
-      .get(`http://localhost:3000/api/user-progress/${id}`)
+      .get(`https://11-beige.vercel.app/api/user-progress/${id}`)
       .then(({ data }) => data);
     return data;
   }
