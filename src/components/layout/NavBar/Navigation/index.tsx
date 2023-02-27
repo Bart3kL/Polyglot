@@ -3,11 +3,12 @@ import Link from "next/link";
 
 import { navigationList } from "./utils";
 import DesktopNavItem from "@/src/components/atoms/NavItemDesktop";
+import { NavigationProps } from "@/src/types/Layout/Navigation";
 
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperLogo, wrapperList } = styles;
 
-const Navigation = ({ backgroundColor }: any) => {
+const Navigation = ({ backgroundColor }: NavigationProps) => {
   return (
     <nav
       className={wrapper}
@@ -17,8 +18,8 @@ const Navigation = ({ backgroundColor }: any) => {
         <Link href="/">Polyglot</Link>
       </div>
       <ul className={wrapperList}>
-        {navigationList.map((navItem) => (
-          <DesktopNavItem {...navItem} key={navItem.href} />
+        {navigationList.map((navItem, i) => (
+          <DesktopNavItem {...navItem} key={navItem.href} index={i} />
         ))}
       </ul>
     </nav>

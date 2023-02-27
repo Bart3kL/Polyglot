@@ -23,7 +23,6 @@ const NavigationMobile = () => {
   const showMenu = () => {
     setShow(!show);
   };
-
   return (
     <nav className={wrapper}>
       <div className={wrapperNav}>
@@ -39,8 +38,8 @@ const NavigationMobile = () => {
         </div>
       </div>
       <ul className={cx(wrapperList, show && wrapperActive)}>
-        {navigationList.map((navItem) => (
-          <MobileNavItem {...navItem} key={navItem.href} />
+        {navigationList.map((navItem, i) => (
+          <MobileNavItem {...navItem} key={navItem.href} index={i} />
         ))}
       </ul>
     </nav>
