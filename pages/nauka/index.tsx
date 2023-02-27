@@ -1,24 +1,36 @@
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import BarLoader from "react-spinners/BarLoader";
 import { useSession } from "next-auth/react";
+import { getServerSession } from "next-auth/next";
+import type { GetServerSidePropsContext } from "next";
 
-import { getPage } from "@/contentful/client";
-import useGet from "@/src/axios/useGet";
+import { getPage } from "@/src/components/lib/contentful/client";
+import useGetLessons from "@/src/components/lib/axios/useGetLessons";
+import useGetUserProgress from "@/src/components/lib/axios/useGetUserProgress";
 import SciencePageLayout from "@/src/components/layout/SciencePageLayout";
 import { override } from "@/src/components/lib/spinner";
 import ErrorNoAccess from "@/src/components/atoms/ErrorNoAccess";
+import SciencePage from "@/src/components/organisms/SciencePage";
+import { authOptions } from "../api/auth/[...nextauth]";
+import { ScienceProps } from "@/src/types/Science";
+import { ScienceHeader } from "@/src/types/Science/utilityTypes";
 
-function Science() {
+function Science({ id }: ScienceProps) {
   const { data: session } = useSession();
 
-  const { data: levels, isLoading } = useQuery({
-    queryKey: ["levels"],
-    queryFn: () => useGet(),
+  const { data: lessons, isLoading } = useQuery({
+    queryKey: ["lessons"],
+    queryFn: () => useGetLessons(),
   });
   const { data: page } = useQuery({
-    queryKey: ["homePage"],
-    queryFn: () => getPage("dictionary"),
+    queryKey: ["sciencePage"],
+    queryFn: () => getPage("science"),
   });
+  const { data: userProgress } = useQuery({
+    queryKey: ["userProgress"],
+    queryFn: () => useGetUserProgress(id),
+  });
+
   if (!session) {
     return <ErrorNoAccess />;
   }
@@ -33,23 +45,38 @@ function Science() {
           data-testid="loader"
         />
       ) : (
-        // <DictionaryPage page={page as Header} levels={levels} />
-        <p>Lorem*1000</p>
+        <SciencePage
+          page={page as ScienceHeader}
+          lessons={lessons}
+          userProgress={userProgress}
+        />
       )}
     </SciencePageLayout>
   );
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const { user }: any = await getServerSession(
+    context.req,
+    context.res,
+    authOptions
+  );
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(["levels"], await useGet());
   await queryClient.prefetchQuery(
-    ["homePage"],
-    async () => await getPage("dictionary")
+    ["sciencePage"],
+    async () => await getPage("science")
   );
+  await queryClient.prefetchQuery(["lessons"], await useGetLessons());
+  await queryClient.prefetchQuery(
+    ["userProgress"],
+    await useGetUserProgress(user.id)
+  );
+
   return {
-    props: { dehydratedState: dehydrate(queryClient) },
+    props: { id: user.id, dehydratedState: dehydrate(queryClient) },
   };
 };
 export default Science;

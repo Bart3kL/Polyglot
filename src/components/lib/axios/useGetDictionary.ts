@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const useGet = async (secondValue?: string, thirdValue?: string) => {
+const useGetDictionary = async (secondValue?: string, thirdValue?: string) => {
   if (secondValue && thirdValue) {
     const { data } = await axios.get(
       `http://localhost:3000/api/dictionary/${secondValue}/${thirdValue}`
@@ -12,4 +12,4 @@ const useGet = async (secondValue?: string, thirdValue?: string) => {
   return data;
 };
 
-export default useGet;
+export default useGetDictionary;

@@ -3,8 +3,8 @@ import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import BarLoader from "react-spinners/BarLoader";
 
 import { override } from "@/src/components/lib/spinner";
-import useGet from "@/src/axios/useGet";
-import { getPage } from "@/contentful/client";
+import useGetDictionary from "@/src/components/lib/axios/useGetDictionary";
+import { getPage } from "@/src/components/lib/contentful/client";
 import WordsPage from "@/src/components/organisms/WordsPage";
 import { WordsProps } from "@/src/types/Words";
 import { Header } from "@/src/types/Dictionary/utilityTypes";
@@ -12,7 +12,7 @@ import { Header } from "@/src/types/Dictionary/utilityTypes";
 const Words = ({ id }: WordsProps) => {
   const { data: words, isLoading } = useQuery({
     queryKey: ["words", id],
-    queryFn: () => useGet("words", id),
+    queryFn: () => useGetDictionary("words", id),
   });
   const { data: page } = useQuery({
     queryKey: ["wordsPage"],
@@ -45,7 +45,10 @@ export const getServerSideProps = async (context: {
 
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(["words", id], await useGet("words", id));
+  await queryClient.prefetchQuery(
+    ["words", id],
+    await useGetDictionary("words", id)
+  );
   await queryClient.prefetchQuery(
     ["wordsPage"],
     async () => await getPage("words")

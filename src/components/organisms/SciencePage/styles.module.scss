@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 65vh;
+
+  &Box {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &ProgressBarWrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    width: 100%;
+    margin-top: 100px;
+
+    p {
+      font-size: 2rem;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    h3 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    &Content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      width: 50%;
+      height: auto;
+      border: 1px solid #d9d9d9;
+      border-radius: 25px;
+
+      div:first-child {
+        border-radius: 25px 25px 0 0;
+      }
+
+      div:last-child {
+        border-radius: 0 0 25px 25px;
+      }
+    }
+  }
+}

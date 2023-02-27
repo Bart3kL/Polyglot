@@ -7,37 +7,37 @@ export const navigationList = [
     subMenu: [
       {
         name: "Panel",
-        href: "/panel",
+        href: "/nauka",
         description: "Śledź swoje postępy",
       },
       {
         name: "Lekcje",
-        href: "/lekcje",
+        href: "/nauka/lekcje",
         description: "Słownictwo, gramatyka i ćwiczenia",
       },
       {
         name: "Powtórki",
-        href: "/powtorki",
+        href: "/nauka/powtorki",
         description: "Powtarzaj efektywnie",
       },
       {
         name: "Fiszki",
-        href: "/fiszki",
+        href: "/nauka/fiszki",
         description: "Ucz się metodą Leitnera",
       },
       {
         name: "Notatki",
-        href: "/notatki",
+        href: "/nauka/notatki",
         description: "Twórz własne notatki",
       },
       {
         name: "Słuchanie",
-        href: "/sluchanie",
+        href: "/nauka/sluchanie",
         description: "Ucz się słuchając wymowy słówek",
       },
       {
         name: "Wisielec",
-        href: "/wisielec",
+        href: "/nauka/wisielec",
         description: "Pisz poprawnie",
       },
     ],

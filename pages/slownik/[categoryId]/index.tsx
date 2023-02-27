@@ -3,8 +3,8 @@ import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import BarLoader from "react-spinners/BarLoader";
 
 import { override } from "@/src/components/lib/spinner";
-import useGet from "@/src/axios/useGet";
-import { getPage } from "@/contentful/client";
+import useGetDictionary from "@/src/components/lib/axios/useGetDictionary";
+import { getPage } from "@/src/components/lib/contentful/client";
 import CategoriesPage from "@/src/components/organisms/CategoriesPage";
 import { CategoriesProps } from "@/src/types/Categories";
 import { Header } from "@/src/types/Dictionary/utilityTypes";
@@ -12,7 +12,7 @@ import { Header } from "@/src/types/Dictionary/utilityTypes";
 const Categories = ({ id }: CategoriesProps) => {
   const { data: categories, isLoading } = useQuery({
     queryKey: ["categories", id],
-    queryFn: () => useGet("categories", id),
+    queryFn: () => useGetDictionary("categories", id),
   });
   const { data: page } = useQuery({
     queryKey: ["categoriesPage"],
@@ -47,7 +47,7 @@ export const getServerSideProps = async (context: {
 
   await queryClient.prefetchQuery(
     ["categories", id],
-    await useGet("categories", id)
+    await useGetDictionary("categories", id)
   );
   await queryClient.prefetchQuery(
     ["categoriesPage"],
