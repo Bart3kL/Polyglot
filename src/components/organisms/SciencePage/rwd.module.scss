@@ -11,23 +11,6 @@
 }
 
 @media only screen and (min-width: map.get($breakpoints, "small")) {
-  .wrapper {
-    &ProgressBarWrapper {
-      &Content {
-        flex-direction: row;
-
-        width: 100%;
-
-        div:first-child {
-          border-radius: 25px 0 0 25px;
-        }
-
-        div:last-child {
-          border-radius: 0 25px 25px 0;
-        }
-      }
-    }
-  }
 }
 
 @media only screen and (min-width: map.get($breakpoints, "large-min")) {

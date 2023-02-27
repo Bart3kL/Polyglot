@@ -1,19 +1,20 @@
 import React from "react";
 
-import useGetUserProgress from "../../../lib/axios/useGetUserProgress";
-import { ScienceSingleLessonBarProps } from "../../types/SciencePage/ScienceSingleLessonBar";
+import { ScienceSingleLessonBarProps } from "@/src/types/Science/ScienceSingleLessonBar";
 
 import styles from "./rwd.module.scss";
 const { wrapper } = styles;
 
-const ScienceSingleLessonBar = ({ id }: ScienceSingleLessonBarProps) => {
-  const fetchLessonStep = useGetUserProgress();
+const ScienceSingleLessonBar = ({
+  id,
+  userProgress,
+}: ScienceSingleLessonBarProps) => {
   return (
     <div
       className={wrapper}
       key={id}
       style={
-        fetchLessonStep?.userProgress?.lesson >= id
+        userProgress?.lesson >= id
           ? { backgroundColor: "red" }
           : { backgroundColor: "#d9d9d9" }
       }
