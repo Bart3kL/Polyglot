@@ -8,8 +8,7 @@ import styles from "./rwd.module.scss";
 const { wrapper, wrapperList } = styles;
 
 export default function WordsPage({
-  headerTitle,
-  headerDescription,
+  page: { headerTitle, headerDescription },
   words,
 }: WordsPageProps) {
   return (

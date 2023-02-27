@@ -7,16 +7,16 @@ import { DictionaryPageProps } from "../../../types/Dictionary/DictionaryPage";
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperList } = styles;
 
-export default function DictionaryPage({ page, levels }: any) {
+export default function DictionaryPage({
+  page: { headerTitle, headerDescription },
+  levels,
+}: DictionaryPageProps) {
   return (
     <>
-      <DictionaryHeader
-        title={page.headerTitle}
-        description={page.headerDescription}
-      />
+      <DictionaryHeader title={headerTitle} description={headerDescription} />
       <section className={wrapper}>
         <ul className={wrapperList}>
-          {levels.map((level: any) => (
+          {levels.map((level) => (
             <DictionaryLevelCard {...level} key={level.id} />
           ))}
         </ul>

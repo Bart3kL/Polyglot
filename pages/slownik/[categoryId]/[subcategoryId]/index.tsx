@@ -1,12 +1,42 @@
 import React from "react";
+import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
+import BarLoader from "react-spinners/BarLoader";
 
+import { override } from "@/src/components/lib/spinner";
 import useGet from "@/src/axios/useGet";
 import { getPage } from "@/contentful/client";
 import SubcategoriesPage from "@/src/components/organisms/SubcategoriesPage";
 import { SubcategoriesProps } from "@/src/types/Subcategories";
+import { Header } from "@/src/types/Dictionary/utilityTypes";
 
-const Subcategories = ({ page, subcategories }: SubcategoriesProps) => {
-  return <SubcategoriesPage {...page} subcategories={subcategories} />;
+const Subcategories = ({ id }: SubcategoriesProps) => {
+  const { data: subcategories, isLoading } = useQuery({
+    queryKey: ["subcategories", id],
+    queryFn: () => useGet("subcategories", id),
+  });
+  const { data: page } = useQuery({
+    queryKey: ["subcategoriesPage"],
+    queryFn: () => getPage("subcategories"),
+  });
+
+  return (
+    <>
+      {isLoading ? (
+        <BarLoader
+          color={"#1f2233"}
+          loading={isLoading}
+          cssOverride={override}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      ) : (
+        <SubcategoriesPage
+          page={page as Header}
+          subcategories={subcategories}
+        />
+      )}
+    </>
+  );
 };
 
 export default Subcategories;
@@ -16,13 +46,18 @@ export const getServerSideProps = async (context: {
 }) => {
   const id = context.params?.subcategoryId as string;
 
-  const page = await getPage("subcategories");
-  const subcategories = await useGet("subcategories", id);
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(
+    ["subcategories", id],
+    await useGet("subcategories", id)
+  );
+  await queryClient.prefetchQuery(
+    ["subcategoriesPage"],
+    async () => await getPage("subcategories")
+  );
 
   return {
-    props: {
-      page,
-      subcategories,
-    },
+    props: { id, dehydratedState: dehydrate(queryClient) },
   };
 };

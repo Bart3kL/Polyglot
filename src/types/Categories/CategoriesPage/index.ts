@@ -3,4 +3,5 @@ import { Header } from "../../Dictionary/utilityTypes";
 
 export type CategoriesPageProps = {
   categories: Category[];
-} & Header;
+  page: Header;
+};

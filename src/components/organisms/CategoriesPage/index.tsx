@@ -7,16 +7,16 @@ import { CategoriesPageProps } from "@/src/types/Categories/CategoriesPage";
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperList } = styles;
 
-export default function CategoriesPage({ page, categories }: any) {
+export default function CategoriesPage({
+  page: { headerTitle, headerDescription },
+  categories,
+}: CategoriesPageProps) {
   return (
     <>
-      <DictionaryHeader
-        title={page.headerTitle}
-        description={page.headerDescription}
-      />
+      <DictionaryHeader title={headerTitle} description={headerDescription} />
       <section className={wrapper}>
         <ul className={wrapperList}>
-          {categories.map((category: any) => (
+          {categories.map((category) => (
             <DictionaryCard {...category} key={category.name} link="slownik" />
           ))}
         </ul>

@@ -1,9 +1,10 @@
-import { getPage } from "@/contentful/client";
-import useGet from "@/src/axios/useGet";
-import DictionaryPage from "../../src/components/organisms/DictionaryPage";
-import { DictionaryProps } from "../../src/types/Dictionary";
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import BarLoader from "react-spinners/BarLoader";
+
+import { getPage } from "@/contentful/client";
+import useGet from "@/src/axios/useGet";
+import { Header } from "@/src/types/Dictionary/utilityTypes";
+import DictionaryPage from "@/src/components/organisms/DictionaryPage";
 import { override } from "@/src/components/lib/spinner";
 
 function Dictionary() {
@@ -27,7 +28,7 @@ function Dictionary() {
           data-testid="loader"
         />
       ) : (
-        <DictionaryPage page={page} levels={levels} />
+        <DictionaryPage page={page as Header} levels={levels} />
       )}
     </>
   );
