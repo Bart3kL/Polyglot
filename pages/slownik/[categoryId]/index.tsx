@@ -10,7 +10,7 @@ import { CategoriesProps } from "@/src/types/Categories";
 
 const Categories = ({ id }: any) => {
   const { data: categories, isLoading } = useQuery({
-    queryKey: ["categories"],
+    queryKey: ["categories", id],
     queryFn: () => useGet("categories", id),
   });
   const { data: page } = useQuery({
@@ -49,7 +49,7 @@ export const getServerSideProps = async (context: {
     await useGet("categories", id)
   );
   await queryClient.prefetchQuery(
-    ["categoriesPage"],
+    ["categoriesPage", id],
     async () => await getPage("categories")
   );
   return {
