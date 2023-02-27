@@ -80,3 +80,66 @@ export const getServerSideProps = async (
   };
 };
 export default Science;
+
+const achievements = [
+  {
+    name: "Śmiałek",
+    description: "Ukończ 1 lekcje",
+    img: {
+      default:
+        "https://www.etutor.pl/images/achievements/lessons-collector/lessons-collector-gray.svg",
+      achieved:
+        "https://www.etutor.pl/images/achievements/lessons-collector/lessons-collector-3.svg",
+    },
+  },
+  {
+    name: "Powtórkowicz",
+    description: "Dodaj 15 słówek do powtórek",
+    img: {
+      default:
+        "https://www.etutor.pl/images/achievements/repetitions-perfect/repetitions-perfect-gray.svg",
+      achieved:
+        "https://www.etutor.pl/images/achievements/repetitions-perfect/repetitions-perfect-3.svg",
+    },
+  },
+  {
+    name: "Słuchacz",
+    description: "Wpisz poprawnie 5 raz usłyszane słowa",
+    img: {
+      default:
+        "https://www.etutor.pl/images/achievements/persistence/persistence-gray.svg",
+      achieved:
+        "https://www.etutor.pl/images/achievements/persistence/persistence-3.svg",
+    },
+  },
+  {
+    name: "Naukowiec",
+    description: "Dodaj 2 notatki",
+    img: {
+      default:
+        "https://www.etutor.pl/images/achievements/adventurer/adventurer-gray.svg",
+      achieved:
+        "https://www.etutor.pl/images/achievements/adventurer/adventurer-3.svg",
+    },
+  },
+  {
+    name: "Perfekcjonista",
+    description: "Wczytaj listę słówek z bazy do fiszek",
+    img: {
+      default:
+        "https://www.etutor.pl/images/achievements/slang-master/slang-master-gray.svg",
+      achieved:
+        "https://www.etutor.pl/images/achievements/slang-master/slang-master-3.svg",
+    },
+  },
+  {
+    name: "Mistrz",
+    description: "Ukończ wszystkie lekcje",
+    img: {
+      default:
+        "https://www.etutor.pl/images/achievements/big-fish/big-fish-gray.svg",
+      achieved:
+        "https://www.etutor.pl/images/achievements/big-fish/big-fish-3.svg",
+    },
+  },
+];

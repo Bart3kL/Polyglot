@@ -4,6 +4,7 @@ import ScienceWelcomeBox from "../../atoms/ScienceWelcomeBox";
 import SciencePageNextLessons from "../../atoms/SciencePageNextLessons";
 import { SciencePageProps } from "@/src/types/Science/SciencePage";
 import ScienceProgressBar from "../../molecules/ScienceProgressBar";
+import ScienceAchievements from "../../molecules/ScienceAchievements";
 
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperBox } = styles;
@@ -24,6 +25,7 @@ const SciencePage = ({ lessons, page, userProgress }: SciencePageProps) => {
           threeNextLessons={threeNextLessons}
         />
       </div>
+      <ScienceAchievements />
       <ScienceProgressBar
         lessons={lessons}
         userProgress={userProgress}
