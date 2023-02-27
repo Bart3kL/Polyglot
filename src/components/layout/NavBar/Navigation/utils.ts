@@ -3,36 +3,41 @@ export const navigationList = [
   { name: "Ranking", href: "/ranking" },
   {
     name: "Nauka",
-    href: "/science",
+    href: "/nauka",
     subMenu: [
       {
+        name: "Panel",
+        href: "/nauka",
+        description: "Śledź swoje postępy",
+      },
+      {
         name: "Lekcje",
-        href: "/lessons",
-        description: "Słownictwo, gramatyka i ćwiczenia ",
+        href: "/nauka/lekcje",
+        description: "Słownictwo, gramatyka i ćwiczenia",
       },
       {
         name: "Powtórki",
-        href: "/repetitions",
+        href: "/nauka/powtorki",
         description: "Powtarzaj efektywnie",
       },
       {
         name: "Fiszki",
-        href: "/flashcards",
+        href: "/nauka/fiszki",
         description: "Ucz się metodą Leitnera",
       },
       {
         name: "Notatki",
-        href: "/notes",
+        href: "/nauka/notatki",
         description: "Twórz własne notatki",
       },
       {
         name: "Słuchanie",
-        href: "/listening",
+        href: "/nauka/sluchanie",
         description: "Ucz się słuchając wymowy słówek",
       },
       {
         name: "Wisielec",
-        href: "/hangman",
+        href: "/nauka/wisielec",
         description: "Pisz poprawnie",
       },
     ],

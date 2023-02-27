@@ -1,5 +1,5 @@
 import HomePage from "@/src/components/organisms/HomePage";
-import { getPage } from "@/contentful/client";
+import { getPage } from "@/src/components/lib/contentful/client";
 import { HomeProps } from "@/src/types/Home";
 
 export default function Home({ page }: HomeProps) {

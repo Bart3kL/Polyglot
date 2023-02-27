@@ -1,9 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
-interface CustomReqQuery {
-  id: string;
-}
+import { CustomReqQuery } from "@/src/types/Auth";
 
 const prisma = new PrismaClient();
 export default async function getLessonById(

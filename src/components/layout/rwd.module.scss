@@ -9,6 +9,26 @@
 }
 
 @media only screen and (min-width: map.get($breakpoints, "small")) {
+  .wrapper {
+    &Other {
+      &Science {
+        flex-direction: row;
+        min-height: calc(100vh - 9.4vh);
+
+        &NavDesktop {
+          display: flex;
+        }
+        &NavMobile {
+          &Icon {
+            display: none;
+          }
+        }
+        &Content {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: map.get($breakpoints, "large-min")) {

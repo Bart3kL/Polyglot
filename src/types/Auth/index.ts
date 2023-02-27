@@ -12,3 +12,6 @@ export interface LoginButtonProps {
   provider: Provider;
   index: number;
 }
+export interface CustomReqQuery {
+  id: string;
+}

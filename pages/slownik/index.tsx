@@ -1,8 +1,8 @@
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import BarLoader from "react-spinners/BarLoader";
 
-import { getPage } from "@/contentful/client";
-import useGet from "@/src/axios/useGet";
+import { getPage } from "@/src/components/lib/contentful/client";
+import useGetDictionary from "@/src/components/lib/axios/useGetDictionary";
 import { Header } from "@/src/types/Dictionary/utilityTypes";
 import DictionaryPage from "@/src/components/organisms/DictionaryPage";
 import { override } from "@/src/components/lib/spinner";
@@ -10,7 +10,7 @@ import { override } from "@/src/components/lib/spinner";
 function Dictionary() {
   const { data: levels, isLoading } = useQuery({
     queryKey: ["levels"],
-    queryFn: () => useGet(),
+    queryFn: () => useGetDictionary(),
   });
   const { data: page } = useQuery({
     queryKey: ["homePage"],
@@ -37,7 +37,7 @@ function Dictionary() {
 export const getServerSideProps = async () => {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(["levels"], await useGet());
+  await queryClient.prefetchQuery(["levels"], await useGetDictionary());
   await queryClient.prefetchQuery(
     ["homePage"],
     async () => await getPage("dictionary")

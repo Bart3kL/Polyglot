@@ -1,0 +1,13 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 65vh;
+
+  &Box {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

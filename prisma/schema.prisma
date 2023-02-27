@@ -52,6 +52,14 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model Achievements {
+  id          String @id @default(uuid())
+  name        String
+  description String
+  imgDefault  String
+  imgAchieved String
+}
+
 model Lessons {
   id         String                @id @default(uuid())
   image      String
@@ -113,13 +121,20 @@ model Exercise {
 }
 
 model Users {
-  id          String        @id @default(uuid())
-  userId      String
-  lesson      String
-  lessonStep  String
-  repetitions Repetitions[]
-  Notebook    Notebook[]
-  flashcards  Flashcards[]
+  id                          String        @id @default(uuid())
+  userId                      String
+  lesson                      String
+  lessonStep                  String
+  achievements                String
+  lessonAchievement           Boolean
+  repeatsAchievement          Boolean
+  listeninglessonAchievement  Boolean
+  noteslessonAchievement      Boolean
+  flashcardslessonAchievement Boolean
+  allLessonslessonAchievement Boolean
+  repetitions                 Repetitions[]
+  Notebook                    Notebook[]
+  flashcards                  Flashcards[]
 }
 
 model Repetitions {

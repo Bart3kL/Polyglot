@@ -3,14 +3,15 @@ export const navigationList = [
   { name: "Ranking", href: "/ranking" },
   {
     name: "Nauka",
-    href: "/science",
+    href: "/nauka",
     subMenu: [
-      { name: "Lekcje", href: "/lessons" },
-      { name: "Powtórki", href: "/repetitions" },
-      { name: "Fiszki", href: "/flashcards" },
-      { name: "Notatki", href: "/notes" },
-      { name: "Słuchanie", href: "/listening" },
-      { name: "Wisielec", href: "/hangman" },
+      { name: "Panel", href: "/nauka" },
+      { name: "Lekcje", href: "/nauka/lekcje" },
+      { name: "Powtórki", href: "/nauka/powtorki" },
+      { name: "Fiszki", href: "/nauka/fiszki" },
+      { name: "Notatki", href: "/nauka/notatki" },
+      { name: "Słuchanie", href: "/nauka/sluchanie" },
+      { name: "Wisielec", href: "/nauka/wisielec" },
     ],
   },
 ];
