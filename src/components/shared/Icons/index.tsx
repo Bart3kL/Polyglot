@@ -9,6 +9,7 @@ import {
   BsNutFill,
   BsCardText,
   BsInfoSquare,
+  BsQuestionLg,
 } from "react-icons/bs";
 import { GiWhiteBook } from "react-icons/gi";
 import { FiRepeat } from "react-icons/fi";
@@ -18,6 +19,7 @@ import { GiStreetLight } from "react-icons/gi";
 
 export {
   GiWhiteBook,
+  BsQuestionLg,
   FiRepeat,
   BsCardText,
   MdOutlineHearing,

@@ -12,7 +12,7 @@ const ScienceProgressBar = ({
   lessons,
 }: ScienceProgressBarProps) => {
   return (
-    <div className={wrapper}>
+    <div className={wrapper} id="progressBar">
       <h3>{yourProgress}</h3>
       <p>
         {Math.floor((Number(userProgress?.lesson) / lessons.length) * 100)}

@@ -1,7 +1,9 @@
 import React from "react";
 import BarLoader from "react-spinners/BarLoader";
-
 import { useQuery } from "@tanstack/react-query";
+import Joyride from "react-joyride";
+import useJoyride from "../../lib/react-joyride";
+
 import ScienceWelcomeBox from "../../atoms/ScienceWelcomeBox";
 import SciencePageNextLessons from "../../atoms/SciencePageNextLessons";
 import { SciencePageProps } from "@/src/types/Science/SciencePage";
@@ -17,6 +19,8 @@ import styles from "./rwd.module.scss";
 const { wrapper, wrapperBox } = styles;
 
 const SciencePage = ({ lessons, id }: SciencePageProps) => {
+  const isUserFirstTime = window.localStorage.getItem("tutorialSciencePage");
+
   const { data: page, isLoading: isLoading1 } = useQuery({
     queryKey: ["sciencePage"],
     queryFn: () => getPage("science"),
@@ -30,18 +34,22 @@ const SciencePage = ({ lessons, id }: SciencePageProps) => {
     queryKey: ["userProgress"],
     queryFn: () => useGetUserProgress(id),
   });
-  console.log(page);
+
   const {
     welcomeMessage,
     nextLessons,
     yourProgress,
     achievementsText,
     achievementsCongratsText,
+    tutorialSteps,
   } = page as ScienceHeader;
 
   const threeNextLessons = lessons
     ?.slice(Number(userProgress?.lesson) - 1, lessons.length)
     .slice(0, 3);
+
+  const { run, handleJoyrideCallback, stepIndex, steps } =
+    useJoyride(tutorialSteps);
 
   return (
     <>
@@ -55,6 +63,30 @@ const SciencePage = ({ lessons, id }: SciencePageProps) => {
         />
       ) : (
         <section className={wrapper}>
+          {isUserFirstTime === null && (
+            <Joyride
+              callback={handleJoyrideCallback}
+              continuous
+              run={run}
+              scrollToFirstStep
+              showProgress
+              showSkipButton
+              stepIndex={stepIndex}
+              steps={steps}
+              styles={{
+                overlay: {
+                  backgroundColor: "none",
+                  mixBlendMode: "unset",
+                },
+                spotlight: {
+                  backgroundColor: "transparent",
+                  borderRadius: 0,
+                  boxShadow: "0px 0px 0px 9999px rgba(0,0,0,0.6)",
+                },
+              }}
+            />
+          )}
+
           <div className={wrapperBox}>
             <ScienceWelcomeBox welcomeMessage={welcomeMessage} />
             <SciencePageNextLessons

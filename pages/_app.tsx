@@ -9,8 +9,10 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 
+import "../src/styles/_global.scss";
 import "../src/styles/_reset.scss";
 import "../src/styles/_variables.scss";
+
 import Layout from "@/src/components/layout";
 
 const dmSerifDisplay = DM_Serif_Display({

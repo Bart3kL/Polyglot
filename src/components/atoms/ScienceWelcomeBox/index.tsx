@@ -14,6 +14,7 @@ const ScienceWelcomeBox = ({ welcomeMessage }: ScienceWelcomeBoxProps) => {
       <h2>
         {welcomeMessage} {session?.user?.name}
       </h2>
+      <p id="welcomeBox">Dzisiaj wykonałeś 42 powtórki</p>
     </div>
   );
 };

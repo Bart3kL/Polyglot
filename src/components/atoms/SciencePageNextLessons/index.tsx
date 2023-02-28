@@ -13,7 +13,7 @@ const SciencePageNextLessons = ({
   return (
     <div className={wrapper}>
       <h2>{nextLessons}</h2>
-      <div className={wrapperLessons}>
+      <div className={wrapperLessons} id="nextLessons">
         {threeNextLessons?.map((lesson) => (
           <ScienceSingleNextLesson {...lesson} key={lesson.title} />
         ))}

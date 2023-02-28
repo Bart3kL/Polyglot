@@ -1,3 +1,5 @@
+import { Step } from "react-joyride";
+
 export type Lesson = {
   id: string;
   image: string;
@@ -10,6 +12,7 @@ export type ScienceHeader = {
   yourProgress: string;
   achievementsText: string;
   achievementsCongratsText: string;
+  tutorialSteps: Step[];
 };
 export type userProgress = {
   id: string;

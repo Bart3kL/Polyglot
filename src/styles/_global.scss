@@ -1,0 +1,42 @@
+@import "./variables";
+
+.__floater__body {
+  font-family: "__Overpass_2085a9";
+
+  button {
+    font-family: "__Overpass_2085a9";
+  }
+}
+.__floater,
+.__floater__open {
+  will-change: auto !important;
+  filter: none !important;
+}
+.react-joyride__tooltip {
+  h4 {
+    font-weight: bolder;
+    color: $duskyBlue;
+  }
+  div {
+    color: $duskyBlue;
+    font-weight: bold;
+
+    a {
+      color: $tealishBlue-2;
+
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: $greenCyan;
+    }
+  }
+
+  button {
+    font-weight: bold;
+
+    svg {
+      stroke: #000000;
+      stroke-width: 2px;
+    }
+  }
+}

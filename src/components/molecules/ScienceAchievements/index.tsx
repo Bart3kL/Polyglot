@@ -33,9 +33,10 @@ const ScienceAchievements = ({
   return (
     <div className={wrapper}>
       <h2 className={wrapperTitle}>{achievementsText}</h2>
-      <div className={wrapperAchievements}>
+      <div className={wrapperAchievements} id="achievements">
         {achievements.map((achievement, i) => (
           <ScienceSingleAchievement
+            key={achievement.id}
             {...achievement}
             achievementsCongratsText={achievementsCongratsText}
             checkAchievement={achievementsList[i]}
