@@ -10,6 +10,7 @@ import ErrorNoAccess from "@/src/components/atoms/ErrorNoAccess";
 import SciencePage from "@/src/components/organisms/SciencePage";
 import { authOptions } from "../api/auth/[...nextauth]";
 import { ScienceProps } from "@/src/types/Science";
+import { ScienceHeader } from "@/src/types/Science/utilityTypes";
 
 function Science({ id }: ScienceProps) {
   const { data: session }: any = useSession();
@@ -34,7 +35,7 @@ function Science({ id }: ScienceProps) {
           <SciencePage
             userProgress={userProgress}
             achievements={achievements}
-            page={page}
+            page={page as ScienceHeader}
             lessons={lessons}
           />
         )}

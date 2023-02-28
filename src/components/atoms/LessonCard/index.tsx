@@ -21,7 +21,7 @@ const LessonCard = ({ image, title, id, currentLesson }: LessonCardProps) => {
   return (
     <div className={wrapper}>
       {currentLesson >= id ? (
-        <Link href={`/science/lessons/${id}`}>
+        <Link href={`/nauka/lekcje/${id}`}>
           <div className={cx(wrapperBox, wrapperEnabled)}>
             <div className={wrapperImage}>
               <Image

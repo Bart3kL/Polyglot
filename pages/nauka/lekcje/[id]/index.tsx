@@ -1,22 +1,32 @@
 import React from "react";
 import { useSession } from "next-auth/react";
 import BarLoader from "react-spinners/BarLoader";
+import { useQuery } from "@tanstack/react-query";
 import { getServerSession } from "next-auth/next";
 import type { GetServerSidePropsContext } from "next";
 
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import ErrorNoAccess from "@/src/components/atoms/ErrorNoAccess";
-import LessonsPage from "@/src/components/organisms/LessonsPage";
 import SciencePageLayout from "@/src/components/layout/SciencePageLayout";
 import { override } from "@/src/components/lib/spinner";
-import useQuerySciencePage from "@/src/components/lib/react-query/useQuerySciencePage";
-import { Header } from "@/src/types/Dictionary/utilityTypes";
+import useGet from "@/src/components/lib/axios/useGet";
+import ErrorNoAccess from "@/src/components/atoms/ErrorNoAccess";
+import LessonSinglePage from "@/src/components/organisms/LessonSinglePage";
+import useGetUserProgress from "@/src/components/lib/axios/useGetUserProgress";
+import { LessonSingleProps } from "@/src/types/LessonSingle";
 
-const Lessons = ({ id }: any) => {
+const LessonSingle = ({ id, userId }: LessonSingleProps) => {
   const { data: session }: any = useSession();
 
-  const { isLoading, lessons, page, userProgress } = useQuerySciencePage(id);
+  const { data: lesson, isLoading: loadingSingleLessonPage } = useQuery({
+    queryKey: ["singleLessonPage", id],
+    queryFn: () => useGet("lessons", id),
+  });
+  const { data: userProgress, isLoading: loadingUserProgress } = useQuery({
+    queryKey: ["userProgress"],
+    queryFn: () => useGetUserProgress(userId),
+  });
 
+  const isLoading = loadingUserProgress || loadingSingleLessonPage;
   if (!session) {
     return <ErrorNoAccess />;
   }
@@ -31,20 +41,19 @@ const Lessons = ({ id }: any) => {
           data-testid="loader"
         />
       ) : (
-        <LessonsPage
-          page={page as Header}
-          lessons={lessons}
-          userProgress={userProgress}
-        />
+        <LessonSinglePage lesson={lesson} id={id} userProgress={userProgress} />
       )}
     </SciencePageLayout>
   );
 };
 
-export default Lessons;
+export default LessonSingle;
+
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
+  const id = context.params?.id as string;
+
   const data: any = await getServerSession(
     context.req,
     context.res,
@@ -53,7 +62,7 @@ export const getServerSideProps = async (
 
   if (data) {
     return {
-      props: { id: data.user.id },
+      props: { userId: data.user.id, id },
     };
   }
   return { props: {} };

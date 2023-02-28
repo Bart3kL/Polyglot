@@ -6,7 +6,6 @@ import ScienceWelcomeBox from "../../atoms/ScienceWelcomeBox";
 import SciencePageNextLessons from "../../atoms/SciencePageNextLessons";
 import ScienceProgressBar from "../../molecules/ScienceProgressBar";
 import ScienceAchievements from "../../molecules/ScienceAchievements";
-import { ScienceHeader } from "@/src/types/Science/utilityTypes";
 import { SciencePageProps } from "@/src/types/Science/SciencePage";
 
 import styles from "./rwd.module.scss";
@@ -27,7 +26,7 @@ const SciencePage = ({
     achievementsText,
     achievementsCongratsText,
     tutorialSteps,
-  } = page as ScienceHeader;
+  } = page;
 
   const threeNextLessons = lessons
     ?.slice(Number(userProgress?.lesson) - 1, lessons.length)

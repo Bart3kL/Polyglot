@@ -1,0 +1,29 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  &Title {
+    font-size: 2.5rem;
+
+    letter-spacing: 2px;
+  }
+
+  &Lesson {
+    display: flex;
+    flex-direction: column;
+
+    &Image {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 50%;
+      min-width: 180px;
+      margin: 0 auto;
+
+      span {
+        border-radius: 50%;
+      }
+    }
+  }
+}

@@ -42,9 +42,11 @@ const NavItemMobile = ({ href, name, subMenu, index }: NavItemMobileProps) => {
       </li>
       {subMenu && (
         <>
-          <div className={wrapperOverlay}>
-            Musisz być zalogowany aby korzystać z tych stron
-          </div>
+          {!session?.user.id && (
+            <div className={wrapperOverlay}>
+              Musisz być zalogowany aby korzystać z tych stron
+            </div>
+          )}
           <ul className={wrapperSubmenu}>
             {subMenu.map((subItem) => (
               <MobileNavSubItem {...subItem} key={subItem.href} />
