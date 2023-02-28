@@ -1,12 +1,47 @@
 import React from "react";
 
-import styles from "./rwd.module.scss";
-const { wrapper, wrapperTitle } = styles;
+import ScienceSingleAchievement from "../../atoms/ScienceSingleAchievement";
+import { ScienceAchievementsProps } from "@/src/types/Science/ScienceAchievements";
 
-const ScienceAchievements = () => {
+import styles from "./rwd.module.scss";
+const { wrapper, wrapperTitle, wrapperAchievements } = styles;
+
+const ScienceAchievements = ({
+  achievements,
+  userProgress,
+  achievementsText,
+  achievementsCongratsText,
+}: ScienceAchievementsProps) => {
+  const {
+    allLessonslessonAchievement,
+    flashcardslessonAchievement,
+    lessonAchievement,
+    listeninglessonAchievement,
+    noteslessonAchievement,
+    repeatsAchievement,
+  } = userProgress;
+
+  const achievementsList = [
+    lessonAchievement,
+    repeatsAchievement,
+    listeninglessonAchievement,
+    noteslessonAchievement,
+    flashcardslessonAchievement,
+    allLessonslessonAchievement,
+  ];
+
   return (
     <div className={wrapper}>
-      <h2 className={wrapperTitle}>Osiągnięcia</h2>
+      <h2 className={wrapperTitle}>{achievementsText}</h2>
+      <div className={wrapperAchievements}>
+        {achievements.map((achievement, i) => (
+          <ScienceSingleAchievement
+            {...achievement}
+            achievementsCongratsText={achievementsCongratsText}
+            checkAchievement={achievementsList[i]}
+          />
+        ))}
+      </div>
     </div>
   );
 };

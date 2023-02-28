@@ -8,9 +8,7 @@ const useGetDictionary = async (secondValue?: string, thirdValue?: string) => {
     return data;
   }
 
-  const { data } = await axios.get(
-    `https://11-beige.vercel.app/api/dictionary`
-  );
+  const { data } = await axios.get(`http://localhost:3000/api/dictionary`);
   return data;
 };
 

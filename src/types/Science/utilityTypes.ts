@@ -8,10 +8,26 @@ export type ScienceHeader = {
   nextLessons: string;
   welcomeMessage: string;
   yourProgress: string;
+  achievementsText: string;
+  achievementsCongratsText: string;
 };
 export type userProgress = {
   id: string;
   lesson: string;
   lessonStep: string;
   userId: string;
+  allLessonslessonAchievement?: string;
+  flashcardslessonAchievement?: string;
+  lessonAchievement?: string;
+  listeninglessonAchievement?: string;
+  noteslessonAchievement?: string;
+  repeatsAchievement?: string;
+};
+
+export type Achievement = {
+  id: string;
+  description: string;
+  imgAchieved: string;
+  imgDefault: string;
+  name: string;
 };

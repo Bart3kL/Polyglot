@@ -1,0 +1,71 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 160px;
+  margin: 15px;
+
+  img {
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+  img:hover {
+    transform: scale(1.1);
+  }
+
+  &Details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 10px;
+
+    h4 {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: $duskyBlue;
+    }
+    &Description {
+      text-align: center;
+      color: $gray;
+      font-weight: 600;
+    }
+    &DescriptionDesktop {
+      position: absolute;
+      top: -20px;
+      left: 100px;
+      z-index: 5;
+
+      display: none;
+
+      width: 150px;
+      padding: 5px;
+      margin: 0 32px;
+      border-radius: 5px;
+
+      background-color: $greenCyan;
+
+      color: $white;
+      font-weight: 600;
+
+      animation: slide-in-bl 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+  }
+}
+@keyframes slide-in-bl {
+  0% {
+    -webkit-transform: translateY(10px) translateX(-10px);
+    transform: translateY(10px) translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+}

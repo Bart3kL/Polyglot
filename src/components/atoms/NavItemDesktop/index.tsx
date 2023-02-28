@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 
 import DesktoNavSubItem from "../NavSubItemDesktop";
 import { NavItemDesktopProps } from "../../../types/Layout/NavItemDesktop";
-import useGetUsers from "@/src/components/lib/axios/useGetUsers";
+import useGet from "@/src/components/lib/axios/useGet";
 import { User } from "@/src/types/Layout/NavItemMobile/utilityTypes";
 import usePostProgress from "@/src/components/lib/axios/usePostProgress";
 import styles from "./rwd.module.scss";
@@ -24,13 +24,15 @@ const NavItemDesktop = ({
   const fetchLessonStep = usePostProgress();
 
   const handleUserProgress = async () => {
-    const users = await useGetUsers("check-user");
-    const foundAccount = users.some(
-      (user: User) => user.id === session.user.id
-    );
+    if (session) {
+      const users = await useGet("check-user");
+      const foundAccount = users.some(
+        (user: User) => user.id === session.user.id
+      );
 
-    if (!foundAccount) {
-      fetchLessonStep("1", "1");
+      if (!foundAccount) {
+        fetchLessonStep("1", "1");
+      }
     }
   };
   return (

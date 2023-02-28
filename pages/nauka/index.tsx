@@ -5,15 +5,15 @@ import { getServerSession } from "next-auth/next";
 import type { GetServerSidePropsContext } from "next";
 
 import { getPage } from "@/src/components/lib/contentful/client";
-import useGetLessons from "@/src/components/lib/axios/useGetLessons";
 import useGetUserProgress from "@/src/components/lib/axios/useGetUserProgress";
+import useGetLessons from "@/src/components/lib/axios/useGetLessons";
 import SciencePageLayout from "@/src/components/layout/SciencePageLayout";
 import { override } from "@/src/components/lib/spinner";
 import ErrorNoAccess from "@/src/components/atoms/ErrorNoAccess";
 import SciencePage from "@/src/components/organisms/SciencePage";
 import { authOptions } from "../api/auth/[...nextauth]";
 import { ScienceProps } from "@/src/types/Science";
-import { ScienceHeader } from "@/src/types/Science/utilityTypes";
+import useGet from "@/src/components/lib/axios/useGet";
 
 function Science({ id }: ScienceProps) {
   const { data: session } = useSession();
@@ -21,14 +21,6 @@ function Science({ id }: ScienceProps) {
   const { data: lessons, isLoading } = useQuery({
     queryKey: ["lessons"],
     queryFn: () => useGetLessons(),
-  });
-  const { data: page } = useQuery({
-    queryKey: ["sciencePage"],
-    queryFn: () => getPage("science"),
-  });
-  const { data: userProgress } = useQuery({
-    queryKey: ["userProgress"],
-    queryFn: () => useGetUserProgress(id),
   });
 
   if (!session) {
@@ -45,11 +37,7 @@ function Science({ id }: ScienceProps) {
           data-testid="loader"
         />
       ) : (
-        <SciencePage
-          page={page as ScienceHeader}
-          lessons={lessons}
-          userProgress={userProgress}
-        />
+        <SciencePage lessons={lessons} id={id} />
       )}
     </SciencePageLayout>
   );
@@ -75,6 +63,10 @@ export const getServerSideProps = async (
     await queryClient.prefetchQuery(
       ["userProgress"],
       await useGetUserProgress(data.user.id)
+    );
+    await queryClient.prefetchQuery(
+      ["achievements"],
+      await useGet("achievements")
     );
     return {
       props: { id: data.user.id, dehydratedState: dehydrate(queryClient) },

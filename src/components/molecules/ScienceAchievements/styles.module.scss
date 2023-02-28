@@ -2,10 +2,11 @@
 
 .wrapper {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   width: 100%;
-  height: 190px;
+  // height: 190px;
   margin-top: 50px;
   padding: 20px;
   box-shadow: 8px 8px 30px -6px rgb(66 68 90);
@@ -14,5 +15,14 @@
     font-size: 2rem;
     font-weight: bold;
     color: $duskyBlue;
+  }
+  &Achievements {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    // height: 150px;
   }
 }
