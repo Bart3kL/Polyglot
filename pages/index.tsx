@@ -6,7 +6,7 @@ export default function Home({ page }: HomeProps) {
   return <HomePage {...page} />;
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const page = await getPage("homePage");
   return {
     props: { page },

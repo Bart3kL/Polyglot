@@ -10,15 +10,16 @@ import { SubcategoriesProps } from "@/src/types/Subcategories";
 import { Header } from "@/src/types/Dictionary/utilityTypes";
 
 const Subcategories = ({ id }: SubcategoriesProps) => {
-  const { data: subcategories, isLoading } = useQuery({
+  const { data: subcategories, isLoading: loadingSubcategories } = useQuery({
     queryKey: ["subcategories", id],
     queryFn: () => useGetDictionary("subcategories", id),
   });
-  const { data: page } = useQuery({
+  const { data: page, isLoading: loadingSubcategoriesPage } = useQuery({
     queryKey: ["subcategoriesPage"],
     queryFn: () => getPage("subcategories"),
   });
 
+  const isLoading = loadingSubcategories || loadingSubcategoriesPage;
   return (
     <>
       {isLoading ? (
@@ -46,18 +47,7 @@ export const getServerSideProps = async (context: {
 }) => {
   const id = context.params?.subcategoryId as string;
 
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(
-    ["subcategories", id],
-    await useGetDictionary("subcategories", id)
-  );
-  await queryClient.prefetchQuery(
-    ["subcategoriesPage"],
-    async () => await getPage("subcategories")
-  );
-
   return {
-    props: { id, dehydratedState: dehydrate(queryClient) },
+    props: { id },
   };
 };

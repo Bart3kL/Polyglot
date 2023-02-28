@@ -1,6 +1,13 @@
-import { Lesson } from "../utilityTypes";
+import {
+  Achievement,
+  ScienceHeader,
+  Lesson,
+  userProgress,
+} from "../utilityTypes";
 
 export interface SciencePageProps {
   lessons: Lesson[];
-  id: string;
+  achievements: Achievement[];
+  page: ScienceHeader;
+  userProgress: userProgress;
 }

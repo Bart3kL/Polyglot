@@ -10,15 +10,16 @@ import { WordsProps } from "@/src/types/Words";
 import { Header } from "@/src/types/Dictionary/utilityTypes";
 
 const Words = ({ id }: WordsProps) => {
-  const { data: words, isLoading } = useQuery({
+  const { data: words, isLoading: loadingWords } = useQuery({
     queryKey: ["words", id],
     queryFn: () => useGetDictionary("words", id),
   });
-  const { data: page } = useQuery({
+  const { data: page, isLoading: loadingWordsPage } = useQuery({
     queryKey: ["wordsPage"],
     queryFn: () => getPage("words"),
   });
 
+  const isLoading = loadingWords || loadingWordsPage;
   return (
     <>
       {isLoading ? (
@@ -43,18 +44,7 @@ export const getServerSideProps = async (context: {
 }) => {
   const id = context.params?.wordsId as string;
 
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(
-    ["words", id],
-    await useGetDictionary("words", id)
-  );
-  await queryClient.prefetchQuery(
-    ["wordsPage"],
-    async () => await getPage("words")
-  );
-
   return {
-    props: { id, dehydratedState: dehydrate(queryClient) },
+    props: { id },
   };
 };

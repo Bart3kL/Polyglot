@@ -1,33 +1,43 @@
 import React from "react";
-import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
+import BarLoader from "react-spinners/BarLoader";
 
-import { getPage } from "@/src/components/lib/contentful/client";
-import useGet from "@/src/components/lib/axios/useGet";
 import ErrorNoAccess from "@/src/components/atoms/ErrorNoAccess";
 import LessonsPage from "@/src/components/organisms/LessonsPage";
 import SciencePageLayout from "@/src/components/layout/SciencePageLayout";
+import { override } from "@/src/components/lib/spinner";
+import useQuerySciencePage from "@/src/components/lib/react-query/useQuerySciencePage";
+import { Header } from "@/src/types/Dictionary/utilityTypes";
+
 const Lessons = () => {
   const { data: session }: any = useSession();
+
+  const { isLoading, lessons, page, userProgress } = useQuerySciencePage(
+    session.user.id
+  );
 
   if (!session) {
     return <ErrorNoAccess />;
   }
   return (
     <SciencePageLayout>
-      <LessonsPage userId={session.user.id} />
+      {isLoading ? (
+        <BarLoader
+          color={"#1f2233"}
+          loading={isLoading}
+          cssOverride={override}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      ) : (
+        <LessonsPage
+          page={page as Header}
+          lessons={lessons}
+          userProgress={userProgress}
+        />
+      )}
     </SciencePageLayout>
   );
 };
 
 export default Lessons;
-
-export const getServerSideProps = async () => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(["lessons"], () => useGet("lessons"));
-  await queryClient.prefetchQuery(["lessonsPage"], () => getPage("lessons"));
-  return {
-    props: { dehydratedState: dehydrate(queryClient) },
-  };
-};

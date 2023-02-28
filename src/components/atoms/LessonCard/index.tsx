@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { cx } from "../../lib/utils";
+import { LessonCardProps } from "@/src/types/Lessons/LessonCard";
 
 import styles from "./rwd.module.scss";
 const {
@@ -16,7 +17,7 @@ const {
   wrapperContentCategory,
 } = styles;
 
-const ScienceLessonCard = ({ image, title, id, currentLesson }: any) => {
+const LessonCard = ({ image, title, id, currentLesson }: LessonCardProps) => {
   return (
     <div className={wrapper}>
       {currentLesson >= id ? (
@@ -56,4 +57,4 @@ const ScienceLessonCard = ({ image, title, id, currentLesson }: any) => {
   );
 };
 
-export default ScienceLessonCard;
+export default LessonCard;

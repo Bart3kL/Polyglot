@@ -1,63 +1,24 @@
 import React from "react";
-import BarLoader from "react-spinners/BarLoader";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Joyride from "react-joyride";
 import useJoyride from "../../lib/react-joyride";
 
 import ScienceWelcomeBox from "../../atoms/ScienceWelcomeBox";
 import SciencePageNextLessons from "../../atoms/SciencePageNextLessons";
-import { SciencePageProps } from "@/src/types/Science/SciencePage";
 import ScienceProgressBar from "../../molecules/ScienceProgressBar";
 import ScienceAchievements from "../../molecules/ScienceAchievements";
-import { getPage } from "@/src/components/lib/contentful/client";
-import useGetUserProgress from "@/src/components/lib/axios/useGetUserProgress";
 import { ScienceHeader } from "@/src/types/Science/utilityTypes";
-import useGet from "@/src/components/lib/axios/useGet";
-import { override } from "@/src/components/lib/spinner";
+import { SciencePageProps } from "@/src/types/Science/SciencePage";
 
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperBox } = styles;
 
-const SciencePage = ({ lessons, id }: SciencePageProps) => {
+const SciencePage = ({
+  userProgress,
+  achievements,
+  page,
+  lessons,
+}: SciencePageProps) => {
   const isUserFirstTime = window.localStorage.getItem("tutorialSciencePage");
-
-  const { data: page, isLoading: isLoading1 } = useQuery({
-    queryKey: ["sciencePage"],
-    queryFn: () => getPage("science"),
-    initialData: () => {
-      const cachedData = useQueryClient().getQueryData(["sciencePage"]);
-      if (!cachedData) return;
-
-      useQueryClient().cancelQueries(["sciencePage"]);
-
-      return cachedData;
-    },
-  });
-  const { data: achievements, isLoading: isLoading2 } = useQuery({
-    queryKey: ["achievements"],
-    queryFn: () => useGet("achievements"),
-    initialData: () => {
-      const cachedData = useQueryClient().getQueryData(["achievements"]);
-      if (!cachedData) return;
-
-      useQueryClient().cancelQueries(["achievements"]);
-
-      return cachedData;
-    },
-  });
-
-  const { data: userProgress, isLoading: isLoading3 } = useQuery({
-    queryKey: ["userProgress"],
-    queryFn: () => useGetUserProgress(id),
-    initialData: () => {
-      const cachedData = useQueryClient().getQueryData(["userProgress"]);
-      if (!cachedData) return;
-
-      useQueryClient().cancelQueries(["userProgress"]);
-
-      return cachedData;
-    },
-  });
 
   const {
     welcomeMessage,
@@ -76,62 +37,50 @@ const SciencePage = ({ lessons, id }: SciencePageProps) => {
     useJoyride(tutorialSteps);
 
   return (
-    <>
-      {isLoading1 || isLoading2 || isLoading3 ? (
-        <BarLoader
-          color={"#1f2233"}
-          loading={isLoading1 || isLoading2 || isLoading3}
-          cssOverride={override}
-          aria-label="Loading Spinner"
-          data-testid="loader"
+    <section className={wrapper}>
+      {isUserFirstTime === null && (
+        <Joyride
+          callback={handleJoyrideCallback}
+          continuous
+          run={run}
+          scrollToFirstStep
+          showProgress
+          showSkipButton
+          stepIndex={stepIndex}
+          steps={steps}
+          styles={{
+            overlay: {
+              backgroundColor: "none",
+              mixBlendMode: "unset",
+            },
+            spotlight: {
+              backgroundColor: "transparent",
+              borderRadius: 0,
+              boxShadow: "0px 0px 0px 9999px rgba(0,0,0,0.6)",
+            },
+          }}
         />
-      ) : (
-        <section className={wrapper}>
-          {isUserFirstTime === null && (
-            <Joyride
-              callback={handleJoyrideCallback}
-              continuous
-              run={run}
-              scrollToFirstStep
-              showProgress
-              showSkipButton
-              stepIndex={stepIndex}
-              steps={steps}
-              styles={{
-                overlay: {
-                  backgroundColor: "none",
-                  mixBlendMode: "unset",
-                },
-                spotlight: {
-                  backgroundColor: "transparent",
-                  borderRadius: 0,
-                  boxShadow: "0px 0px 0px 9999px rgba(0,0,0,0.6)",
-                },
-              }}
-            />
-          )}
-
-          <div className={wrapperBox}>
-            <ScienceWelcomeBox welcomeMessage={welcomeMessage} />
-            <SciencePageNextLessons
-              nextLessons={nextLessons}
-              threeNextLessons={threeNextLessons}
-            />
-          </div>
-          <ScienceAchievements
-            achievementsCongratsText={achievementsCongratsText}
-            achievementsText={achievementsText}
-            achievements={achievements}
-            userProgress={userProgress}
-          />
-          <ScienceProgressBar
-            lessons={lessons}
-            userProgress={userProgress}
-            yourProgress={yourProgress}
-          />
-        </section>
       )}
-    </>
+
+      <div className={wrapperBox}>
+        <ScienceWelcomeBox welcomeMessage={welcomeMessage} />
+        <SciencePageNextLessons
+          nextLessons={nextLessons}
+          threeNextLessons={threeNextLessons}
+        />
+      </div>
+      <ScienceAchievements
+        achievementsCongratsText={achievementsCongratsText}
+        achievementsText={achievementsText}
+        achievements={achievements}
+        userProgress={userProgress}
+      />
+      <ScienceProgressBar
+        lessons={lessons}
+        userProgress={userProgress}
+        yourProgress={yourProgress}
+      />
+    </section>
   );
 };
 

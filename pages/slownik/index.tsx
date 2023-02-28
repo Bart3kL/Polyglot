@@ -8,14 +8,16 @@ import DictionaryPage from "@/src/components/organisms/DictionaryPage";
 import { override } from "@/src/components/lib/spinner";
 
 function Dictionary() {
-  const { data: levels, isLoading } = useQuery({
+  const { data: levels, isLoading: loadingLevels } = useQuery({
     queryKey: ["levels"],
     queryFn: () => useGetDictionary(),
   });
-  const { data: page } = useQuery({
+  const { data: page, isLoading: loadingHomePage } = useQuery({
     queryKey: ["homePage"],
     queryFn: () => getPage("dictionary"),
   });
+
+  const isLoading = loadingHomePage || loadingLevels;
 
   return (
     <>
@@ -33,17 +35,4 @@ function Dictionary() {
     </>
   );
 }
-
-export const getServerSideProps = async () => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(["levels"], await useGetDictionary());
-  await queryClient.prefetchQuery(
-    ["homePage"],
-    async () => await getPage("dictionary")
-  );
-  return {
-    props: { dehydratedState: dehydrate(queryClient) },
-  };
-};
 export default Dictionary;

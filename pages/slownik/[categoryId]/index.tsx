@@ -10,14 +10,16 @@ import { CategoriesProps } from "@/src/types/Categories";
 import { Header } from "@/src/types/Dictionary/utilityTypes";
 
 const Categories = ({ id }: CategoriesProps) => {
-  const { data: categories, isLoading } = useQuery({
+  const { data: categories, isLoading: loadingCategories } = useQuery({
     queryKey: ["categories", id],
     queryFn: () => useGetDictionary("categories", id),
   });
-  const { data: page } = useQuery({
+  const { data: page, isLoading: loadingCategoriesPage } = useQuery({
     queryKey: ["categoriesPage"],
     queryFn: () => getPage("categories"),
   });
+
+  const isLoading = loadingCategories || loadingCategoriesPage;
 
   return (
     <>
@@ -43,17 +45,7 @@ export const getServerSideProps = async (context: {
 }) => {
   const id = context.params?.categoryId as string;
 
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(
-    ["categories", id],
-    await useGetDictionary("categories", id)
-  );
-  await queryClient.prefetchQuery(
-    ["categoriesPage"],
-    async () => await getPage("categories")
-  );
   return {
-    props: { id, dehydratedState: dehydrate(queryClient) },
+    props: { id },
   };
 };
