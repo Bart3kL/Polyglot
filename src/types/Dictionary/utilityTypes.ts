@@ -4,4 +4,4 @@ export type Level = {
   level: string;
 };
 
-export type Header = { headerTitle: string; headerDescription: string };
+export type Header = { headerTitle: string; headerDescription?: string };
