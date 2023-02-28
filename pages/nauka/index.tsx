@@ -55,18 +55,13 @@ export const getServerSideProps = async (
   if (data) {
     const queryClient = new QueryClient();
 
-    await queryClient.prefetchQuery(
-      ["sciencePage"],
-      async () => await getPage("science")
+    await queryClient.prefetchQuery(["sciencePage"], () => getPage("science"));
+    await queryClient.prefetchQuery(["lessons"], () => useGetLessons());
+    await queryClient.prefetchQuery(["userProgress"], () =>
+      useGetUserProgress(data.user.id)
     );
-    await queryClient.prefetchQuery(["lessons"], await useGetLessons());
-    await queryClient.prefetchQuery(
-      ["userProgress"],
-      await useGetUserProgress(data.user.id)
-    );
-    await queryClient.prefetchQuery(
-      ["achievements"],
-      await useGet("achievements")
+    await queryClient.prefetchQuery(["achievements"], () =>
+      useGet("achievements")
     );
     return {
       props: { id: data.user.id, dehydratedState: dehydrate(queryClient) },

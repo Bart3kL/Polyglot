@@ -1,3 +1,3 @@
 export interface NavigationProps {
-  backgroundColor: boolean;
+  backgroundColor?: boolean;
 }

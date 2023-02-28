@@ -1,6 +1,6 @@
 import React from "react";
 import BarLoader from "react-spinners/BarLoader";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Joyride from "react-joyride";
 import useJoyride from "../../lib/react-joyride";
 
@@ -24,15 +24,39 @@ const SciencePage = ({ lessons, id }: SciencePageProps) => {
   const { data: page, isLoading: isLoading1 } = useQuery({
     queryKey: ["sciencePage"],
     queryFn: () => getPage("science"),
+    initialData: () => {
+      const cachedData = useQueryClient().getQueryData(["sciencePage"]);
+      if (!cachedData) return;
+
+      useQueryClient().cancelQueries(["sciencePage"]);
+
+      return cachedData;
+    },
   });
   const { data: achievements, isLoading: isLoading2 } = useQuery({
     queryKey: ["achievements"],
     queryFn: () => useGet("achievements"),
+    initialData: () => {
+      const cachedData = useQueryClient().getQueryData(["achievements"]);
+      if (!cachedData) return;
+
+      useQueryClient().cancelQueries(["achievements"]);
+
+      return cachedData;
+    },
   });
 
   const { data: userProgress, isLoading: isLoading3 } = useQuery({
     queryKey: ["userProgress"],
     queryFn: () => useGetUserProgress(id),
+    initialData: () => {
+      const cachedData = useQueryClient().getQueryData(["userProgress"]);
+      if (!cachedData) return;
+
+      useQueryClient().cancelQueries(["userProgress"]);
+
+      return cachedData;
+    },
   });
 
   const {

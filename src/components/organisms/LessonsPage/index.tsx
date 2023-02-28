@@ -1,6 +1,6 @@
 import React from "react";
 import BarLoader from "react-spinners/BarLoader";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { getPage } from "@/src/components/lib/contentful/client";
 import useGetUserProgress from "@/src/components/lib/axios/useGetUserProgress";
@@ -16,14 +16,38 @@ const LessonsPage = ({ userId }: any) => {
   const { data: page, isLoading: isLoading1 } = useQuery({
     queryKey: ["lessonsPage"],
     queryFn: () => getPage("lessons"),
+    initialData: () => {
+      const cachedData = useQueryClient().getQueryData(["lessonsPage"]);
+      if (!cachedData) return;
+
+      useQueryClient().cancelQueries(["lessonsPage"]);
+
+      return cachedData;
+    },
   });
   const { data: lessons, isLoading: isLoading2 } = useQuery({
     queryKey: ["lessons"],
     queryFn: () => useGet("lessons"),
+    initialData: () => {
+      const cachedData = useQueryClient().getQueryData(["lessons"]);
+      if (!cachedData) return;
+
+      useQueryClient().cancelQueries(["lessons"]);
+
+      return cachedData;
+    },
   });
   const { data: userProgress, isLoading: isLoading3 } = useQuery({
     queryKey: ["userProgress"],
     queryFn: () => useGetUserProgress(userId),
+    initialData: () => {
+      const cachedData = useQueryClient().getQueryData(["userProgress"]);
+      if (!cachedData) return;
+
+      useQueryClient().cancelQueries(["userProgress"]);
+
+      return cachedData;
+    },
   });
 
   const { headerTitle } = page as Header;

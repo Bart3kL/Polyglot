@@ -25,7 +25,7 @@ export default Lessons;
 export const getServerSideProps = async () => {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(["lessons"], await useGet("lessons"));
+  await queryClient.prefetchQuery(["lessons"], () => useGet("lessons"));
   await queryClient.prefetchQuery(["lessonsPage"], () => getPage("lessons"));
   return {
     props: { dehydratedState: dehydrate(queryClient) },
