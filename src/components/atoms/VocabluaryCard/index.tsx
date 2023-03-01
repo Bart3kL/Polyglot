@@ -12,6 +12,8 @@ const VocabluaryCard = ({
   handleToStudy,
   handleToNextWord,
   handleSound,
+  toNextWordLabel,
+  toStudyLabel,
 }: VocabluaryCardProps) => {
   return (
     <>
@@ -19,12 +21,16 @@ const VocabluaryCard = ({
         <p>{vocabluary[wordIndex].name}</p>
         <p>{vocabluary[wordIndex].translation}</p>
       </div>
-      <div className={wrapperSound}>
+      <div className={wrapperSound} id="sound">
         <Icons.GiSpeaker onClick={handleSound} />
       </div>
       <div className={wrapperButtons}>
-        <button onClick={handleToStudy}>Do nauki</button>
-        <button onClick={handleToNextWord}>Znam to</button>
+        <button onClick={handleToStudy} id="toStudy">
+          {toStudyLabel}
+        </button>
+        <button onClick={handleToNextWord} id="toNextWord">
+          {toNextWordLabel}
+        </button>
       </div>
       <p>{`${wordIndex}/${vocabluary.length}`}</p>
     </>

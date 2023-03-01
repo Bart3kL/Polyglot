@@ -1,7 +1,6 @@
 import React, { useState, ReactNode, FC } from "react";
 import { Overpass } from "@next/font/google";
 type Props = { children: ReactNode };
-import Router from "next/router";
 
 import { Icons } from "../../shared";
 import NavigationLeft from "../NavBar/NavigationLeft";
@@ -15,7 +14,6 @@ const {
   wrapperOtherScienceNavMobile,
   wrapperOtherScienceContent,
   wrapperOtherScienceNavMobileIcon,
-  wrapperOtherTutorial,
 } = styles;
 
 const overpass = Overpass({
@@ -25,11 +23,6 @@ const overpass = Overpass({
 
 const SciencePageLayout: FC<Props> = ({ children }) => {
   const [toggle, setToggle] = useState(false);
-
-  const handleResetTutorial = () => {
-    window.localStorage.removeItem("tutorialSciencePage");
-    Router.reload();
-  };
 
   return (
     <>
@@ -53,13 +46,6 @@ const SciencePageLayout: FC<Props> = ({ children }) => {
           {!toggle && (
             <div className={wrapperOtherScienceContent}>{children}</div>
           )}
-        </div>
-        <div
-          className={wrapperOtherTutorial}
-          id="tutorial"
-          onClick={() => handleResetTutorial()}
-        >
-          <Icons.BsQuestionLg />
         </div>
       </div>
     </>

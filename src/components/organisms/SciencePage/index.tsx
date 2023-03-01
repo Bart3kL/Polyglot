@@ -2,6 +2,7 @@ import React from "react";
 import Joyride from "react-joyride";
 import useJoyride from "../../lib/react-joyride";
 
+import { Icons } from "../../shared";
 import ScienceWelcomeBox from "../../atoms/ScienceWelcomeBox";
 import SciencePageNextLessons from "../../atoms/SciencePageNextLessons";
 import ScienceProgressBar from "../../molecules/ScienceProgressBar";
@@ -9,7 +10,7 @@ import ScienceAchievements from "../../molecules/ScienceAchievements";
 import { SciencePageProps } from "@/src/types/Science/SciencePage";
 
 import styles from "./rwd.module.scss";
-const { wrapper, wrapperBox } = styles;
+const { wrapper, wrapperBox, wrapperTutorial } = styles;
 
 const SciencePage = ({
   userProgress,
@@ -17,8 +18,6 @@ const SciencePage = ({
   page,
   lessons,
 }: SciencePageProps) => {
-  const isUserFirstTime = window.localStorage.getItem("tutorialSciencePage");
-
   const {
     welcomeMessage,
     nextLessons,
@@ -32,8 +31,14 @@ const SciencePage = ({
     ?.slice(Number(userProgress?.lesson) - 1, lessons.length)
     .slice(0, 3);
 
-  const { run, handleJoyrideCallback, stepIndex, steps } =
-    useJoyride(tutorialSteps);
+  const {
+    run,
+    handleJoyrideCallback,
+    stepIndex,
+    steps,
+    handleResetTutorial,
+    isUserFirstTime,
+  } = useJoyride(tutorialSteps, "tutorialSciencePage");
 
   return (
     <section className={wrapper}>
@@ -79,6 +84,13 @@ const SciencePage = ({
         userProgress={userProgress}
         yourProgress={yourProgress}
       />
+      <div
+        className={wrapperTutorial}
+        id="tutorial"
+        onClick={() => handleResetTutorial()}
+      >
+        <Icons.BsQuestionLg />
+      </div>
     </section>
   );
 };

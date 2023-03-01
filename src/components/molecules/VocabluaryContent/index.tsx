@@ -9,7 +9,12 @@ import { VocabluaryContentProps } from "@/src/types/Vocabluary/VocabluaryContent
 import styles from "./rwd.module.scss";
 const { wrapperNextLesson, wrapperCard } = styles;
 
-const VocabluaryContent = ({ vocabluary }: VocabluaryContentProps) => {
+const VocabluaryContent = ({
+  vocabluary,
+  nextStep,
+  toNextWordLabel,
+  toStudyLabel,
+}: VocabluaryContentProps) => {
   const lessonStep = usePostProgress();
 
   const { wordIndex, handleToStudy, handleToNextWord, handleSound } =
@@ -25,7 +30,7 @@ const VocabluaryContent = ({ vocabluary }: VocabluaryContentProps) => {
           <Link
             href={`/grammar/${parseInt(vocabluary[0].vocabularyForLessonId)}`}
           >
-            Przejdz do gramatyki
+            {nextStep}
           </Link>
         </div>
       ) : (
@@ -36,6 +41,8 @@ const VocabluaryContent = ({ vocabluary }: VocabluaryContentProps) => {
             handleSound={handleSound}
             handleToStudy={handleToStudy}
             handleToNextWord={handleToNextWord}
+            toNextWordLabel={toNextWordLabel}
+            toStudyLabel={toStudyLabel}
           />
         </div>
       )}

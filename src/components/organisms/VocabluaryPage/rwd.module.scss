@@ -12,9 +12,8 @@
 
 @media only screen and (min-width: map.get($breakpoints, "small")) {
   .wrapper {
-    padding: 2% 5%;
-    &Lesson {
-      flex-direction: row;
+    &Title {
+      font-size: 3rem;
     }
   }
 }

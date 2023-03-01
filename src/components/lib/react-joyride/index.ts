@@ -1,6 +1,6 @@
 import { ACTIONS, CallBackProps, EVENTS, STATUS, Step } from "react-joyride";
 import { useMount, useSetState } from "react-use";
-
+import Router from "next/router";
 interface State {
   run: boolean;
   sidebarOpen: boolean;
@@ -8,7 +8,7 @@ interface State {
   steps: Step[];
 }
 
-const useJoyride = (tutorialSteps: Step[]) => {
+const useJoyride = (tutorialSteps: Step[], storageName: string) => {
   const [{ run, sidebarOpen, stepIndex, steps }, setState] = useSetState<State>(
     {
       run: false,
@@ -30,7 +30,7 @@ const useJoyride = (tutorialSteps: Step[]) => {
 
     if (([STATUS.FINISHED, STATUS.SKIPPED] as string[]).includes(status)) {
       setState({ run: false, stepIndex: 0 });
-      window.localStorage.setItem("tutorialSciencePage", "true");
+      window.localStorage.setItem(storageName, "true");
     } else if (
       ([EVENTS.STEP_AFTER, EVENTS.TARGET_NOT_FOUND] as string[]).includes(type)
     ) {
@@ -68,12 +68,18 @@ const useJoyride = (tutorialSteps: Step[]) => {
       }
     }
   };
-
+  const handleResetTutorial = () => {
+    window.localStorage.removeItem(storageName);
+    Router.reload();
+  };
+  const isUserFirstTime = window.localStorage.getItem(storageName);
   return {
     run,
     handleJoyrideCallback,
     stepIndex,
     steps,
+    handleResetTutorial,
+    isUserFirstTime,
   };
 };
 
