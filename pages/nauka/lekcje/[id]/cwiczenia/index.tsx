@@ -5,26 +5,33 @@ import BarLoader from "react-spinners/BarLoader";
 import { override } from "@/src/components/lib/spinner";
 import useGetSingleLessonCategory from "@/src/components/lib/axios/useGetSingleLessonCategory";
 import SciencePageLayout from "@/src/components/layout/SciencePageLayout";
-import VocabluaryPage from "@/src/components/organisms/VocabluaryPage";
+import { getPage } from "@/src/components/lib/contentful/client";
+import ExercisesPage from "@/src/components/organisms/ExercisesPage";
+import { GrammarProps } from "@/src/types/Grammar";
 
-const Exercises = ({ id }: { id: string }) => {
-  const { data: vocabluary, isLoading: loadingVocabluaryPage } = useQuery({
-    queryKey: ["vocabluaryPage", id],
-    queryFn: () => useGetSingleLessonCategory("vocabluary", id),
+const Exercises = ({ id }: GrammarProps) => {
+  const { data: exercises, isLoading: loadingExercisesPage } = useQuery({
+    queryKey: ["exercisesPage", id],
+    queryFn: () => useGetSingleLessonCategory("exercises", id),
   });
+  const { data: page, isLoading: loadingExercisesPageContentful } = useQuery({
+    queryKey: ["exercisesPageContentful", id],
+    queryFn: () => getPage("exercisesPage"),
+  });
+  const isLoading = loadingExercisesPageContentful || loadingExercisesPage;
+
   return (
     <SciencePageLayout>
-      {loadingVocabluaryPage ? (
+      {isLoading ? (
         <BarLoader
           color={"#1f2233"}
-          loading={loadingVocabluaryPage}
+          loading={isLoading}
           cssOverride={override}
           aria-label="Loading Spinner"
           data-testid="loader"
         />
       ) : (
-        <p>exercises</p>
-        // <VocabluaryPage vocabluary={vocabluary} id={id} />
+        <ExercisesPage exercises={exercises} page={page} />
       )}
     </SciencePageLayout>
   );

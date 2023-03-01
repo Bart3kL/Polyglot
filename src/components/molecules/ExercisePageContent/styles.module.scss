@@ -1,0 +1,58 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 40px;
+
+  &Button {
+    padding: 20px 60px;
+    border: 0;
+
+    background-color: #27ae60;
+
+    font-size: 1.5rem;
+
+    transition: 0.3s;
+    cursor: pointer;
+
+    a {
+      color: white;
+      text-decoration: none;
+
+      transition: 0.3s;
+    }
+
+    :hover {
+      background-color: #2af27d;
+      a {
+        color: #1d1f68;
+      }
+    }
+  }
+  &Exercise {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    border: 1px solid black;
+
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+
+  &Message {
+    display: flex;
+
+    height: 45px;
+    margin: 5px 0;
+
+    font-size: 1.3rem;
+  }
+}

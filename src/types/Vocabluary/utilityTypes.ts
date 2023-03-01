@@ -14,5 +14,6 @@ export type VocabluaryPageContentful = {
   nextStep: string;
   toNextWordLabel: string;
   toStudyLabel: string;
+  lessonType: string;
   tutorialSteps: Step[];
 };

@@ -1,0 +1,49 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  &Title {
+    display: flex;
+    justify-content: center;
+
+    height: 10%;
+    margin-top: 10%;
+
+    font-size: 1.5rem;
+    font-style: italic;
+  }
+
+  &Image {
+    display: flex;
+    justify-content: center;
+    min-height: 300px;
+    height: auto;
+  }
+
+  &Button {
+    padding: 20px 60px;
+    border: 0;
+
+    background-color: #27ae60;
+
+    font-size: 1.5rem;
+    text-align: center;
+    transition: 0.3s;
+    cursor: pointer;
+
+    a {
+      color: white;
+      text-decoration: none;
+
+      transition: 0.3s;
+    }
+  }
+  &Button:hover {
+    background-color: #2af27d;
+    a {
+      color: #1d1f68;
+    }
+  }
+}

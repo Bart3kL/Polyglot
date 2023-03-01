@@ -28,7 +28,9 @@ const VocabluaryContent = ({
           onClick={() => lessonStep(vocabluary[0].vocabularyForLessonId, "2")}
         >
           <Link
-            href={`/grammar/${parseInt(vocabluary[0].vocabularyForLessonId)}`}
+            href={`/nauka/lekcje/${parseInt(
+              vocabluary[0].vocabularyForLessonId
+            )}/gramatyka`}
           >
             {nextStep}
           </Link>

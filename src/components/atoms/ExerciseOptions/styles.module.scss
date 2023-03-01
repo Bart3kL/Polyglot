@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+
+  width: 100%;
+  max-width: 500px;
+
+  &Option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 33%;
+    height: 50px;
+
+    font-size: 1.3rem;
+
+    input {
+      margin: 0 5px 0 0;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

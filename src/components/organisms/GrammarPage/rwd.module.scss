@@ -1,0 +1,28 @@
+@use "sass:map";
+@import "./styles.module.scss";
+@import "../../../styles/variables";
+
+@media only screen and (min-width: map.get($breakpoints, "ultra-smaller")) {
+}
+@media only screen and (min-width: map.get($breakpoints, "super-smaller")) {
+}
+
+@media only screen and (min-width: map.get($breakpoints, "smaller")) {
+}
+
+@media only screen and (min-width: map.get($breakpoints, "small")) {
+  .wrapper {
+    &Title {
+      font-size: 3rem;
+    }
+  }
+}
+
+@media only screen and (min-width: map.get($breakpoints, "large-min")) {
+}
+
+@media only screen and (min-width: map.get($breakpoints, "large")) {
+}
+
+@media only screen and (min-width: map.get($breakpoints, "large-max")) {
+}

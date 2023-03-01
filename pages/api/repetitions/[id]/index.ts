@@ -17,17 +17,19 @@ export default async function getAllLessons(
       const repetitionsFilter = repetitions.filter(
         (repetition) => repetition.userId === id
       );
-      const sliced = repetitionsFilter.slice(0);
-      const sorted = sliced.sort(function (a: any, b: any) {
-        return a.power - b.power;
-      });
+      // const sliced = repetitionsFilter.slice(0);
+      // const sorted = sliced.sort(function (a: any, b: any) {
+      //   return a.power - b.power;
+      // });
 
-      const slicePerCent = sorted.slice(
-        0,
-        Math.ceil((sorted.length * 50) / 100)
-      );
+      // const slicePerCent = sorted.slice(
+      //   0,
+      //   Math.ceil((sorted.length * 50) / 100)
+      // );
 
-      return slicePerCent ? res.send(slicePerCent) : res.status(400).end();
+      return repetitionsFilter
+        ? res.send(repetitionsFilter)
+        : res.status(400).end();
     } catch (e) {
       console.error(e);
       return res.status(500).send({ success: false });

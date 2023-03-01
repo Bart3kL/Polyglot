@@ -1,24 +1,16 @@
 import React from "react";
-
-import VocabluaryContent from "../../molecules/VocabluaryContent";
-import { VocabluaryPageProps } from "@/src/types/Vocabluary/VocabluaryPage";
-import useJoyride from "../../lib/react-joyride";
-import { Icons } from "../../shared";
 import Joyride from "react-joyride";
+import useJoyride from "../../lib/react-joyride";
+
+import { Icons } from "../../shared";
+import RepetitionsContent from "../../molecules/RepetitionsContent";
+import { RepetitionsPageProps } from "@/src/types/Repetitions/RepetitionsPage";
 
 import styles from "./rwd.module.scss";
-const { wrapper, wrapperTitle, wrapperContent, wrapperTutorial } = styles;
+const { wrapper, wrapperTutorial } = styles;
 
-const VocabluaryPage = ({ vocabluary, page }: VocabluaryPageProps) => {
-  const {
-    headerTitle,
-    nextStep,
-    toNextWordLabel,
-    toStudyLabel,
-    tutorialSteps,
-    lessonType,
-  } = page;
-
+const RepetitionsPage = ({ repetitions, page }: RepetitionsPageProps) => {
+  const { tutorialSteps } = page;
   const {
     run,
     handleJoyrideCallback,
@@ -26,7 +18,8 @@ const VocabluaryPage = ({ vocabluary, page }: VocabluaryPageProps) => {
     steps,
     handleResetTutorial,
     isUserFirstTime,
-  } = useJoyride(tutorialSteps, "tutorialVocabluaryPage");
+  } = useJoyride(tutorialSteps, "tutorialRepetitionsPage");
+
   return (
     <section className={wrapper}>
       {isUserFirstTime === null && (
@@ -52,18 +45,7 @@ const VocabluaryPage = ({ vocabluary, page }: VocabluaryPageProps) => {
           }}
         />
       )}
-      <h1 className={wrapperTitle}>
-        {headerTitle} {vocabluary[0].vocabularyForLessonId} -
-        <span>{lessonType}</span>
-      </h1>
-      <div className={wrapperContent}>
-        <VocabluaryContent
-          vocabluary={vocabluary}
-          nextStep={nextStep}
-          toNextWordLabel={toNextWordLabel}
-          toStudyLabel={toStudyLabel}
-        />
-      </div>
+      <RepetitionsContent repetitions={repetitions} page={page} />
       <div
         className={wrapperTutorial}
         id="tutorial"
@@ -75,4 +57,4 @@ const VocabluaryPage = ({ vocabluary, page }: VocabluaryPageProps) => {
   );
 };
 
-export default VocabluaryPage;
+export default RepetitionsPage;

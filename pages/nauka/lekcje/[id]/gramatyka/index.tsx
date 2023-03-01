@@ -5,26 +5,33 @@ import BarLoader from "react-spinners/BarLoader";
 import { override } from "@/src/components/lib/spinner";
 import useGetSingleLessonCategory from "@/src/components/lib/axios/useGetSingleLessonCategory";
 import SciencePageLayout from "@/src/components/layout/SciencePageLayout";
-import VocabluaryPage from "@/src/components/organisms/VocabluaryPage";
+import { getPage } from "@/src/components/lib/contentful/client";
+import GrammarPage from "@/src/components/organisms/GrammarPage";
+import { GrammarProps } from "@/src/types/Grammar";
+import { GrammarPageContentful } from "@/src/types/Grammar/utilityTypes";
 
-const Grammar = ({ id }: { id: string }) => {
-  const { data: vocabluary, isLoading: loadingVocabluaryPage } = useQuery({
-    queryKey: ["vocabluaryPage", id],
-    queryFn: () => useGetSingleLessonCategory("vocabluary", id),
+const Grammar = ({ id }: GrammarProps) => {
+  const { data: grammar, isLoading: loadingGrammarPage } = useQuery({
+    queryKey: ["grammarPage", id],
+    queryFn: () => useGetSingleLessonCategory("grammar", id),
   });
+  const { data: page, isLoading: loadingGrammarPageContentful } = useQuery({
+    queryKey: ["grammarPageContentful", id],
+    queryFn: () => getPage("grammarPage"),
+  });
+  const isLoading = loadingGrammarPageContentful || loadingGrammarPage;
   return (
     <SciencePageLayout>
-      {loadingVocabluaryPage ? (
+      {isLoading ? (
         <BarLoader
           color={"#1f2233"}
-          loading={loadingVocabluaryPage}
+          loading={isLoading}
           cssOverride={override}
           aria-label="Loading Spinner"
           data-testid="loader"
         />
       ) : (
-        <p>grammar</p>
-        // <VocabluaryPage vocabluary={vocabluary} id={id} />
+        <GrammarPage grammar={grammar} page={page as GrammarPageContentful} />
       )}
     </SciencePageLayout>
   );
