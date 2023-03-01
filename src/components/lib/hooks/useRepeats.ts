@@ -1,28 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import addDays from "date-fns/addDays";
+import format from "date-fns/format";
 
-import { useGetSingleWordFromRepetitions } from "../axios/useGetSingleWordFromRepetitions";
-
-export type useRepeatsProps = {
-  id: string;
-  audio: string;
-  userId?: string | undefined;
-  example1?: string;
-  example2?: string;
-  image: string;
-  name: string;
-  step?: string | number | undefined;
-  translation: string;
-  vocabluaryForSubcategoryId?: string;
-};
+import usePatchWordToRepetitions from "../axios/usePatchWordToRepetitions";
+import { useRepeatsProps } from "@/src/types/Repetitions/utilityTypes";
 
 const useRepeats = (repetitions: useRepeatsProps[]) => {
+  const { data: session }: any = useSession();
+  const userId = session?.user.id;
   const [manageRepeats, useManageRepeats] = useState({
     index: 0,
     value: "",
     wordIndex: 0,
     success: false,
-    knowledge: 0,
     repetitionsLength: repetitions.length,
   });
 
@@ -39,7 +30,6 @@ const useRepeats = (repetitions: useRepeatsProps[]) => {
       value: manageRepeats.value + word[manageRepeats.wordIndex],
       wordIndex: manageRepeats.wordIndex + 1,
       success: manageRepeats.success,
-      knowledge: manageRepeats.knowledge,
       repetitionsLength: manageRepeats.repetitionsLength,
     });
   };
@@ -50,7 +40,6 @@ const useRepeats = (repetitions: useRepeatsProps[]) => {
       value: e.target.value,
       wordIndex: e.target.value.length,
       success: manageRepeats.success,
-      knowledge: manageRepeats.knowledge,
       repetitionsLength: manageRepeats.repetitionsLength,
     });
   };
@@ -62,57 +51,35 @@ const useRepeats = (repetitions: useRepeatsProps[]) => {
         value: manageRepeats.value,
         wordIndex: manageRepeats.wordIndex,
         success: true,
-        knowledge: manageRepeats.knowledge,
         repetitionsLength: manageRepeats.repetitionsLength,
       });
     }
   }, [manageRepeats.value, manageRepeats.index, repetitions]);
 
-  const { data: dataa }: any = useSession();
   const handleResult = async (power: number) => {
-    const userId = dataa?.user.id;
+    const today = new Date();
+    const added = addDays(today, power);
+    const todayString = String(format(added, "yyyy-MM-dd"));
+
+    usePatchWordToRepetitions(userId, repetitions[manageRepeats.index].id, {
+      ...repetitions[manageRepeats.index],
+      date: todayString,
+    });
 
     useManageRepeats({
       index: manageRepeats.index + 1,
       value: "",
       wordIndex: 0,
       success: false,
-      knowledge: power,
       repetitionsLength: manageRepeats.repetitionsLength - 1,
     });
-
-    const word = await useGetSingleWordFromRepetitions(
-      userId,
-      repetitions[manageRepeats.index].id
-    );
-    const setNewKnowledgeWord =
-      manageRepeats.knowledge === 0
-        ? 0
-        : manageRepeats.knowledge + Number(word[0].power);
-
-    await fetch(
-      `https://page-for-learning-english.vercel.app/api/repetitions/${userId}/${
-        repetitions[manageRepeats.index].id
-      }`,
-      {
-        method: "PATCH",
-        body: JSON.stringify({
-          ...repetitions[manageRepeats.index],
-          power: setNewKnowledgeWord,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      }
-    );
   };
-  const handleCheckResult = (power: number) => {
+  const handleCheckResult = () => {
     useManageRepeats({
       index: manageRepeats.index,
       value: manageRepeats.value,
       wordIndex: manageRepeats.wordIndex,
       success: true,
-      knowledge: power,
       repetitionsLength: manageRepeats.repetitionsLength,
     });
   };

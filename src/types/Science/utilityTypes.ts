@@ -19,6 +19,7 @@ export type userProgress = {
   lesson: string;
   lessonStep: string;
   userId: string;
+  achievements: string;
   allLessonslessonAchievement?: string;
   flashcardslessonAchievement?: string;
   lessonAchievement?: string;

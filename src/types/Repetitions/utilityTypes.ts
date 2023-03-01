@@ -22,3 +22,16 @@ export type Repetition = {
   translation: string;
   userId: string;
 };
+
+export type useRepeatsProps = {
+  id: string;
+  audio: string;
+  userId?: string | undefined;
+  example1?: string;
+  example2?: string;
+  image: string;
+  name: string;
+  step?: string | number | undefined;
+  translation: string;
+  vocabluaryForSubcategoryId?: string;
+};

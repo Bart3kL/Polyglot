@@ -10,6 +10,7 @@ const useVocabluaryCard = (vocabluary: any) => {
 
   const handleToStudy = () => {
     usePostWordToRepetitions(vocabluary[wordIndex], session.user.id);
+
     setWordIndex(wordIndex + 1);
   };
   const handleToNextWord = () => {

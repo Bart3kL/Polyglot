@@ -23,7 +23,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/api/auth/[...nextauth].ts"
+    "pages/api/auth/[...nextauth].ts",
+    "src/components/lib/hooks/useAddWordToRepetitions.ts"
   ],
   "exclude": ["node_modules"]
 }

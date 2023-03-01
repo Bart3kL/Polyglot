@@ -10,6 +10,7 @@ const { wrapper, wrapperList } = styles;
 export default function WordsPage({
   page: { headerTitle, headerDescription },
   words,
+  userId
 }: WordsPageProps) {
   return (
     <>
@@ -17,7 +18,7 @@ export default function WordsPage({
       <section className={wrapper}>
         <ul className={wrapperList}>
           {words.map((word) => (
-            <WordCard {...word} key={word.name} />
+            <WordCard key={word.name} word={word} userId={userId}/>
           ))}
         </ul>
       </section>

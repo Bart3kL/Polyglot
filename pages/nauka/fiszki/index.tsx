@@ -9,13 +9,9 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import ErrorNoAccess from "@/src/components/atoms/ErrorNoAccess";
 import SciencePageLayout from "@/src/components/layout/SciencePageLayout";
 import { override } from "@/src/components/lib/spinner";
-import useGet from "@/src/components/lib/axios/useGet";
-import RepetitionsPage from "@/src/components/organisms/RepetitionsPage";
 import { getPage } from "@/src/components/lib/contentful/client";
-import { RepetitionsProps } from "@/src/types/Repetitions";
-import { RepetitionsContentful } from "@/src/types/Repetitions/utilityTypes";
 
-const Repetitions = ({ id, repetitions }: RepetitionsProps) => {
+const Flashcards = ({ id, repetitions }: any) => {
   const { data: session }: any = useSession();
 
   const { data: page, isLoading: loadingRepetitionsPage } = useQuery({
@@ -37,16 +33,13 @@ const Repetitions = ({ id, repetitions }: RepetitionsProps) => {
           data-testid="loader"
         />
       ) : (
-        <RepetitionsPage
-          repetitions={repetitions}
-          page={page as RepetitionsContentful}
-        />
+        <p>flashcards</p>
       )}
     </SciencePageLayout>
   );
 };
 
-export default Repetitions;
+export default Flashcards;
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
@@ -57,9 +50,8 @@ export const getServerSideProps = async (
     authOptions
   );
   if (data) {
-    const repetitions = await useGet("repetitions", data.user.id);
     return {
-      props: { id: data.user.id, repetitions },
+      props: { id: data.user.id },
     };
   }
   return { props: {} };

@@ -41,16 +41,17 @@ export default async function getAllLessons(
     }
   }
 
-  if (req.method === "PATCH") {
+  if (req.method === "POST") {
     try {
-      const { wordId }: any = req.query;
+      // const { wordId }: any = req.query;
       const { body: data } = req;
       const repetitions = await prisma.repetitions.update({
-        where: { id: wordId },
+        where: { id: data.id },
         data: {
           id: data.id,
           userId: data.userId,
           name: data.name,
+          date: data.date,
           translation: data.translation,
           audio: data.audio,
           image: data.image,

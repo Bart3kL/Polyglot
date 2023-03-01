@@ -1,3 +1,6 @@
 import { Word } from "../utilityTypes";
 
-export type WordCardProps = Word;
+export interface WordCardProps {
+  word: Word;
+  userId: string;
+}

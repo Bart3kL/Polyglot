@@ -45,8 +45,6 @@ const RepetitionsContent = ({ repetitions, page }: RepetitionsContentProps) => {
     isUserFirstTime,
   } = useJoyride(tutorialStepsChecksButtons, "tutorialRepetitionsChecksPage");
 
-  console.log(manageRepeats.success);
-
   return (
     <>
       {isUserFirstTime === null && manageRepeats.success && (
