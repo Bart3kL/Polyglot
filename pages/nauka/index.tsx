@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import { getServerSession } from "next-auth/next";
 import type { GetServerSidePropsContext } from "next";
 
-import useQueryData from "@/src/components/lib/react-query/useQuerySciencePage";
+import useQuerySciencePage from "@/src/components/lib/react-query/useQuerySciencePage";
 import SciencePageLayout from "@/src/components/layout/SciencePageLayout";
 import { override } from "@/src/components/lib/spinner";
 import ErrorNoAccess from "@/src/components/atoms/ErrorNoAccess";
@@ -15,7 +15,7 @@ import { ScienceHeader } from "@/src/types/Science/utilityTypes";
 function Science({ id }: ScienceProps) {
   const { data: session }: any = useSession();
   const { isLoading, lessons, page, achievements, userProgress } =
-    useQueryData(id);
+    useQuerySciencePage(id);
 
   if (!session) {
     return <ErrorNoAccess />;

@@ -15,13 +15,14 @@ import { GiWhiteBook } from "react-icons/gi";
 import { FiRepeat } from "react-icons/fi";
 import { MdOutlineHearing } from "react-icons/md";
 import { SlNote } from "react-icons/sl";
-import { GiStreetLight } from "react-icons/gi";
+import { GiStreetLight, GiSpeaker } from "react-icons/gi";
 import { IoIosArrowDown } from "react-icons/io";
 
 export {
   GiWhiteBook,
   IoIosArrowDown,
   BsQuestionLg,
+  GiSpeaker,
   FiRepeat,
   BsCardText,
   MdOutlineHearing,

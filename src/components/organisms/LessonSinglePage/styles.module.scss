@@ -1,10 +1,18 @@
 @import "../../../styles/variables";
 
 .wrapper {
-  &Title {
-    font-size: 2.5rem;
+  display: flex;
+  flex-direction: column;
 
+  height: 100%;
+  padding: 2% 0;
+  &Title {
+    margin: 10px 0 40px 10%;
+
+    font-size: 3rem;
+    font-weight: bold;
     letter-spacing: 2px;
+    color: $duskyBlue;
   }
 
   &Lesson {
@@ -21,7 +29,9 @@
       min-width: 180px;
       margin: 0 auto;
 
-      span {
+      img {
+        max-width: 250px;
+        max-height: 250px;
         border-radius: 50%;
       }
     }

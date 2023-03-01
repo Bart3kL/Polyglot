@@ -1,0 +1,38 @@
+.wrapper {
+  &NextLesson {
+    padding: 20px 60px;
+    border: 0;
+    text-align: center;
+    background-color: #27ae60;
+
+    font-size: 1.5rem;
+
+    transition: 0.3s;
+    cursor: pointer;
+
+    a {
+      color: white;
+      text-decoration: none;
+
+      transition: 0.3s;
+    }
+
+    :hover {
+      background-color: #2af27d;
+      a {
+        color: #1d1f68;
+      }
+    }
+  }
+  &Card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+    border: 2px solid #676767;
+    border-radius: 5px;
+  }
+}

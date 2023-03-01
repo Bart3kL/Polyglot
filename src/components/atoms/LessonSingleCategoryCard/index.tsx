@@ -16,7 +16,7 @@ const LessonSingleCategoryCard = ({
   href,
 }: LessonSingleCategoryCardProps) => {
   return (
-    <Link href={`/${href}/${id}`}>
+    <Link href={`/nauka/lekcje/${id}/${href}`}>
       <div className={cx(wrapper, disabled ? wrapperDisabled : wrapperEnabled)}>
         <p>Lekcja {lessonNumber}</p>
         <p>{type}</p>

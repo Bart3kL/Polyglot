@@ -1,0 +1,23 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  padding: 2% 0;
+  &Title {
+    margin: 10px 0 40px 10%;
+
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: $duskyBlue;
+  }
+
+  &Content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

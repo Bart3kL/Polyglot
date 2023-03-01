@@ -16,7 +16,7 @@ const LessonSingleCategories = ({
         <LessonSingleCategoryCard
           type="Słownictwo"
           lessonNumber="1"
-          href="vocabluary"
+          href="slownictwo"
           id={id}
           disabled={false}
         />
@@ -32,7 +32,7 @@ const LessonSingleCategories = ({
         <LessonSingleCategoryCard
           type="Gramatyka"
           lessonNumber="2"
-          href="grammar"
+          href="gramatyka"
           id={id}
           disabled={false}
         />
@@ -48,7 +48,7 @@ const LessonSingleCategories = ({
         <LessonSingleCategoryCard
           type="Ćwiczenia"
           lessonNumber="3"
-          href="exercises"
+          href="cwiczenia"
           id={id}
           disabled={false}
         />

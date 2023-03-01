@@ -145,6 +145,8 @@ model Repetitions {
   audio       String?
   image       String?
   power       String?
+  data        String?
+  date String
   Users       Users?  @relation(fields: [userId], references: [id])
 }
 

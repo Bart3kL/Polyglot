@@ -9,13 +9,13 @@ import ErrorNoAccess from "@/src/components/atoms/ErrorNoAccess";
 import LessonsPage from "@/src/components/organisms/LessonsPage";
 import SciencePageLayout from "@/src/components/layout/SciencePageLayout";
 import { override } from "@/src/components/lib/spinner";
-import useQuerySciencePage from "@/src/components/lib/react-query/useQuerySciencePage";
+import useQueryLessonsPage from "@/src/components/lib/react-query/useQueryLessonsPage";
 import { Header } from "@/src/types/Dictionary/utilityTypes";
 
 const Lessons = ({ id }: any) => {
   const { data: session }: any = useSession();
 
-  const { isLoading, lessons, page, userProgress } = useQuerySciencePage(id);
+  const { isLoading, lessons, page, userProgress } = useQueryLessonsPage(id);
 
   if (!session) {
     return <ErrorNoAccess />;
