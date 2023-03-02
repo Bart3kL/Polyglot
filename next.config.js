@@ -13,6 +13,7 @@ const nextConfig = {
       "i.pinimg.com",
       "i.ytimg.com",
       "lingtip.pl",
+      "images.ctfassets.net",
       "static.wixstatic.com",
       "lh3.googleusercontent.com",
       "undefined",
