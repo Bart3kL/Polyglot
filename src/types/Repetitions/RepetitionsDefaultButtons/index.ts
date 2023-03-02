@@ -1,5 +1,5 @@
 export interface RepetitionsDefaultButtonsProps {
-  handleAddLetter: () => void;
+  handleAddLetter: () => void | number;
   handleCheckResult: (v: number) => void;
   repetitionsLength: number;
   checkAnswerBtn: string;

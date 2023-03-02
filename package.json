@@ -33,6 +33,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "react-joyride": "^2.5.3",
+    "react-quill": "^2.0.0",
     "react-spinners": "^0.13.8",
     "react-toastify": "^9.1.1",
     "react-use": "^17.4.0",

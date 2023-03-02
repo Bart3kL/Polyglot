@@ -5,13 +5,11 @@ import { RepetitionsCheckButtonProps } from "@/src/types/Repetitions/Repetitions
 const RepetitionsCheckButton = ({
   handleResult,
   name,
-  key,
   index,
 }: RepetitionsCheckButtonProps) => {
   return (
-    <div id={name}>
+    <div id={name} key={name}>
       <button onClick={() => handleResult(index)}>{name}</button>
-      <p>{key}</p>
     </div>
   );
 };

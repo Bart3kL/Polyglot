@@ -1,0 +1,132 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  min-height: 65vh;
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  textarea {
+    box-sizing: border-box;
+    display: flex;
+    margin: 20px auto 0 auto;
+    width: 100%;
+    height: 200px;
+    min-width: 300px;
+
+    padding: 20px;
+    border: 0;
+    box-shadow: 8px 8px 21px 2px rgba(66, 68, 90, 1);
+
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    outline: none;
+    resize: none;
+  }
+  &Content {
+    max-width: 500px;
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+  }
+  &Title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: $duskyBlue;
+  }
+  &Audio {
+    color: #7a81cb;
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    svg:hover {
+      cursor: pointer;
+      color: #27ae60;
+    }
+  }
+
+  &WordToTranslate {
+    box-sizing: border-box;
+    display: flex;
+
+    width: 40%;
+    height: 200px;
+    min-width: 480px;
+    padding: 20px;
+    box-shadow: 8px 8px 21px 2px rgba(66, 68, 90, 1);
+
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  &Message {
+    position: absolute;
+
+    margin-top: 150px;
+    margin-left: 30px;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #27ae60;
+  }
+
+  &Buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+
+    margin-top: 50px;
+    div:nth-child(2) {
+      margin-top: 20px;
+      width: 100%;
+      > button {
+        margin: 0 auto;
+      }
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      margin: 0 20px;
+
+      button {
+        padding: 10px 20px;
+        border: 1px solid #7a81cb;
+        border-radius: 10px;
+
+        color: #7a81cb;
+
+        transition: 0.3s;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        background-color: #cccccc;
+
+        cursor: not-allowed;
+      }
+
+      button:hover {
+        background-color: #7a81cb;
+
+        color: white;
+      }
+
+      p {
+        font-style: italic;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

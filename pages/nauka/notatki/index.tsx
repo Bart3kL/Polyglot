@@ -11,27 +11,27 @@ import SciencePageLayout from "@/src/components/layout/SciencePageLayout";
 import { override } from "@/src/components/lib/spinner";
 import { getPage } from "@/src/components/lib/contentful/client";
 import useGet from "@/src/components/lib/axios/useGet";
-import FlashcardsPage from "@/src/components/organisms/FlashcardsPage";
-import { FlashcardsProps } from "@/src/types/Flashcards";
-import { FlashcardsContentful } from "@/src/types/Flashcards/utilityTypes";
+import { NotesProps } from "@/src/types/Notes";
+import NotesPage from "@/src/components/organisms/NotesPage";
+import { NotesContentful } from "@/src/types/Notes/utilityTypes";
 
-const Flashcards = ({ id }: FlashcardsProps) => {
+const Notes = ({ id }: NotesProps) => {
   const { data: session }: any = useSession();
 
   const { data: page, isLoading: loadingRepetitionsPage } = useQuery({
-    queryKey: ["flashcardsPage"],
-    queryFn: () => getPage("flashcardsPage"),
+    queryKey: ["notesPage"],
+    queryFn: () => getPage("notesPage"),
   });
-  const { data: flashcards, isLoading: loadingFlashcards } = useQuery({
-    queryKey: ["flashcards"],
-    queryFn: () => useGet("flashcards", id),
+  const { data: notes, isLoading: loadingNotes } = useQuery({
+    queryKey: ["notes"],
+    queryFn: () => useGet("notes", id),
     refetchInterval: 1000,
   });
 
   if (!session) {
     return <ErrorNoAccess />;
   }
-  const isLoading = loadingRepetitionsPage || loadingFlashcards;
+  const isLoading = loadingRepetitionsPage || loadingNotes;
   return (
     <SciencePageLayout>
       {isLoading ? (
@@ -43,16 +43,13 @@ const Flashcards = ({ id }: FlashcardsProps) => {
           data-testid="loader"
         />
       ) : (
-        <FlashcardsPage
-          flashcards={flashcards}
-          page={page as FlashcardsContentful}
-        />
+        <NotesPage notes={notes} page={page as NotesContentful} />
       )}
     </SciencePageLayout>
   );
 };
 
-export default Flashcards;
+export default Notes;
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext

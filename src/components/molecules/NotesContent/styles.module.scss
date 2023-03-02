@@ -1,0 +1,49 @@
+.wrapper {
+  width: 100%;
+  padding: 0;
+  margin: 40px 0 0 0;
+
+  list-style: none;
+
+  &Box {
+    max-width: 500px;
+    margin-bottom: 50px;
+
+    &Subject {
+      display: flex;
+      align-items: center;
+
+      width: 100%;
+      height: 50px;
+      border-radius: 10px 10px 0 0;
+
+      background-color: #d9d9d9;
+
+      font-size: 1.4rem;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      &Title {
+        display: flex;
+        justify-content: center;
+
+        width: 90%;
+      }
+
+      &Icon {
+        width: 10%;
+        margin: 10px 0 0 0;
+        padding: 0 10px;
+
+        svg {
+          font-size: 2rem;
+        }
+      }
+    }
+    &Content {
+      padding: 15px;
+      border: 1px solid black;
+    }
+  }
+}
