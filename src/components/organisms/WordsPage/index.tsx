@@ -7,7 +7,7 @@ import WordCard from "../../molecules/WordCard";
 import ErrorNoAccessDictionarty from "@/src/components/atoms/ErrorNoAccessDictionarty";
 
 import styles from "./rwd.module.scss";
-const { wrapper, wrapperList } = styles;
+const { wrapper, wrapperList, wrapperOverlay } = styles;
 
 export default function WordsPage({
   page: { headerTitle, headerDescription },
@@ -18,17 +18,19 @@ export default function WordsPage({
   return (
     <>
       <DictionaryHeader title={headerTitle} description={headerDescription} />
-      <section className={wrapper}>
-        {session ? (
+      {session ? (
+        <section className={wrapper}>
           <ul className={wrapperList}>
             {words.map((word) => (
               <WordCard key={word.name} word={word} userId={session.user.id} />
             ))}
           </ul>
-        ) : (
+        </section>
+      ) : (
+        <section className={wrapperOverlay}>
           <ErrorNoAccessDictionarty />
-        )}
-      </section>
+        </section>
+      )}
     </>
   );
 }

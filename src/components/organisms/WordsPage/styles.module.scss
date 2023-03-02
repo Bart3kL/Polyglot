@@ -5,8 +5,12 @@
   align-items: center;
   justify-content: center;
 
-  height: calc(100vh - 12vh - 70px);
-
+  &Overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 12vh - 70px);
+  }
   &List {
     display: flex;
     justify-content: center;

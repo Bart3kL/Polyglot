@@ -12,7 +12,9 @@
 
 @media only screen and (min-width: map.get($breakpoints, "small")) {
   .wrapper {
-    height: calc(100vh - 12vh - 100px);
+    &Overlay {
+      height: calc(100vh - 12vh - 100px);
+    }
   }
 }
 
