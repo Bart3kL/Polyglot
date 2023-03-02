@@ -9,6 +9,7 @@ import { Icons } from "../../shared";
 import { WordCardProps } from "@/src/types/Words/WordCard";
 import useAddWordToRepetitionsts from "../../lib/hooks/useAddWordToRepetitions";
 import useGet from "../../lib/axios/useGet";
+import { Repetition } from "@/src/types/Repetitions/utilityTypes";
 
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperDetails, wrapperDetailsActions } = styles;
@@ -32,10 +33,11 @@ const WordCard = ({ word, userId }: WordCardProps) => {
     const audio = new Audio(word.audio);
     audio.play();
   };
+  console.log(words);
 
   useEffect(() => {
     if (words) {
-      words.find((words: any) => words.name === word.name)
+      words.find((words: Repetition) => words.name === word.name)
         ? setManageWord({ exist: true, toggle: manageWord.toggle })
         : setManageWord({ exist: false, toggle: manageWord.toggle });
     }

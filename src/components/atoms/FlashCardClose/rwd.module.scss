@@ -1,0 +1,14 @@
+@use "sass:map";
+@import "./styles.module.scss";
+
+@media only screen and (min-width: 350px) {
+}
+@media only screen and (min-width: 900px) {
+  .wrapper {
+    &Speaker {
+      font-size: 4rem;
+    }
+  }
+}
+@media only screen and (min-width: 1100px) {
+}

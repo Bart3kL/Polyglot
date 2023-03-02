@@ -1,11 +1,12 @@
 import React from "react";
 
 import ExercisePageContent from "../../molecules/ExercisePageContent";
+import { ExercisePageProps } from "@/src/types/Exercises/ExercisesPage";
 
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperTitle } = styles;
 
-const ExercisesPage = ({ exercises, page }: any) => {
+const ExercisesPage = ({ exercises, page }: ExercisePageProps) => {
   const {
     headerTitle,
     lessonType,
@@ -15,6 +16,7 @@ const ExercisesPage = ({ exercises, page }: any) => {
     correctAnswer,
     nextButtonLabel,
   } = page;
+
   return (
     <section className={wrapper}>
       <h1 className={wrapperTitle}>

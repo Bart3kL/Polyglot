@@ -8,6 +8,7 @@ import SciencePageLayout from "@/src/components/layout/SciencePageLayout";
 import { getPage } from "@/src/components/lib/contentful/client";
 import ExercisesPage from "@/src/components/organisms/ExercisesPage";
 import { GrammarProps } from "@/src/types/Grammar";
+import { ExercisePageContentful } from "@/src/types/Exercises/utilityTypes";
 
 const Exercises = ({ id }: GrammarProps) => {
   const { data: exercises, isLoading: loadingExercisesPage } = useQuery({
@@ -31,7 +32,10 @@ const Exercises = ({ id }: GrammarProps) => {
           data-testid="loader"
         />
       ) : (
-        <ExercisesPage exercises={exercises} page={page} />
+        <ExercisesPage
+          exercises={exercises}
+          page={page as ExercisePageContentful}
+        />
       )}
     </SciencePageLayout>
   );

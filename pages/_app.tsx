@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 import { DM_Serif_Display } from "@next/font/google";
@@ -20,6 +21,18 @@ export default function App({
 }: AppProps) {
   return (
     <QueryClientProvider>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={10000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <SessionProvider session={session}>
         <style jsx global>{`
           :root {

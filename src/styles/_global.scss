@@ -40,3 +40,8 @@
     }
   }
 }
+.Toastify__toast-body {
+  > div {
+    color: white !important;
+  }
+}

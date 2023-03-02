@@ -1,0 +1,20 @@
+@import "../../../styles/variables";
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+  margin-top: 50px;
+
+  > div:nth-child(2) {
+    width: 100%;
+    margin-top: 50px;
+  }
+  h2 {
+    font-weight: bold;
+    color: $duskyBlue;
+    font-size: 2.3rem;
+    margin-bottom: 30px;
+  }
+}

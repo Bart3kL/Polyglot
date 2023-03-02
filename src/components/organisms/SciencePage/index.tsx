@@ -1,7 +1,7 @@
 import React from "react";
 import Joyride from "react-joyride";
-import useJoyride from "../../lib/react-joyride";
 
+import useJoyride from "../../lib/react-joyride";
 import { Icons } from "../../shared";
 import ScienceWelcomeBox from "../../atoms/ScienceWelcomeBox";
 import SciencePageNextLessons from "../../atoms/SciencePageNextLessons";

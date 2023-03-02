@@ -7,7 +7,6 @@ import styles from "./rwd.module.scss";
 const { wrapper, wrapperTitle, wrapperContent } = styles;
 
 const GrammarPage = ({ grammar, page }: GrammarPageProps) => {
-  console.log(grammar, page);
   const { headerTitle, nextStep, lessonType } = page;
   return (
     <section className={wrapper}>

@@ -1,5 +1,7 @@
 import React from "react";
 
+import { ExerciseNavigateButtonsProps } from "@/src/types/ExerciseNavigateButtons";
+
 import styles from "./rwd.module.scss";
 const { wrapper } = styles;
 
@@ -10,7 +12,7 @@ const ExerciseNavigateButtons = ({
   handleNextQuestion,
   checkButtonLabel,
   nextButtonLabel,
-}: any) => {
+}: ExerciseNavigateButtonsProps) => {
   return (
     <div className={wrapper}>
       <button

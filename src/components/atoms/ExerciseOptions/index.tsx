@@ -1,9 +1,15 @@
 import React from "react";
 
+import { ExerciseOptionsProps } from "@/src/types/Exercises/ExerciseOptions";
+
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperOption } = styles;
 
-const ExerciseOptions = ({ manageExercise, handleAnswer, exercises }: any) => {
+const ExerciseOptions = ({
+  manageExercise,
+  handleAnswer,
+  exercises,
+}: ExerciseOptionsProps) => {
   const options = [
     exercises[manageExercise.index].option1,
     exercises[manageExercise.index].option2,

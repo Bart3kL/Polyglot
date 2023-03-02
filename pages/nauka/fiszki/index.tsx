@@ -10,18 +10,28 @@ import ErrorNoAccess from "@/src/components/atoms/ErrorNoAccess";
 import SciencePageLayout from "@/src/components/layout/SciencePageLayout";
 import { override } from "@/src/components/lib/spinner";
 import { getPage } from "@/src/components/lib/contentful/client";
+import useGet from "@/src/components/lib/axios/useGet";
+import FlashcardsPage from "@/src/components/organisms/FlashcardsPage";
+import { FlashcardsProps } from "@/src/types/Flashcards";
+import { FlashcardsContentful } from "@/src/types/Flashcards/utilityTypes";
 
-const Flashcards = ({ id, repetitions }: any) => {
+const Flashcards = ({ id }: FlashcardsProps) => {
   const { data: session }: any = useSession();
 
   const { data: page, isLoading: loadingRepetitionsPage } = useQuery({
-    queryKey: ["repetitionsPage"],
-    queryFn: () => getPage("repetitionsPage"),
+    queryKey: ["flashcardsPage"],
+    queryFn: () => getPage("flashcardsPage"),
   });
+  const { data: flashcards, isLoading: loadingFlashcards } = useQuery({
+    queryKey: ["flashcards"],
+    queryFn: () => useGet("flashcards", id),
+    refetchInterval: 1000,
+  });
+
   if (!session) {
     return <ErrorNoAccess />;
   }
-  const isLoading = loadingRepetitionsPage;
+  const isLoading = loadingRepetitionsPage || loadingFlashcards;
   return (
     <SciencePageLayout>
       {isLoading ? (
@@ -33,7 +43,10 @@ const Flashcards = ({ id, repetitions }: any) => {
           data-testid="loader"
         />
       ) : (
-        <p>flashcards</p>
+        <FlashcardsPage
+          flashcards={flashcards}
+          page={page as FlashcardsContentful}
+        />
       )}
     </SciencePageLayout>
   );
@@ -56,3 +69,8 @@ export const getServerSideProps = async (
   }
   return { props: {} };
 };
+// INSERT INTO Flashcards
+// VALUES ("leg", "", value3, ...);cleqv092z0000v2r8bvjsm6df
+
+// INSERT INTO Flashcards
+// VALUES ("leg", "cleqv092z0000v2r8bvjsm6df", "leg", "noga", "1", "https://api.dictionaryapi.dev/media/pronunciations/en/leg-1-au.mp3", "https://cdn.pixabay.com/photo/2014/04/03/10/31/leg-310737__480.png", "I broke my leg skiing.","A dog bit her leg.");

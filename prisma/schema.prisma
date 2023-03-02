@@ -146,7 +146,7 @@ model Repetitions {
   image       String?
   power       String?
   data        String?
-  date String
+  date        String
   Users       Users?  @relation(fields: [userId], references: [id])
 }
 
@@ -160,6 +160,7 @@ model Flashcards {
   image       String?
   example1    String?
   example2    String?
+  date        String
   Users       Users?  @relation(fields: [userId], references: [id])
 }
 

@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
+import format from "date-fns/format";
 
 export default async function getAllLessons(
   req: NextApiRequest,
@@ -7,13 +8,15 @@ export default async function getAllLessons(
 ) {
   const prisma = new PrismaClient();
 
+  const today = String(format(new Date(), "yyyy-MM-dd"));
+
   if (req.method === "GET") {
     try {
       const { id }: any = req.query;
       const flashcards = await prisma.flashcards.findMany();
 
       const flashcardsByUser = flashcards.filter(
-        (flashcard) => flashcard.userId === id
+        (flashcard) => flashcard.userId === id && flashcard.date === today
       );
 
       return res.send(flashcardsByUser);
@@ -52,6 +55,7 @@ export default async function getAllLessons(
         example1: word.example1,
         example2: word.example2,
         step: "0",
+        date: today,
       }));
       const flashcard = data.map(
         async (data) =>

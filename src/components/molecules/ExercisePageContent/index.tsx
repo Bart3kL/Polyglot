@@ -5,6 +5,7 @@ import useExercises from "../../lib/hooks/useExercises";
 import ExerciseOptions from "../../atoms/ExerciseOptions";
 import ExerciseNavigateButtons from "../../atoms/ExerciseNavigateButtons";
 import usePostProgress from "../../lib/axios/usePostProgress";
+import { ExercisePageContent } from "@/src/types/Exercises/ExercisePageContent";
 
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperButton, wrapperExercise, wrapperExerciseMessage } =
@@ -17,7 +18,7 @@ const ExercisePageContent = ({
   nextButtonLabel,
   wrongAnswer,
   correctAnswer,
-}: any) => {
+}: ExercisePageContent) => {
   const lessonStep = usePostProgress();
   const {
     manageExercise,

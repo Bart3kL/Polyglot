@@ -1,0 +1,14 @@
+.wrapper {
+  &Speaker {
+    margin: 20px 0;
+
+    color: #7a81cb;
+    font-size: 3rem;
+
+    transition: 0.3s;
+  }
+  &Speaker:hover {
+    cursor: pointer;
+    color: #27ae60;
+  }
+}

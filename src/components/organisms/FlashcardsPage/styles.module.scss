@@ -1,0 +1,100 @@
+@import "../../../styles/variables";
+@keyframes bg {
+  0% {
+    background-size: 0 3px, 3px 0, 0 3px, 3px 0;
+  }
+  25% {
+    background-size: 100% 3px, 3px 0, 0 3px, 3px 0;
+  }
+  50% {
+    background-size: 100% 3px, 3px 100%, 0 3px, 3px 0;
+  }
+  75% {
+    background-size: 100% 3px, 3px 100%, 100% 3px, 3px 0;
+  }
+  100% {
+    background-size: 100% 3px, 3px 100%, 100% 3px, 3px 100%;
+  }
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &Title {
+    width: 130px;
+    margin-bottom: 50px;
+
+    font-weight: bold;
+    font-size: 3rem;
+    color: $duskyBlue;
+  }
+
+  &StepContent {
+    margin-top: 100px;
+  }
+  &Etaps {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    &Single {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15px;
+
+      border-radius: 5px;
+      font-weight: bold;
+      color: #2a336b;
+
+      width: 100%;
+      cursor: pointer;
+
+      height: 50px;
+      box-shadow: 8px 6px 20px -9px rgba(66, 68, 90, 1);
+      background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+      background-repeat: no-repeat;
+    }
+
+    &Single:hover {
+      background-image: linear-gradient(to right, #27ae60 100%, #27ae60 100%),
+        linear-gradient(to bottom, #27ae60 100%, #27ae60 100%),
+        linear-gradient(to right, #27ae60 100%, #27ae60 100%),
+        linear-gradient(to bottom, #27ae60 100%, #27ae60 100%);
+      background-size: 100% 3px, 3px 100%, 100% 3px, 3px 100%;
+      animation: bg 1.25s cubic-bezier(0.19, 1, 0.22, 1) 1;
+    }
+  }
+  &Tutorial {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+
+    background-color: $backgroundColorNav;
+
+    font-size: 3rem;
+    color: $white;
+
+    transition: 0.3s;
+  }
+  &Tutorial:hover {
+    color: $tealishBlue-2;
+
+    cursor: pointer;
+  }
+}
