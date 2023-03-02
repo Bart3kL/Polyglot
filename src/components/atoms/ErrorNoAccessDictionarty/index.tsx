@@ -1,16 +1,11 @@
 import React from "react";
 
-import NavigationLeft from "../../layout/NavBar/NavigationLeft";
-
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperContent, wrapperNav } = styles;
 
-const ErrorNoAccess = () => {
+const ErrorNoAccessDictionarty = () => {
   return (
     <div className={wrapper}>
-      <div className={wrapperNav}>
-        <NavigationLeft />
-      </div>
       <div className={wrapperContent}>
         <h2>Zaloguj się!</h2>
         <p>Musisz być zalogowany aby korzystać z tej strony</p>
@@ -19,4 +14,4 @@ const ErrorNoAccess = () => {
   );
 };
 
-export default ErrorNoAccess;
+export default ErrorNoAccessDictionarty;
