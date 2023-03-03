@@ -24,7 +24,7 @@ const NotesForm = ({
   } = useAddNote();
 
   return (
-    <div className={wrapper}>
+    <div className={wrapper} id="notesForm">
       <div className={wrapperForm}>
         <label htmlFor="subject">{subjectLabel}</label>
         <input

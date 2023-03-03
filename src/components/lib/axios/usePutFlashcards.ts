@@ -17,6 +17,7 @@ const usePutFlashcards = async (id: string) => {
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
+      style: { color: "white", top: "50px" },
       draggable: true,
     });
   }

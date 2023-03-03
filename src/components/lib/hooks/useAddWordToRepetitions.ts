@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import usePostWordToRepetitions from "../axios/usePostWordToRepetitions";
-import deleteWordFromRepetitions from "../axios/deleteWordFromRepetitions";
+import useDeleteWordFromRepetitions from "../axios/useDeleteWordFromRepetitions";
 const useAddWordToRepetitionsts = (
   word: any,
   userId: string,
@@ -18,7 +18,7 @@ const useAddWordToRepetitionsts = (
   };
   const handleDeleteWordFromRepetitions = () => {
     setManageWord({ exist: false, toggle: manageWord.toggle });
-    deleteWordFromRepetitions(userId, wordId);
+    useDeleteWordFromRepetitions(userId, wordId);
   };
 
   return {

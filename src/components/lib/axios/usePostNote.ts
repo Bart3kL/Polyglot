@@ -10,6 +10,7 @@ export async function usePostNote(note: any, userId: any) {
       render: "",
       type: "success",
       isLoading: false,
+      style: { color: "white", top: "50px" },
     });
   } finally {
     toast.update(id, {
@@ -21,6 +22,7 @@ export async function usePostNote(note: any, userId: any) {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
+      style: { color: "white", top: "50px" },
     });
   }
 }

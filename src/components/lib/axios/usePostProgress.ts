@@ -1,17 +1,27 @@
 import { useSession } from "next-auth/react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { toast } from "react-toastify";
 
 const usePostProgress = () => {
   const { data }: any = useSession();
 
   const fetchWord = (progress: any) => {
-    fetch("/api/user-progress", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(progress),
-    });
+    try {
+      axios.post("/api/user-progress", { progress });
+    } catch (e) {
+      const err = e as AxiosError;
+      toast.error(`⚔️ ${err.message}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        style: { color: "red", top: "50px" },
+      });
+    }
   };
   const fetchLessonStep = async (lesson: string, lessonStep: string) => {
     fetchWord({

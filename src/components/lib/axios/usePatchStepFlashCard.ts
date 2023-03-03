@@ -13,6 +13,7 @@ export async function usePatchStepFlashCard(
       render: "Ładowanie",
       type: "success",
       isLoading: false,
+      style: { color: "white", top: "50px" },
     });
   } finally {
     toast.update(id, {
@@ -24,6 +25,7 @@ export async function usePatchStepFlashCard(
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
+      style: { color: "white", top: "50px" },
     });
   }
 }

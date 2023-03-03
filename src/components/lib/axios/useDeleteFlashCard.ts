@@ -1,6 +1,23 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { toast } from "react-toastify";
+
 export async function useDeleteFlashCard(userId: string, wordId: string) {
-  await axios.delete(
-    `http://localhost:3000/api/flashcards/${userId}/${wordId}`
-  );
+  try {
+    await axios.delete(
+      `http://localhost:3000/api/flashcards/${userId}/${wordId}`
+    );
+  } catch (e) {
+    const err = e as AxiosError;
+    toast.error(`⚔️ ${err.message}`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      style: { color: "red", top: "50px" },
+    });
+  }
 }

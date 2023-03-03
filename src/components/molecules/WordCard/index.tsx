@@ -33,7 +33,6 @@ const WordCard = ({ word, userId }: WordCardProps) => {
     const audio = new Audio(word.audio);
     audio.play();
   };
-  console.log(words);
 
   useEffect(() => {
     if (words) {

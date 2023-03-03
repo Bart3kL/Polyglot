@@ -1,6 +1,5 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-// import { Word } from "../../components/types/WordsPage/WordCard/utilityTypes";
 
 export async function usePostFlashcard(data: any, userid: string) {
   const id = toast.loading("Proszę czekać...");
@@ -10,6 +9,7 @@ export async function usePostFlashcard(data: any, userid: string) {
       render: "Ładowanie",
       type: "success",
       isLoading: false,
+      style: { color: "white", top: "50px" },
     });
   } finally {
     toast.update(id, {
@@ -21,6 +21,7 @@ export async function usePostFlashcard(data: any, userid: string) {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
+      style: { color: "white", top: "50px" },
     });
   }
 }

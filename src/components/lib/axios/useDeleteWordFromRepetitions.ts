@@ -1,15 +1,11 @@
 import axios, { AxiosError } from "axios";
 import { toast } from "react-toastify";
 
-export default async function useGetSingleLessonCategory(
-  category: string,
-  id: string
-) {
+async function useDeleteWordFromRepetitions(userId: string, wordId: string) {
   try {
-    const { data } = await axios.get(
-      `http://localhost:3000/api/lessons/${id}/${category}`
+    await axios.delete(
+      `http://localhost:3000/api/repetitions/${userId}/${wordId}`
     );
-    return data;
   } catch (e) {
     const err = e as AxiosError;
     toast.error(`⚔️ ${err.message}`, {
@@ -25,3 +21,4 @@ export default async function useGetSingleLessonCategory(
     });
   }
 }
+export default useDeleteWordFromRepetitions;

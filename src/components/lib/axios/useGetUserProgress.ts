@@ -1,11 +1,28 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { toast } from "react-toastify";
 
 const useGetUserProgress = async (id: string) => {
   if (id) {
-    const data = await axios
-      .get(`http://localhost:3000/api/user-progress/${id}`)
-      .then(({ data }) => data);
-    return data;
+    try {
+      const data = await axios.get(
+        `http://localhost:3000/api/user-progress/${id}`
+      );
+
+      return data;
+    } catch (e) {
+      const err = e as AxiosError;
+      toast.error(`⚔️ ${err.message}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        style: { color: "red", top: "50px" },
+      });
+    }
   }
   return;
 };

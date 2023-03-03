@@ -12,7 +12,7 @@ const Navigation = ({ backgroundColor }: NavigationProps) => {
   return (
     <nav
       className={wrapper}
-      style={{ backgroundColor: backgroundColor ? "rgb(31 41 55)" : "" }}
+      style={{ backgroundColor: backgroundColor ? "rgb(31 41 55)" : "initial" }}
     >
       <div className={wrapperLogo}>
         <Link href="/">Polyglot</Link>

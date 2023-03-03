@@ -16,7 +16,7 @@ const {
 const NotesContent = ({ notes }: NotesContentProps) => {
   const [toggle, setToggle] = useState({ show: false, index: 0 });
   return (
-    <ul className={wrapper}>
+    <ul className={wrapper} id="notesContent">
       {notes.map((note, i: number) => (
         <li className={wrapperBox} key={note.id}>
           <div
