@@ -6,26 +6,30 @@ export async function usePatchStepFlashCard(
   userid: string,
   wordid: string
 ) {
-  const id = toast.loading("Proszę czekać...");
+  const id = toast.loading("Proszę czekać...", {
+    position: "top-right",
+    style: { top: "50px" },
+  });
   try {
     await axios.patch(`/api/flashcards/${userid}/${wordid}`, newData);
     toast.update(id, {
       render: "Ładowanie",
       type: "success",
       isLoading: false,
-      style: { color: "white", top: "50px" },
+      style: { top: "50px" },
     });
   } finally {
     toast.update(id, {
       render: "Przeniesiono do następnego poziomu!",
       type: "success",
+      position: "top-right",
       isLoading: false,
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      style: { color: "white", top: "50px" },
+      style: { top: "50px" },
     });
   }
 }

@@ -19,7 +19,7 @@ export default async function useGet(table: string, secondTable?: string) {
         draggable: true,
         progress: undefined,
         theme: "light",
-        style: { color: "red", top: "50px" },
+        style: { top: "50px" },
       });
     }
   }
@@ -37,7 +37,7 @@ export default async function useGet(table: string, secondTable?: string) {
       draggable: true,
       progress: undefined,
       theme: "light",
-      style: { color: "red", top: "50px" },
+      style: { top: "50px" },
     });
   }
 }

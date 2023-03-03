@@ -7,7 +7,7 @@ const usePostProgress = () => {
 
   const fetchWord = (progress: any) => {
     try {
-      axios.post("/api/user-progress", { progress });
+      axios.post("/api/user-progress", progress);
     } catch (e) {
       const err = e as AxiosError;
       toast.error(`⚔️ ${err.message}`, {
@@ -19,7 +19,7 @@ const usePostProgress = () => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        style: { color: "red", top: "50px" },
+        style: { top: "50px" },
       });
     }
   };

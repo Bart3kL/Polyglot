@@ -2,7 +2,10 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export async function usePostNote(note: any, userId: any) {
-  const id = toast.loading("Proszę czekać...");
+  const id = toast.loading("Proszę czekać...", {
+    style: {  top: "50px" },
+    position: "top-right",
+  });
   try {
     await axios.post(`/api/notes/${userId}`, { ...note, userId: userId });
 
@@ -10,11 +13,12 @@ export async function usePostNote(note: any, userId: any) {
       render: "",
       type: "success",
       isLoading: false,
-      style: { color: "white", top: "50px" },
+      style: { top: "50px" },
     });
   } finally {
     toast.update(id, {
       render: "Wczytywanie...",
+      position: "top-right",
       type: "success",
       isLoading: false,
       autoClose: 5000,
@@ -22,7 +26,7 @@ export async function usePostNote(note: any, userId: any) {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      style: { color: "white", top: "50px" },
+      style: {top: "50px" },
     });
   }
 }

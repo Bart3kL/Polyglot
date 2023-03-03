@@ -1,3 +1,5 @@
+import { Step } from "react-joyride";
+
 export type PageListeningContetful = {
   checkAnswerBtn: string;
   headerTitle: string;
@@ -5,4 +7,5 @@ export type PageListeningContetful = {
   thatsAllLabel: string;
   translatePleaceholder: string;
   checkButtonsList: { name: string; key: string }[];
+  tutorialSteps: Step[];
 };

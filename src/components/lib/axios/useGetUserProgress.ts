@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const useGetUserProgress = async (id: string) => {
   if (id) {
     try {
-      const data = await axios.get(
+      const { data } = await axios.get(
         `http://localhost:3000/api/user-progress/${id}`
       );
 
@@ -20,7 +20,7 @@ const useGetUserProgress = async (id: string) => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        style: { color: "red", top: "50px" },
+        style: { top: "50px" },
       });
     }
   }

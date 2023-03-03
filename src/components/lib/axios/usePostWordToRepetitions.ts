@@ -24,7 +24,7 @@ function usePostWordToRepetitions(word: Word, userId: string) {
       draggable: true,
       progress: undefined,
       theme: "light",
-      style: { color: "red", top: "50px" },
+      style: { top: "50px" },
     });
   }
 }

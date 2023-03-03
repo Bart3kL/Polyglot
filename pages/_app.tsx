@@ -31,7 +31,6 @@ export default function App({
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
       />
       <SessionProvider session={session}>
         <style jsx global>{`
