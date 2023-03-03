@@ -23,12 +23,11 @@
 
       transition: 0.3s;
     }
-
-    :hover {
-      background-color: #2af27d;
-      a {
-        color: #1d1f68;
-      }
+  }
+  &Button:hover {
+    background-color: #2af27d;
+    a {
+      color: #1d1f68;
     }
   }
   &Exercise {

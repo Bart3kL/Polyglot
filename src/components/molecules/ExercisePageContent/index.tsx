@@ -42,7 +42,13 @@ const ExercisePageContent = ({
             lessonStep(`${parseInt(exercises[0].exerciseForLessonId) + 1}`, "1")
           }
         >
-          <Link href={`/nauka/lekcje`}>{nextStep}</Link>
+          <Link
+            href={`/nauka/lekcje/${
+              Number(exercises[0].exerciseForLessonId) + 1
+            }/slownictwo`}
+          >
+            {nextStep}
+          </Link>
         </div>
       ) : (
         <div className={wrapperExercise}>

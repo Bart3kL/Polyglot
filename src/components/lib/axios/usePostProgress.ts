@@ -1,40 +1,31 @@
 import { useSession } from "next-auth/react";
-import axios, { AxiosError } from "axios";
-import { toast } from "react-toastify";
+import axios from "axios";
+import useGet from "./useGet";
 
 const usePostProgress = () => {
   const { data }: any = useSession();
 
   const fetchWord = (progress: any) => {
-    try {
-      axios.post("/api/user-progress", progress);
-    } catch (e) {
-      const err = e as AxiosError;
-      toast.error(`⚔️ ${err.message}`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        style: { top: "50px" },
-      });
-    }
+    axios.post("/api/user-progress", progress);
   };
+
   const fetchLessonStep = async (lesson: string, lessonStep: string) => {
+    const repetionsLength = await useGet("repetitions", data.user.id);
+    const flashcardsLength = await useGet("flashcards", data.user.id);
     fetchWord({
       lesson,
       lessonStep,
       userId: data.user.id,
       achievements: "false",
-      lessonAchievement: "false",
-      repeatsAchievement: "false",
-      listeninglessonAchievement: "false",
-      noteslessonAchievement: "false",
-      flashcardslessonAchievement: "false",
-      allLessonslessonAchievement: "false",
+      lessonAchievement: Number(lesson) >= 2 ? "true" : "false",
+      repeatsAchievement: flashcardsLength.length >= 10 ? "true" : "false",
+      listeninglessonAchievement:
+        repetionsLength.length >= 150 ? "true" : "false",
+      noteslessonAchievement: Number(lesson) >= 3 ? "true" : "false",
+      flashcardslessonAchievement:
+        repetionsLength.length >= 30 ? "true" : "false",
+      allLessonslessonAchievement:
+        flashcardsLength.length >= 45 ? "true" : "false",
     });
   };
 

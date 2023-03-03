@@ -1,6 +1,7 @@
 import { ACTIONS, CallBackProps, EVENTS, STATUS, Step } from "react-joyride";
 import { useMount, useSetState } from "react-use";
 import Router from "next/router";
+
 interface State {
   run: boolean;
   sidebarOpen: boolean;

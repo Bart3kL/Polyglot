@@ -20,6 +20,7 @@ const Lessons = ({ id }: any) => {
   if (!session) {
     return <ErrorNoAccess />;
   }
+
   return (
     <SciencePageLayout>
       {isLoading ? (

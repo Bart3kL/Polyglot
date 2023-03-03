@@ -31,10 +31,10 @@ const ScienceSingleAchievement = ({
       <div className={wrapperDetails}>
         <h4>{name}</h4>
         <p className={wrapperDetailsDescription}>
-          {isAchieved ? achievementsCongratsText : description}
+          {isAchieved ? description : description}
         </p>
         <p className={wrapperDetailsDescriptionDesktop}>
-          {isAchieved ? achievementsCongratsText : description}
+          {isAchieved ? description : description}
         </p>
       </div>
     </div>
