@@ -9,9 +9,9 @@ const { wrapper, wrapperName } = styles;
 const renderSwitch = (index: number) => {
   switch (true) {
     case index === 0:
-      return <Icons.VscGithubInverted />;
-    case index === 1:
       return <Icons.FcGoogle />;
+    case index === 1:
+      return <Icons.VscGithubInverted />;
     case index === 2:
       return <Icons.TfiFacebook />;
   }

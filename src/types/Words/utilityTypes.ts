@@ -1,3 +1,4 @@
+import { Step } from "react-joyride";
 export type Word = {
   id: string;
   image: string;
@@ -16,4 +17,10 @@ export type WordToRepetition = {
   translation: string;
   audio: string;
   date: string;
+};
+
+export type WordPageContentful = {
+  headerTitle: string;
+  headerDescription?: string;
+  tutorialSteps: Step[];
 };

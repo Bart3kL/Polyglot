@@ -24,9 +24,7 @@ export default async function useGet(table: string, secondTable?: string) {
     }
   }
   try {
-    const { data } = await axios.get(
-      `https://polyglot-bart3kl.vercel.app/api/${table}/`
-    );
+    const { data } = await axios.get(`https://polyglot-bart3kl.vercel.app/api/${table}/`);
     return data;
   } catch (e) {
     const err = e as AxiosError;

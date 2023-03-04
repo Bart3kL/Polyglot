@@ -16,13 +16,12 @@ import { SessionType } from "@/src/types/Auth";
 function Science({ id }: ScienceProps) {
   const { data: session } = useSession();
 
-  const { isLoading, lessons, page, achievements, userProgress } =
+  const { isLoading, lessons, page, achievements, userProgress, repetitions } =
     useQuerySciencePage(id);
 
   if (!session) {
     return <ErrorNoAccess />;
   }
-
   return (
     <SciencePageLayout>
       <>
@@ -40,6 +39,8 @@ function Science({ id }: ScienceProps) {
             achievements={achievements}
             page={page as ScienceHeader}
             lessons={lessons}
+            repetitions={repetitions}
+            userid={id}
           />
         )}
       </>

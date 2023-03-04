@@ -17,6 +17,10 @@ const useQuerySciencePage = (id: string) => {
     queryKey: ["achievements"],
     queryFn: () => useGet("achievements"),
   });
+  const { data: repetitions, isLoading: loadingRepetitions } = useQuery({
+    queryKey: ["panelRepetitions"],
+    queryFn: () => useGet("repetitions"),
+  });
 
   const { data: userProgress, isLoading: loadingUserProgress } = useQuery({
     queryKey: ["userProgress"],
@@ -25,10 +29,11 @@ const useQuerySciencePage = (id: string) => {
 
   const isLoading =
     loadingLessons ||
+    loadingRepetitions ||
     loadingSciencePage ||
     loadingAchievements ||
     loadingUserProgress;
-  return { isLoading, lessons, page, achievements, userProgress };
+  return { isLoading, lessons, page, achievements, userProgress, repetitions };
 };
 
 export default useQuerySciencePage;

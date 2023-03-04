@@ -19,7 +19,7 @@ export default function SignInPage({
     <div className={wrapper}>
       <div className={wrapperBox}>
         <Icons.LogoSmall />
-        <h1 className={wrapperBoxTitle}>Wybierz sposób logowania</h1>
+        <h1 className={wrapperBoxTitle}>Logowanie</h1>
         <div className={wrapperBoxButtons}>
           {Object.values(providers).map((provider, i) => (
             <LoginButton provider={provider} index={i} key={provider.name} />

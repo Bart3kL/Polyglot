@@ -12,6 +12,7 @@ const WordCardImage = ({
   manageWord,
   handleDeleteWordFromRepetitions,
   handleWordToRepetitions,
+  index,
 }: WordCardImageProps) => {
   return (
     <div className={wrapper}>
@@ -23,7 +24,11 @@ const WordCardImage = ({
           </p>
         </div>
       ) : (
-        <div className={wrapperAdd} onClick={handleWordToRepetitions}>
+        <div
+          className={wrapperAdd}
+          onClick={handleWordToRepetitions}
+          id={index === 0 ? "addIcon" : ""}
+        >
           <p>
             <Icons.MdAdd />
           </p>

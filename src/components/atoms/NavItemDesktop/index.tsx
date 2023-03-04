@@ -44,22 +44,9 @@ const NavItemDesktop = ({
           backgroundColor: currentRoute === href ? "#374151" : "initial",
         }}
       >
-        {isUserLogged ? (
-          <p className={wrapperItemLink}>{name}</p>
-        ) : (
-          <Link href={href} className={wrapperItemLink}>
-            {name}
-          </Link>
-        )}
-        {isUserLogged && (
-          <div className={wrapperBox}>
-            <ul className={wrapperBoxSubmenu}>
-              {subMenu.map((subItem) => (
-                <DesktoNavSubItem {...subItem} key={subItem.href} />
-              ))}
-            </ul>
-          </div>
-        )}
+        <Link href={href} className={wrapperItemLink}>
+          {name}
+        </Link>
       </li>
     </>
   );

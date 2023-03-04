@@ -18,7 +18,6 @@ const Categories = ({ id }: CategoriesProps) => {
     queryKey: ["categoriesPage"],
     queryFn: () => getPage("categories"),
   });
-
   const isLoading = loadingCategories || loadingCategoriesPage;
 
   return (

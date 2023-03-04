@@ -31,26 +31,11 @@
       width: 90%;
 
       button:nth-child(1) {
-        background-color: $black;
-        color: $white;
+        background-color: $white;
+        color: $black;
       }
       button:nth-child(1):hover {
-        background-color: $black-2;
-      }
-
-      button:nth-child(2) {
-        background-color: $white;
-      }
-      button:nth-child(2):hover {
         background-color: $cyanBlue;
-      }
-
-      button:nth-child(3) {
-        background-color: $tealishBlue;
-        color: $white;
-      }
-      button:nth-child(3):hover {
-        background-color: $tealishBlue-2;
       }
     }
   }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { BarLoader } from "react-spinners";
 
@@ -12,9 +12,10 @@ import useGet from "../../lib/axios/useGet";
 import { Repetition } from "@/src/types/Repetitions/utilityTypes";
 
 import styles from "./rwd.module.scss";
-const { wrapper, wrapperDetails, wrapperDetailsActions } = styles;
+const { wrapper, wrapperDetails, wrapperDetailsActions, wrapperTutorial } =
+  styles;
 
-const WordCard = ({ word, userId }: WordCardProps) => {
+const WordCard = ({ word, userId, index, tutorialSteps }: WordCardProps) => {
   const userid = `${word.id}${userId}`;
   const { data: words, isLoading } = useQuery({
     queryKey: ["singleWord", word.id],
@@ -54,34 +55,38 @@ const WordCard = ({ word, userId }: WordCardProps) => {
           />
         </li>
       ) : (
-        <li className={wrapper}>
-          {!manageWord.toggle ? (
-            <>
-              <WordCardImage
-                image={word.image}
-                manageWord={manageWord}
-                handleDeleteWordFromRepetitions={
-                  handleDeleteWordFromRepetitions
-                }
-                handleWordToRepetitions={handleWordToRepetitions}
-              />
-              <div className={wrapperDetails}>
-                <p>{word.name}</p>
-                <p>{word.translation}</p>
-                <div className={wrapperDetailsActions}>
-                  <Icons.BsFillVolumeUpFill onClick={handleSound} />
-                  <button onClick={handleToggleSentences}>Zdania</button>
+        <>
+          <li className={wrapper}>
+            {!manageWord.toggle ? (
+              <>
+                <WordCardImage
+                  image={word.image}
+                  manageWord={manageWord}
+                  handleDeleteWordFromRepetitions={
+                    handleDeleteWordFromRepetitions
+                  }
+                  handleWordToRepetitions={handleWordToRepetitions}
+                  index={index}
+                  tutorialSteps={tutorialSteps}
+                />
+                <div className={wrapperDetails}>
+                  <p>{word.name}</p>
+                  <p>{word.translation}</p>
+                  <div className={wrapperDetailsActions}>
+                    <Icons.BsFillVolumeUpFill onClick={handleSound} />
+                    <button onClick={handleToggleSentences}>Zdania</button>
+                  </div>
                 </div>
-              </div>
-            </>
-          ) : (
-            <WordCardSentences
-              example1={word.example1}
-              example2={word.example2}
-              handleToggleSentences={handleToggleSentences}
-            />
-          )}
-        </li>
+              </>
+            ) : (
+              <WordCardSentences
+                example1={word.example1}
+                example2={word.example2}
+                handleToggleSentences={handleToggleSentences}
+              />
+            )}
+          </li>
+        </>
       )}
     </>
   );

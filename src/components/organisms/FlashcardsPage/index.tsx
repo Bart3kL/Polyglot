@@ -19,7 +19,6 @@ const {
 } = styles;
 
 const FlashcardsPage = ({ flashcards, page }: FlashcardsPageProps) => {
-  console.log(flashcards);
   const { filteredData, showStepFlashcards, handleChangeStep } =
     useManageStep(flashcards);
   const { steps, title, tutorialSteps } = page;

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 const usePutFlashcards = async (id: string) => {
   const bar = toast.loading("Wczytywanie...", {
     style: { top: "50px" },
+    position: "top-right",
   });
   try {
     await axios.put(`/api/flashcards/${id}`, {

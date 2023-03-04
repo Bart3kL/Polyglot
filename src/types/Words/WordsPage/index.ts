@@ -1,3 +1,7 @@
-import { Header } from "../../Dictionary/utilityTypes";
+import { WordPageContentful } from "../utilityTypes";
+import { Step } from "react-joyride";
 import { Word } from "../utilityTypes";
-export type WordsPageProps = { words: Word[]; page: Header };
+export type WordsPageProps = {
+  words: Word[];
+  page: WordPageContentful;
+};

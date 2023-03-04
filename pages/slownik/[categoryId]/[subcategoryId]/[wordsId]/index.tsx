@@ -7,7 +7,7 @@ import useGetDictionary from "@/src/components/lib/axios/useGetDictionary";
 import { getPage } from "@/src/components/lib/contentful/client";
 import WordsPage from "@/src/components/organisms/WordsPage";
 import { WordsProps } from "@/src/types/Words";
-import { Header } from "@/src/types/Dictionary/utilityTypes";
+import { WordPageContentful } from "@/src/types/Words/utilityTypes";
 
 const Words = ({ id }: WordsProps) => {
   const { data: words, isLoading: loadingWords } = useQuery({
@@ -31,7 +31,7 @@ const Words = ({ id }: WordsProps) => {
           data-testid="loader"
         />
       ) : (
-        <WordsPage page={page as Header} words={words} />
+        <WordsPage page={page as WordPageContentful} words={words} />
       )}
     </>
   );

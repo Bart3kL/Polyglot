@@ -6,7 +6,10 @@ import { ScienceWelcomeBoxProps } from "@/src/types/Science/ScienceWelcomeBox";
 import styles from "./rwd.module.scss";
 const { wrapper } = styles;
 
-const ScienceWelcomeBox = ({ welcomeMessage }: ScienceWelcomeBoxProps) => {
+const ScienceWelcomeBox = ({
+  welcomeMessage,
+  todayDoneRepetitions,
+}: ScienceWelcomeBoxProps) => {
   const { data: session } = useSession();
 
   return (
@@ -14,7 +17,7 @@ const ScienceWelcomeBox = ({ welcomeMessage }: ScienceWelcomeBoxProps) => {
       <h2>
         {welcomeMessage} {session?.user.name}
       </h2>
-      <p id="welcomeBox">Dzisiaj wykonałeś 42 powtórki</p>
+      <p id="welcomeBox">Dzisiaj wykonałeś {todayDoneRepetitions} powtórki</p>
     </div>
   );
 };

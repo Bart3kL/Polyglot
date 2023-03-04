@@ -9,6 +9,8 @@ import ScienceProgressBar from "../../molecules/ScienceProgressBar";
 import ScienceAchievements from "../../molecules/ScienceAchievements";
 import { SciencePageProps } from "@/src/types/Science/SciencePage";
 import usePostProgress from "@/src/components/lib/axios/usePostProgress";
+import addDays from "date-fns/addDays";
+import format from "date-fns/format";
 
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperBox, wrapperTutorial } = styles;
@@ -18,7 +20,19 @@ const SciencePage = ({
   achievements,
   page,
   lessons,
+  repetitions,
+  userid,
 }: SciencePageProps) => {
+  const today = new Date();
+  const tomorow = addDays(today, 1);
+  const afterTomorrow = addDays(today, 2);
+  const tomorrowDate = String(format(tomorow, "yyyy-MM-dd"));
+  const afterTomorrowDate = String(format(afterTomorrow, "yyyy-MM-dd"));
+
+  const todayDoneRepetitions = repetitions.filter(
+    ({ userId, date }) =>
+      userId === userid && (date === tomorrowDate || date === afterTomorrowDate)
+  );
   const {
     welcomeMessage,
     nextLessons,
@@ -70,7 +84,10 @@ const SciencePage = ({
       )}
 
       <div className={wrapperBox}>
-        <ScienceWelcomeBox welcomeMessage={welcomeMessage} />
+        <ScienceWelcomeBox
+          welcomeMessage={welcomeMessage}
+          todayDoneRepetitions={todayDoneRepetitions.length}
+        />
         <SciencePageNextLessons
           nextLessons={nextLessons}
           threeNextLessons={threeNextLessons}
