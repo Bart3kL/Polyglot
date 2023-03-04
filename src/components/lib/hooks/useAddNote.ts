@@ -7,7 +7,7 @@ const useAddNote = () => {
   const [subject, setSubject] = useState("");
   const [convertedText, setConvertedText] = useState("Wpisz coś...");
 
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
 
   const handleAddNote = () => {
     usePostNote({ subject, convertedText }, session?.user.id);

@@ -70,7 +70,6 @@ const useListening = (shuffledArray: Word[]) => {
   };
 
   const handleSound = () => {
-    console.log("s");
     new Audio(shuffledArray[manageRepeats.index]?.audio).play();
   };
 

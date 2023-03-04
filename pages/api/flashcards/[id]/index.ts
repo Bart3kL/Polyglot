@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
 import format from "date-fns/format";
+import { CustomReqQuery } from "@/src/types/Auth";
 
 export default async function getAllLessons(
   req: NextApiRequest,
@@ -12,7 +13,7 @@ export default async function getAllLessons(
 
   if (req.method === "GET") {
     try {
-      const { id }: any = req.query;
+      const { id } = req.query as unknown as CustomReqQuery;
       const flashcards = await prisma.flashcards.findMany();
 
       const flashcardsByUser = flashcards.filter(

@@ -1,5 +1,4 @@
-import axios, { AxiosError } from "axios";
-import { toast } from "react-toastify";
+import axios from "axios";
 
 const useGetUserProgress = async (id: string) => {
   if (id) {
@@ -9,20 +8,7 @@ const useGetUserProgress = async (id: string) => {
       );
 
       return data;
-    } catch (e) {
-      const err = e as AxiosError;
-      toast.error(`⚔️ ${err.message}`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        style: { top: "50px" },
-      });
-    }
+    } catch (e) {}
   }
   return;
 };

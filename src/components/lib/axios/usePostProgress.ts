@@ -1,21 +1,22 @@
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import useGet from "./useGet";
+import { Progress } from "@/src/types/Science/utilityTypes";
 
 const usePostProgress = () => {
-  const { data }: any = useSession();
+  const { data } = useSession();
 
-  const fetchWord = (progress: any) => {
+  const fetchWord = (progress: Progress) => {
     axios.post("/api/user-progress", progress);
   };
 
   const fetchLessonStep = async (lesson: string, lessonStep: string) => {
-    const repetionsLength = await useGet("repetitions", data.user.id);
-    const flashcardsLength = await useGet("flashcards", data.user.id);
+    const repetionsLength = await useGet("repetitions", data?.user.id);
+    const flashcardsLength = await useGet("flashcards", data?.user.id);
     fetchWord({
       lesson,
       lessonStep,
-      userId: data.user.id,
+      userId: data?.user.id,
       achievements: "false",
       lessonAchievement: Number(lesson) >= 2 ? "true" : "false",
       repeatsAchievement: flashcardsLength.length >= 10 ? "true" : "false",

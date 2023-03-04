@@ -1,10 +1,11 @@
 import axios, { AxiosError } from "axios";
 import { toast } from "react-toastify";
+import { WordToRepetition } from "@/src/types/Words/utilityTypes";
 
 const usePatchWordToRepetitions = async (
   userId: string,
   wordId: string,
-  data: any
+  data: WordToRepetition
 ) => {
   try {
     await axios.post(

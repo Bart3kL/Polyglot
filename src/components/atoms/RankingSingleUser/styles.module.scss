@@ -1,0 +1,71 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 5px 0;
+  padding: 20px 10px;
+  border: 1px solid #dee2e3;
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &Name {
+    display: flex;
+    align-items: center;
+
+    margin: 0 auto;
+
+    &Number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 40px;
+      height: 40px;
+      margin: 0 15px 0 0;
+      border: 1px solid #dee2e3;
+
+      font-weight: bold;
+      font-size: 2rem;
+    }
+
+    &Image {
+      width: 40px;
+      height: 40px;
+    }
+
+    &Text {
+      margin-left: 15px;
+
+      font-weight: bold;
+    }
+  }
+  &Achievements {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px auto 0 auto;
+    img {
+      margin: 5px;
+    }
+  }
+  &Details {
+    margin: 20px auto 0 auto;
+
+    text-align: center;
+
+    div {
+      margin: 10px 0;
+    }
+
+    &Title {
+      font-weight: bold;
+    }
+
+    &Number {
+      font-style: italic;
+    }
+  }
+}

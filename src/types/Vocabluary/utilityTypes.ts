@@ -17,3 +17,12 @@ export type VocabluaryPageContentful = {
   lessonType: string;
   tutorialSteps: Step[];
 };
+
+export type VocabluaryWordWithExamples = {
+  audio: string;
+  id: string;
+  image: string;
+  name: string;
+  translation: string;
+  vocabularyForLessonId: string;
+};

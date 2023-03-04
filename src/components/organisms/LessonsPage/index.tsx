@@ -17,7 +17,7 @@ const LessonsPage = ({ page, lessons, userProgress }: LessonsPageProps) => {
           <LessonCard
             {...lesson}
             key={lesson.id}
-            currentLesson={userProgress.lesson}
+            currentLesson={userProgress?.lesson}
           />
         ))}
       </div>

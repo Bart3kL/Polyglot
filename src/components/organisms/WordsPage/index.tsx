@@ -13,7 +13,7 @@ export default function WordsPage({
   page: { headerTitle, headerDescription },
   words,
 }: WordsPageProps) {
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
 
   return (
     <>

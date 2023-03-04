@@ -1,11 +1,13 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { FlashcardPost } from "@/src/types/Flashcards/utilityTypes";
 
-export async function usePostFlashcard(data: any, userid: string) {
+export async function usePostFlashcard(data: FlashcardPost, userid: string) {
   const id = toast.loading("Proszę czekać...", {
     style: { color: "white!important", top: "50px" },
     position: "top-right",
   });
+
   try {
     await axios.post(`/api/flashcards/${userid}`, data);
     toast.update(id, {

@@ -17,7 +17,7 @@ const NavItemDesktop = ({
   subMenu,
   index,
 }: NavItemDesktopProps) => {
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
   const currentRoute = useRouter().pathname;
   const isUserLogged = subMenu && session;
 

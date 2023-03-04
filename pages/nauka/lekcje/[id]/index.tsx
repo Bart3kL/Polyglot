@@ -13,9 +13,10 @@ import ErrorNoAccess from "@/src/components/atoms/ErrorNoAccess";
 import LessonSinglePage from "@/src/components/organisms/LessonSinglePage";
 import useGetUserProgress from "@/src/components/lib/axios/useGetUserProgress";
 import { LessonSingleProps } from "@/src/types/LessonSingle";
+import { SessionType } from "@/src/types/Auth";
 
 const LessonSingle = ({ id, userId }: LessonSingleProps) => {
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
 
   const { data: lesson, isLoading: loadingSingleLessonPage } = useQuery({
     queryKey: ["singleLessonPage", id],
@@ -54,7 +55,7 @@ export const getServerSideProps = async (
 ) => {
   const id = context.params?.id as string;
 
-  const data: any = await getServerSession(
+  const data: SessionType = await getServerSession(
     context.req,
     context.res,
     authOptions

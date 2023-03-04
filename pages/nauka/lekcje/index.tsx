@@ -11,9 +11,11 @@ import SciencePageLayout from "@/src/components/layout/SciencePageLayout";
 import { override } from "@/src/components/lib/spinner";
 import useQueryLessonsPage from "@/src/components/lib/react-query/useQueryLessonsPage";
 import { Header } from "@/src/types/Dictionary/utilityTypes";
+import { LessonProps } from "@/src/types/Lessons";
+import { SessionType } from "@/src/types/Auth";
 
-const Lessons = ({ id }: any) => {
-  const { data: session }: any = useSession();
+const Lessons = ({ id }: LessonProps) => {
+  const { data: session } = useSession();
 
   const { isLoading, lessons, page, userProgress } = useQueryLessonsPage(id);
 
@@ -46,7 +48,7 @@ export default Lessons;
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const data: any = await getServerSession(
+  const data: SessionType = await getServerSession(
     context.req,
     context.res,
     authOptions

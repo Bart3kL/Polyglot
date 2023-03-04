@@ -14,9 +14,10 @@ import RepetitionsPage from "@/src/components/organisms/RepetitionsPage";
 import { getPage } from "@/src/components/lib/contentful/client";
 import { RepetitionsProps } from "@/src/types/Repetitions";
 import { RepetitionsContentful } from "@/src/types/Repetitions/utilityTypes";
+import { SessionType } from "@/src/types/Auth";
 
-const Repetitions = ({ id, repetitions }: RepetitionsProps) => {
-  const { data: session }: any = useSession();
+const Repetitions = ({ repetitions }: RepetitionsProps) => {
+  const { data: session } = useSession();
 
   const { data: page, isLoading: loadingRepetitionsPage } = useQuery({
     queryKey: ["repetitionsPage"],
@@ -51,7 +52,7 @@ export default Repetitions;
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const data: any = await getServerSession(
+  const data: SessionType = await getServerSession(
     context.req,
     context.res,
     authOptions
@@ -59,7 +60,7 @@ export const getServerSideProps = async (
   if (data) {
     const repetitions = await useGet("repetitions", data.user.id);
     return {
-      props: { id: data.user.id, repetitions },
+      props: { repetitions },
     };
   }
   return { props: {} };

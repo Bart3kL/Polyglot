@@ -8,6 +8,7 @@ export default async function getAllLessons(
   if (req.method === "POST") {
     try {
       const { body: data } = req;
+      console.dir(data.userId);
       const repetitions = await prisma.repetitions.upsert({
         where: { id: data.id },
         update: {

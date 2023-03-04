@@ -14,9 +14,10 @@ import useGet from "@/src/components/lib/axios/useGet";
 import FlashcardsPage from "@/src/components/organisms/FlashcardsPage";
 import { FlashcardsProps } from "@/src/types/Flashcards";
 import { FlashcardsContentful } from "@/src/types/Flashcards/utilityTypes";
+import { SessionType } from "@/src/types/Auth";
 
 const Flashcards = ({ id }: FlashcardsProps) => {
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
 
   const { data: page, isLoading: loadingRepetitionsPage } = useQuery({
     queryKey: ["flashcardsPage"],
@@ -57,7 +58,7 @@ export default Flashcards;
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const data: any = await getServerSession(
+  const data: SessionType = await getServerSession(
     context.req,
     context.res,
     authOptions

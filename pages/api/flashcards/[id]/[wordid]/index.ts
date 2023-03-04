@@ -8,7 +8,7 @@ export default async function getAllLessons(
   const prisma = new PrismaClient();
   if (req.method === "GET") {
     try {
-      const { wordid }: any = req.query;
+      const { wordid } = req.query as { wordid: string };
 
       const flashcards = await prisma.flashcards.findMany();
 
@@ -26,7 +26,7 @@ export default async function getAllLessons(
 
   if (req.method === "DELETE") {
     try {
-      const { wordid }: any = req.query;
+      const { wordid } = req.query as { wordid: string };
       const repetitions = await prisma.flashcards.delete({
         where: { id: wordid },
       });

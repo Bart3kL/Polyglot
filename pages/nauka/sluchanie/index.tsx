@@ -12,7 +12,7 @@ import ListeningPage from "@/src/components/organisms/ListeningPage";
 import { PageListeningContetful } from "@/src/types/Listening/utilityTypes";
 
 const Listening = () => {
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
 
   const { data: page, isLoading: loadingListeningPage } = useQuery({
     queryKey: ["listeningPage"],

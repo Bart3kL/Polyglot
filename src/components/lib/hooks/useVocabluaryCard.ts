@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { useSession } from "next-auth/react";
 
 import usePostWordToRepetitions from "../axios/usePostWordToRepetitions";
+import { VocabluaryWordWithExamples } from "@/src/types/Vocabluary/utilityTypes";
 
-const useVocabluaryCard = (vocabluary: any) => {
-  const { data: session }: any = useSession();
+const useVocabluaryCard = (vocabluary: VocabluaryWordWithExamples[]) => {
+  const { data: session } = useSession();
 
   const [wordIndex, setWordIndex] = useState(0);
 
   const handleToStudy = () => {
-    usePostWordToRepetitions(vocabluary[wordIndex], session.user.id);
+    usePostWordToRepetitions(vocabluary[wordIndex], session?.user.id);
 
     setWordIndex(wordIndex + 1);
   };

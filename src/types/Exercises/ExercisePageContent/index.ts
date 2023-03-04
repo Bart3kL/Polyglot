@@ -1,5 +1,3 @@
-import { Exercise, ExercisePageContentful } from "../utilityTypes";
-
 export type ExercisePageContent = {
   exercises: any;
   checkButtonLabel: string;

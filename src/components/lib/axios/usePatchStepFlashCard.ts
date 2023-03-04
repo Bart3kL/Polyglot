@@ -1,8 +1,9 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { FlashcardPatch } from "@/src/types/Flashcards/utilityTypes";
 
 export async function usePatchStepFlashCard(
-  newData: any,
+  newData: FlashcardPatch,
   userid: string,
   wordid: string
 ) {

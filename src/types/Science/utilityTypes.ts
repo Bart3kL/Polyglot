@@ -35,3 +35,15 @@ export type Achievement = {
   imgDefault: string;
   name: string;
 };
+export type Progress = {
+  lesson: string;
+  lessonStep: string;
+  userId: string | undefined;
+  achievements: string;
+  allLessonslessonAchievement?: string;
+  flashcardslessonAchievement?: string;
+  lessonAchievement?: string;
+  listeninglessonAchievement?: string;
+  noteslessonAchievement?: string;
+  repeatsAchievement?: string;
+};

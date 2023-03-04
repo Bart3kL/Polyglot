@@ -12,7 +12,7 @@ const FlashCardsPageInitialContent = ({
   show,
   page,
 }: FlashCardsPageInitialContentProps) => {
-  const { headerTitle, loadWordBtn, btnLabel } = page;
+  const { headerTitle, loadWordBtn, btnLabel, clickLabel, word } = page;
   return (
     <>
       {show && (
@@ -25,6 +25,8 @@ const FlashCardsPageInitialContent = ({
             headerTitle={headerTitle}
             loadWordBtn={loadWordBtn}
             btnLabel={btnLabel}
+            clickLabel={clickLabel}
+            word={word}
           />
         </div>
       )}

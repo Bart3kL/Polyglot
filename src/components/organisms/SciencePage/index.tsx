@@ -8,6 +8,7 @@ import SciencePageNextLessons from "../../atoms/SciencePageNextLessons";
 import ScienceProgressBar from "../../molecules/ScienceProgressBar";
 import ScienceAchievements from "../../molecules/ScienceAchievements";
 import { SciencePageProps } from "@/src/types/Science/SciencePage";
+import usePostProgress from "@/src/components/lib/axios/usePostProgress";
 
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperBox, wrapperTutorial } = styles;
@@ -26,6 +27,8 @@ const SciencePage = ({
     achievementsCongratsText,
     tutorialSteps,
   } = page;
+  const fetchLessonStep = usePostProgress();
+  fetchLessonStep(userProgress.lesson, userProgress.lessonStep);
 
   const threeNextLessons = lessons
     ?.slice(Number(userProgress?.lesson) - 1, lessons.length)

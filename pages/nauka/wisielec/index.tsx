@@ -12,7 +12,7 @@ import HangmanPage from "@/src/components/organisms/HangmanPage";
 import { HangmanContentful } from "@/src/types/Hangman/utilityTypes";
 
 const Hangman = () => {
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
 
   const { data: page, isLoading: loadingHangmanPage } = useQuery({
     queryKey: ["hangmanPage"],

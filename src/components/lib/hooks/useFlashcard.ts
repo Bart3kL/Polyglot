@@ -11,10 +11,10 @@ import { Flashcard } from "@/src/types/Flashcards/utilityTypes";
 const useFlashcard = (data: Flashcard[]) => {
   const [toggle, setToggle] = useState(false);
   const [nextWord, setNextWord] = useState(0);
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
 
   const handleLoadWords = async () => {
-    usePutFlashcards(session.user.id);
+    usePutFlashcards(session?.user.id);
   };
 
   const handleSound = () => {

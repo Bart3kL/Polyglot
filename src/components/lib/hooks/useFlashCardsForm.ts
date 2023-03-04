@@ -9,7 +9,7 @@ const useFlashCardsForm = () => {
   const [singleWord, setSingleWord] = useState("");
   const [singleTranslation, setSingleTranslation] = useState("");
 
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
 
   const handleAddWord = () => {
     const today = String(format(new Date(), "yyyy-MM-dd"));

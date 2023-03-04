@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  width: 90%;
+  margin: 100px auto 0 auto;
+
+  h1 {
+    margin-bottom: 40px;
+
+    font-weight: bold;
+    font-size: 2.4rem;
+    color: #27293d;
+    text-align: center;
+  }
+}

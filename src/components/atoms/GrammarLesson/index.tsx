@@ -3,11 +3,17 @@ import React from "react";
 import Link from "next/link";
 
 import usePostProgress from "../../lib/axios/usePostProgress";
+import { GrammarLessonProps } from "@/src/types/Grammar/GrammarLesson";
 
 import styles from "./rwd.module.scss";
 const { wrapper, wrapperTitle, wrapperImage, wrapperButton } = styles;
 
-const GrammarLesson = ({ image, title, grammarForLessonId, nextStep }: any) => {
+const GrammarLesson = ({
+  image,
+  title,
+  grammarForLessonId,
+  nextStep,
+}: GrammarLessonProps) => {
   const lessonStep = usePostProgress();
 
   return (

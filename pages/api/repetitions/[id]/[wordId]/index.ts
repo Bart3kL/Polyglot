@@ -28,7 +28,7 @@ export default async function getAllLessons(
 
   if (req.method === "DELETE") {
     try {
-      const { wordId }: any = req.query;
+      const { wordId } = req.query as unknown as { wordId: string };
 
       const repetitions = await prisma.repetitions.delete({
         where: { id: wordId },
@@ -43,11 +43,21 @@ export default async function getAllLessons(
 
   if (req.method === "POST") {
     try {
-      // const { wordId }: any = req.query;
       const { body: data } = req;
-      const repetitions = await prisma.repetitions.update({
+
+      const repetitions = await prisma.repetitions.upsert({
         where: { id: data.id },
-        data: {
+        update: {
+          id: data.id,
+          userId: data.userId,
+          name: data.name,
+          date: data.date,
+          translation: data.translation,
+          audio: data.audio,
+          image: data.image,
+          power: String(data.power),
+        },
+        create: {
           id: data.id,
           userId: data.userId,
           name: data.name,

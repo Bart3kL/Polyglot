@@ -7,7 +7,7 @@ import usePatchWordToRepetitions from "../axios/usePatchWordToRepetitions";
 import { useRepeatsProps } from "@/src/types/Repetitions/utilityTypes";
 
 const useRepeats = (repetitions: useRepeatsProps[]) => {
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
   const userId = session?.user.id;
   const [manageRepeats, useManageRepeats] = useState({
     index: 0,

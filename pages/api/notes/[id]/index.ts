@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
+import { CustomReqQuery } from "@/src/types/Auth";
 
 export default async function getAllLessons(
   req: NextApiRequest,
@@ -8,7 +9,7 @@ export default async function getAllLessons(
   const prisma = new PrismaClient();
   if (req.method === "GET") {
     try {
-      const { id }: any = req.query;
+      const { id } = req.query as unknown as CustomReqQuery;
       const notes = await prisma.notebook.findMany();
 
       const notesByUser = notes.filter((notebook) => notebook.userId === id);

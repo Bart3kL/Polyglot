@@ -1,9 +1,12 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export async function usePostNote(note: any, userId: any) {
+export async function usePostNote(
+  note: { subject: string; convertedText: string },
+  userId: string
+) {
   const id = toast.loading("Proszę czekać...", {
-    style: {  top: "50px" },
+    style: { top: "50px" },
     position: "top-right",
   });
   try {
@@ -26,7 +29,7 @@ export async function usePostNote(note: any, userId: any) {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      style: {top: "50px" },
+      style: { top: "50px" },
     });
   }
 }

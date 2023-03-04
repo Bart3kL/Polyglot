@@ -14,9 +14,10 @@ import useGet from "@/src/components/lib/axios/useGet";
 import { NotesProps } from "@/src/types/Notes";
 import NotesPage from "@/src/components/organisms/NotesPage";
 import { NotesContentful } from "@/src/types/Notes/utilityTypes";
+import { SessionType } from "@/src/types/Auth";
 
 const Notes = ({ id }: NotesProps) => {
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
 
   const { data: page, isLoading: loadingRepetitionsPage } = useQuery({
     queryKey: ["notesPage"],
@@ -54,7 +55,7 @@ export default Notes;
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const data: any = await getServerSession(
+  const data: SessionType = await getServerSession(
     context.req,
     context.res,
     authOptions

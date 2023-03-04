@@ -28,3 +28,24 @@ export type FlashcardsContentful = {
   tutorialSteps: Step[];
   word: string;
 };
+
+export type FlashcardPatch = {
+  audio: string;
+  date: string | undefined;
+  example1: null | string;
+  example2: null | string;
+  id: string;
+  image: null | string;
+  name: string;
+  step: string;
+  translation: string;
+  userId: string;
+};
+export type FlashcardPost = {
+  date: string;
+  id: string;
+  name: string;
+  step: string;
+  translation: string;
+  userId: string;
+};

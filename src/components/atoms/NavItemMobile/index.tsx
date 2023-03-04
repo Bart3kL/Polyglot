@@ -13,7 +13,7 @@ import styles from "./rwd.module.scss";
 const { wrapperItem, wrapperOverlay, wrapperSubmenu } = styles;
 
 const NavItemMobile = ({ href, name, subMenu, index }: NavItemMobileProps) => {
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
   const fetchLessonStep = usePostProgress();
   const currentRoute = useRouter().pathname;
 
