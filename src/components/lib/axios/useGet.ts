@@ -5,7 +5,7 @@ export default async function useGet(table: string, secondTable?: string) {
   if (secondTable) {
     try {
       const { data } = await axios.get(
-        `http://localhost:3000/api/${table}/${secondTable}`
+        `https://polyglot-bart3kl.vercel.app/api/${table}/${secondTable}`
       );
       return data;
     } catch (e) {
@@ -24,7 +24,9 @@ export default async function useGet(table: string, secondTable?: string) {
     }
   }
   try {
-    const { data } = await axios.get(`http://localhost:3000/api/${table}/`);
+    const { data } = await axios.get(
+      `https://polyglot-bart3kl.vercel.app/api/${table}/`
+    );
     return data;
   } catch (e) {
     const err = e as AxiosError;

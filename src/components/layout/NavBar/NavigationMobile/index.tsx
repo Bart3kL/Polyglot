@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { cx } from "@/src/components/lib/utils";
 import { Icons } from "@/src/components/shared";
@@ -23,6 +24,11 @@ const NavigationMobile = () => {
   const showMenu = () => {
     setShow(!show);
   };
+  const router = useRouter();
+
+  useEffect(() => {
+    setShow(false);
+  }, [router.pathname]);
   return (
     <nav className={wrapper}>
       <div className={wrapperNav}>

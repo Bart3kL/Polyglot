@@ -9,7 +9,7 @@ const usePatchWordToRepetitions = async (
 ) => {
   try {
     await axios.post(
-      `http://localhost:3000/api/repetitions/${userId}/${wordId}`,
+      `https://polyglot-bart3kl.vercel.app/api/repetitions/${userId}/${wordId}`,
       data
     );
   } catch (e) {

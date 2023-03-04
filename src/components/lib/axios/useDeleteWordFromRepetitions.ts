@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 async function useDeleteWordFromRepetitions(userId: string, wordId: string) {
   try {
     await axios.delete(
-      `http://localhost:3000/api/repetitions/${userId}/${wordId}`
+      `https://polyglot-bart3kl.vercel.app/api/repetitions/${userId}/${wordId}`
     );
   } catch (e) {
     const err = e as AxiosError;

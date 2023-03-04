@@ -5,7 +5,7 @@ const useGetDictionary = async (secondValue?: string, thirdValue?: string) => {
   if (secondValue && thirdValue) {
     try {
       const { data } = await axios.get(
-        `http://localhost:3000/api/dictionary/${secondValue}/${thirdValue}`
+        `https://polyglot-bart3kl.vercel.app/api/dictionary/${secondValue}/${thirdValue}`
       );
       return data;
     } catch (e) {
@@ -25,7 +25,9 @@ const useGetDictionary = async (secondValue?: string, thirdValue?: string) => {
   }
 
   try {
-    const { data } = await axios.get(`http://localhost:3000/api/dictionary`);
+    const { data } = await axios.get(
+      `https://polyglot-bart3kl.vercel.app/api/dictionary`
+    );
     return data;
   } catch (e) {
     const err = e as AxiosError;

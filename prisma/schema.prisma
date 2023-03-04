@@ -125,7 +125,7 @@ model Users {
   userId                      String
   lesson                      String
   lessonStep                  String
-  achievements                String
+  achievements                String?
   lessonAchievement           String
   repeatsAchievement          String
   listeninglessonAchievement  String

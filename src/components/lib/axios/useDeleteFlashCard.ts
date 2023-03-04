@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 export async function useDeleteFlashCard(userId: string, wordId: string) {
   try {
     await axios.delete(
-      `http://localhost:3000/api/flashcards/${userId}/${wordId}`
+      `https://polyglot-bart3kl.vercel.app/api/flashcards/${userId}/${wordId}`
     );
   } catch (e) {
     const err = e as AxiosError;
