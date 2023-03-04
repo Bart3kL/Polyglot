@@ -122,6 +122,7 @@ const ListeningPage = ({ words, page }: ListeningPageProps) => {
                 handleResult={handleResult}
                 {...button}
                 index={i}
+                key={button.name}
               />
             ))}
           </div>

@@ -1,6 +1,6 @@
 import { Flashcard, FlashcardsContentful } from "../utilityTypes";
 
 export interface FlashcardsPageProps {
-  flashcards: Flashcard;
+  flashcards: Flashcard[];
   page: FlashcardsContentful;
 }
